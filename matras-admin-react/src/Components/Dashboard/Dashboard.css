@@ -1,0 +1,11 @@
+.dashboard{
+    background: #01384D;
+
+}
+
+.dashboard-header, .dashboard-link{
+    display: flex;
+/* justify-content: center; */
+align-items: center;
+padding: 20px;
+}

@@ -16,52 +16,52 @@ const Dashboard = () =>{
             </div>
             <ul className="dashboard-list">
                 <li className="dashboard-item">
-                    <button className="dashboard-btn">
+                    <a href="#" className="dashboard-link">
                         <img src={Home} alt="" className="dashboard-icon" />
                         <h3 className="dashboard-subtitle">
                             Buyurtmalar
                         </h3>
-                    </button>
+                    </a>
                 </li>
                 <li className="dashboard-item">
-                    <button className="dashboard-btn">
+                    <a href="#" className="dashboard-link">
                         <img src={Home} alt="" className="dashboard-icon" />
                         <h3 className="dashboard-subtitle">
                             Buyurtmalar
                         </h3>
-                    </button>
+                    </a>
                 </li>
                 <li className="dashboard-item">
-                    <button className="dashboard-btn">
+                    <a href="#" className="dashboard-link">
                         <img src={Home} alt="" className="dashboard-icon" />
                         <h3 className="dashboard-subtitle">
                             Buyurtmalar
                         </h3>
-                    </button>
+                    </a>
                 </li>
                 <li className="dashboard-item">
-                    <button className="dashboard-btn">
+                    <a href="#" className="dashboard-link">
                         <img src={Home} alt="" className="dashboard-icon" />
                         <h3 className="dashboard-subtitle">
                             Buyurtmalar
                         </h3>
-                    </button>
+                    </a>
                 </li>
                 <li className="dashboard-item">
-                    <button className="dashboard-btn">
+                    <a href="#" className="dashboard-link">
                         <img src={Home} alt="" className="dashboard-icon" />
                         <h3 className="dashboard-subtitle">
                             Buyurtmalar
                         </h3>
-                    </button>
+                    </a>
                 </li>
                 <li className="dashboard-item">
-                    <button className="dashboard-btn">
+                    <a href="#" className="dashboard-link">
                         <img src={Home} alt="" className="dashboard-icon" />
                         <h3 className="dashboard-subtitle">
                             Buyurtmalar
                         </h3>
-                    </button>
+                    </a>
                 </li>
                 
             </ul>
