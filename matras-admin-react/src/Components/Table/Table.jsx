@@ -28,16 +28,45 @@ return (
                     <td>Ortopedik Eko matras</td>
                     <td>4</td>
                     <td>
-                  
-
-                        <div className="can-toggle demo-rebrand-2">
-                            <input id="e" type="checkbox">
-                            <label for="e">
-                                <div className="can-toggle__switch" data-checked="Yes" data-unchecked="No"></div>
-                         </label>
-                        </div>
+                    <input type="checkbox" id="switch" />
+                    <label for="switch">Toggle</label>
                     </td>
                 </tr>
+                {/* <tr className="tr">
+                    <td>7</td>
+                    <td>Jenqwqw </td>
+                    <td>+998 93 148 77 33</td>
+                    <td>Ortopedik Eko matras</td>
+                    <td>4</td>
+                    <td>
+                    <input type="checkbox" id="switch" />
+                    <label for="switch">Toggle</label>
+                    </td>
+                </tr>
+                <tr className="tr">
+                    <td>8</td>
+                    <td>JeWilson </td>
+                    <td>+998 93 148 77 33</td>
+                    <td>Ortopedik Eko matras</td>
+                    <td>4</td>
+                    <td>
+                    <input type="checkbox" id="switch" />
+                    <label for="switch">Toggle</label>
+                    </td>
+                </tr>
+                <tr className="">
+                    <td>8</td>
+                    <td>nyeWilson </td>
+                    <td>+998 93 148 77 33</td>
+                    <td>Ortopedik Eko matras</td>
+                    <td>4</td>
+                    <td>
+                    <input type="checkbox" id="switch" />
+                    <label for="switch">Toggle</label>
+                    </td>
+                </tr> */}
+
+
 
             </tbody>
         </table>
