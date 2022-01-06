@@ -2,6 +2,13 @@ import React, { useState } from "react";
 import "./Dashboard.css";
 import Logo from "../../Assets/Images/Logo.png";
 import Home from "../../Assets/Images/home.png";
+import Profile2 from "../../Assets/Images/Mask Group.png";
+import Toifalar from "../../Assets/Images/view_column.png";
+import ShopCart from "../../Assets/Images/shopping_cart.png";
+import Texnologiyalar from "../../Assets/Images/Texnologiyalar.png";
+import WhiteMap from "../../Assets/Images/White-map.png";
+
+
 
 const Dashboard = () =>{
 
@@ -25,41 +32,41 @@ const Dashboard = () =>{
                 </li>
                 <li className="dashboard-item">
                     <a href="#" className="dashboard-link">
-                        <img src={Home} alt="" className="dashboard-icon" />
+                        <img src={Profile2} alt="" className="dashboard-icon" />
                         <h3 className="dashboard-subtitle">
-                            Buyurtmalar
+                            Customers
                         </h3>
                     </a>
                 </li>
                 <li className="dashboard-item">
                     <a href="#" className="dashboard-link">
-                        <img src={Home} alt="" className="dashboard-icon" />
+                        <img src={Toifalar} alt="" className="dashboard-icon" />
                         <h3 className="dashboard-subtitle">
-                            Buyurtmalar
+                        Toifalar
                         </h3>
                     </a>
                 </li>
                 <li className="dashboard-item">
                     <a href="#" className="dashboard-link">
-                        <img src={Home} alt="" className="dashboard-icon" />
+                        <img src={ShopCart} alt="" className="dashboard-icon" />
                         <h3 className="dashboard-subtitle">
-                            Buyurtmalar
+                            Mahsulotlar
                         </h3>
                     </a>
                 </li>
                 <li className="dashboard-item">
                     <a href="#" className="dashboard-link">
-                        <img src={Home} alt="" className="dashboard-icon" />
+                        <img src={Texnologiyalar} alt="" className="dashboard-icon" />
                         <h3 className="dashboard-subtitle">
-                            Buyurtmalar
+                        Texnologiyalar
                         </h3>
                     </a>
                 </li>
                 <li className="dashboard-item">
                     <a href="#" className="dashboard-link">
-                        <img src={Home} alt="" className="dashboard-icon" />
+                        <img src={WhiteMap} alt="" className="dashboard-icon" />
                         <h3 className="dashboard-subtitle">
-                            Buyurtmalar
+                            Manzil
                         </h3>
                     </a>
                 </li>

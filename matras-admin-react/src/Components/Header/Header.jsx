@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Header.css";
 import Search from "../../Assets/Images/Search.png";
-import Avatar from "../../Assets/Images/Avatar.png";
+import Avatar from "../../Assets/Images/Profile2.png";
 
 const Header = () =>{
 
@@ -10,8 +10,8 @@ const Header = () =>{
 <div className="header-left">
     
     
-    <input type="text" placeholder="User" required name="user" />
-    <img src={Search} alt="Search" />
+    <input type="text" className="header-input" placeholder="User" required name="user" />
+    <img className="header-search" src={Search} alt="Search" />
 </div>
 <div className="header-right">
     <span className="header-span">

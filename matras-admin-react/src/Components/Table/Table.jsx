@@ -1,94 +1,52 @@
 import react from "react";
-
+import "./Table.css";
 const Table = () =>{
-    
-    return (
-        <>
-   <div className="table">
+
+return (
+<section className="tables">
+    <div className="tbl-header">
         <table>
             <thead>
                 <tr>
-                    <th>Code</th>
-                    <th>Company</th>
-                    <th>Price</th>
-                    <th>Change</th>
-                    <th>Change %</th>
+                    <th>ID</th>
+                    <th>Ismi</th>
+                    <th>Telefon Raqami</th>
+                    <th>Mahsulot Nomlari</th>
+                    <th>Miqdor</th>
+                    <th>Qayta Aloqa</th>
                 </tr>
             </thead>
         </table>
     </div>
-    <div>
+    <div className="tbl-content">
         <table>
             <tbody>
-                <tr>
-                    <td>AAC</td>
-                    <td>AUSTRALIAN COMPANY </td>
-                    <td>$1.38</td>
-                    <td>+2.01</td>
-                    <td>-0.36%</td>
+                <tr className="tr">
+                    <td>6</td>
+                    <td>Jenny Wilson </td>
+                    <td>+998 93 148 77 33</td>
+                    <td>Ortopedik Eko matras</td>
+                    <td>4</td>
+                    <td>
+                  
+
+                        <div className="can-toggle demo-rebrand-2">
+                            <input id="e" type="checkbox">
+                            <label for="e">
+                                <div className="can-toggle__switch" data-checked="Yes" data-unchecked="No"></div>
+                         </label>
+                        </div>
+                    </td>
                 </tr>
-                <tr>
-                    <td>AAD</td>
-                    <td>AUSENCO</td>
-                    <td>$2.38</td>
-                    <td>-0.01</td>
-                    <td>-1.36%</td>
-                </tr>
-                <tr>
-                    <td>AAX</td>
-                    <td>ADELAIDE</td>
-                    <td>$3.22</td>
-                    <td>+0.01</td>
-                    <td>+1.36%</td>
-                </tr>
-                <tr>
-                    <td>XXD</td>
-                    <td>ADITYA BIRLA</td>
-                    <td>$1.02</td>
-                    <td>-1.01</td>
-                    <td>+2.36%</td>
-                </tr>
-                <tr>
-                    <td>AAC</td>
-                    <td>AUSTRALIAN COMPANY </td>
-                    <td>$1.38</td>
-                    <td>+2.01</td>
-                    <td>-0.36%</td>
-                </tr>
-                <tr>
-                    <td>AAD</td>
-                    <td>AUSENCO</td>
-                    <td>$2.38</td>
-                    <td>-0.01</td>
-                    <td>-1.36%</td>
-                </tr>
-                <tr>
-                    <td>AAX</td>
-                    <td>ADELAIDE</td>
-                    <td>$3.22</td>
-                    <td>+0.01</td>
-                    <td>+1.36%</td>
-                </tr>
-                <tr>
-                    <td>XXD</td>
-                    <td>ADITYA BIRLA</td>
-                    <td>$1.02</td>
-                    <td>-1.01</td>
-                    <td>+2.36%</td>
-                </tr>
-                <tr>
-                    <td>AAC</td>
-                    <td>AUSTRALIAN COMPANY </td>
-                    <td>$1.38</td>
-                    <td>+2.01</td>
-                    <td>-0.36%</td>
-                </tr>
-         
+
             </tbody>
         </table>
+
     </div>
-        </>
-     
+
+
+</section>
+
 )
 }
 
