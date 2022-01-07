@@ -1,4 +1,5 @@
 import react from "react";
+import Toggle from "../Toggle/Toggle";
 import "./Table.css";
 const Table = () =>{
 
@@ -21,6 +22,18 @@ return (
     <div className="tbl-content">
         <table>
             <tbody>
+                <tr className="tr" >
+                    <td>6</td>
+                    <td>Jenny Wilson </td>
+                    <td>+998 93 148 77 33</td>
+                    <td>Ortopedik Eko matras</td>
+                    <td>4</td>
+                    <td>
+                    <Toggle />
+                    </td>
+                </tr>
+               
+
                 <tr className="tr">
                     <td>6</td>
                     <td>Jenny Wilson </td>
@@ -28,45 +41,19 @@ return (
                     <td>Ortopedik Eko matras</td>
                     <td>4</td>
                     <td>
-                    <input type="checkbox" id="switch" />
-                    <label for="switch">Toggle</label>
+                    <Toggle />
                     </td>
                 </tr>
-                {/* <tr className="tr">
-                    <td>7</td>
-                    <td>Jenqwqw </td>
+                 <tr className="tr">
+                    <td>6</td>
+                    <td>Jenny Wilson </td>
                     <td>+998 93 148 77 33</td>
                     <td>Ortopedik Eko matras</td>
                     <td>4</td>
                     <td>
-                    <input type="checkbox" id="switch" />
-                    <label for="switch">Toggle</label>
+                    <Toggle />
                     </td>
                 </tr>
-                <tr className="tr">
-                    <td>8</td>
-                    <td>JeWilson </td>
-                    <td>+998 93 148 77 33</td>
-                    <td>Ortopedik Eko matras</td>
-                    <td>4</td>
-                    <td>
-                    <input type="checkbox" id="switch" />
-                    <label for="switch">Toggle</label>
-                    </td>
-                </tr>
-                <tr className="">
-                    <td>8</td>
-                    <td>nyeWilson </td>
-                    <td>+998 93 148 77 33</td>
-                    <td>Ortopedik Eko matras</td>
-                    <td>4</td>
-                    <td>
-                    <input type="checkbox" id="switch" />
-                    <label for="switch">Toggle</label>
-                    </td>
-                </tr> */}
-
-
 
             </tbody>
         </table>
