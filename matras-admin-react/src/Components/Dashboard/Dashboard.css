@@ -13,6 +13,9 @@ width: 220px;
 padding:20px 0px;
 padding-left: 30px;
 padding-right: 40px;
+background: #01384D;
+border: none;
+
 
 }
 
@@ -47,10 +50,15 @@ padding-left: 13px;
 
 
 .dashboard-item{
+    width: 100%;
     transition: 0.3s;
 
     /* padding:6px 0px; */
 }
-.dashboard-item:hover{
+.dashboard-link:hover{
+    width: 100%;
     background: #EABF9F;
+}
+.dashboard-item:hover{
+    /* background: #EABF9F; */
 }

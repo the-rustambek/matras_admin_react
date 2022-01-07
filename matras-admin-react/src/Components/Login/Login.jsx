@@ -9,27 +9,6 @@ let className ="form-login";
 let classNames ="form-password";
 const [error, setError] = useState("");
 
-// const handleBtn=(evt)=>{
-// evt.preventDefault();
-
-// const {login, parol} = evt.target.elements;
-
-
-
-// if (!login.value.trim()) {
-   
-//     className += "  error-input";
-
-//     console.log(className);
-// }
-
-
-// if (!parol.value.trim()) {
-   
-//     classNames += "  error-input"
-//     console.log(classNames);
-// }
-// } 
 
 return (
 <div className="login">
