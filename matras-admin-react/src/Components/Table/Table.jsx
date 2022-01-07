@@ -1,5 +1,6 @@
 import react from "react";
-import Toggle from "../Toggle/Toggle";
+
+import TrComponent from "../TrComponent/TrComponent";
 import "./Table.css";
 const Table = () =>{
 
@@ -22,39 +23,7 @@ return (
     <div className="tbl-content">
         <table>
             <tbody>
-                <tr className="tr" >
-                    <td>6</td>
-                    <td>Jenny Wilson </td>
-                    <td>+998 93 148 77 33</td>
-                    <td>Ortopedik Eko matras</td>
-                    <td>4</td>
-                    <td>
-                    <Toggle />
-                    </td>
-                </tr>
-               
-
-                <tr className="tr">
-                    <td>6</td>
-                    <td>Jenny Wilson </td>
-                    <td>+998 93 148 77 33</td>
-                    <td>Ortopedik Eko matras</td>
-                    <td>4</td>
-                    <td>
-                    <Toggle />
-                    </td>
-                </tr>
-                 <tr className="tr">
-                    <td>6</td>
-                    <td>Jenny Wilson </td>
-                    <td>+998 93 148 77 33</td>
-                    <td>Ortopedik Eko matras</td>
-                    <td>4</td>
-                    <td>
-                    <Toggle />
-                    </td>
-                </tr>
-
+                <TrComponent />
             </tbody>
         </table>
 
