@@ -7,11 +7,15 @@ import "./ToifalarTable.css";
 import Delete from "../../Assets/Images/delete.png";
 import { useState } from "react";
 import Modal from "react-modal";
+import DeleteModal from "../DeleteModal/DeleteModal";
+
+import AddModal from "../AddModal/AddModal";
+import EditModal from "../EditModal/EditModal";
 
 const ToifalarTable = ({items}) =>{
     // console.log(items,"aloooo")
-const [modalIsOpen,setModalIsOpen] = useState(false);
-const [modalDelete,setModalDelete] = useState(false);
+
+// const [modalDelete,setModalDelete] = useState(false);
 return (
     <div className="toifalar-table">
     <section className="tables">
@@ -43,13 +47,14 @@ const {id,title,number,name,quantity,toifalar} = menuItem;
         <div className="tr-toifalar">
         
         <td className="td">
-        <button className="edit-btn">
+            <EditModal key={id} />
+        {/* <button className="edit-btn">
                 <img src={Edit} alt="" />
-            </button>
-        <button  className="delete-btn" key={id} onClick={() => setModalDelete(true)} >
+            </button> */}
+        {/* <button  className="delete-btn" key={id} onClick={() => setModalDelete(true)} >
                 <img src={Delete} alt="" />
-            </button>
-            
+            </button> */}
+            <DeleteModal key={id} />
         </td>
         </div>
         
@@ -67,52 +72,9 @@ const {id,title,number,name,quantity,toifalar} = menuItem;
 
 
 </section>
-<button className="add-btn" onClick={() => setModalIsOpen(true)} >Qo'shish</button>
-<Modal className="modal" isOpen={modalIsOpen} shouldCloseOnOverlayClick={false} onRequestClose={()=>setModalIsOpen(false)}  style={{
-    overlay:{
-        // backgroundColor: "grey"
-    }
-    
-}}>
-    <div className="modal-blok">
-    <div className="modal-close">
-        <button  onClick={() =>setModalIsOpen(false)}>
-            <img src={Close} className="close-icon" alt="" />
-        </button>
-    </div>
-    <h2 className="modal-title">Qo'shish</h2>
-    <form  className="modal-form">
-        <p className="modal-text">
-            Kategoriya nomi
-        </p>
-        <input type="text" className="modal-input" required placeholder="masalan: Model B" />
-<div className="modal-box">
-    <p className="modal-subtext">Holat</p>
-    <Toggle />
-</div>
-
-<button type="submit" className="modal-btn">
-    Qo'shish
-</button>
-    </form>
-    </div>
-</Modal>
+<AddModal  />
 
 
-<Modal className="delete-modal" isOpen={modalDelete} shouldCloseOnOverlayClick={false} onRequestClose={()=>setModalDelete(false)} >
-<div className="delete-box">
-    <h2 className="delete-title">Haqiqatdan ham o'chirmoqchimisiz ?
-    </h2>
-    <div className="delete-footer">
-        <button className="delete-no" onClick={() =>setModalDelete(false)}>
-            Yo'q
-        </button>
-        <button className="delete-yes" type="submit">
-            Ha
-        </button>
-    </div>
-</div>
-            </Modal>
 </div>
 
 )

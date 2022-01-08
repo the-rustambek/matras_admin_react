@@ -150,6 +150,7 @@ transition: 0.3s;
 border: 2px solid white;
 }
 
+
 .add-btn:hover{
     background-color: white;
     color: #01384D;
@@ -167,28 +168,15 @@ border: 2px solid white;
     width: 270px;
     height: 300px;
     padding: 25px;
-    background-color: #E5E5E5;
-    color: black;
-    border: 1px solid #01384D;
-    
-}
-
-.delete-modal{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    width: 380px;
-    height: 130px;
-    padding: 25px;
-    background-color: #E5E5E5;
+    background-color: white;
+    background-color: rgb(233, 224, 224);
     color: black;
     border: 1px solid #01384D;
 
-    display: flex;
-    justify-content: center;align-items: center;
+    
     
 }
+
 
 .modal-title{
     font-style: normal;
@@ -287,6 +275,23 @@ border: 2px solid #01384D;
 
 
 
+
+.delete-modal{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 380px;
+    height: 130px;
+    padding: 25px;
+    background-color: white;
+    color: black;
+    border: 1px solid #01384D;
+
+    display: flex;
+    justify-content: center;align-items: center;
+    
+}
 
 .delete-title{
     font-style: normal;
