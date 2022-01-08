@@ -1,9 +1,9 @@
 import react from "react";
 import Toggle from "../Toggle/Toggle";
-
+import Delete from "../../Assets/Images/delete.png"
 // import TrComponent from "../TrComponent/TrComponent";
-import "./Table.css";
-const Table = ({items}) =>{
+import "./CustomersTable.css";
+const CustomersTable = ({items}) =>{
     // console.log(items,"aloooo")
 
 return (
@@ -12,12 +12,11 @@ return (
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Ismi</th>
-                    <th>Telefon Raqami</th>
-                    <th>Mahsulot Nomlari</th>
-                    <th>Miqdor</th>
-                    <th>Qayta Aloqa</th>
+                    <th className="th-id">ID</th>
+                    <th className="th">Sana</th>
+                    <th className="th">Telefon Raqami</th>
+                    <th className="th">Qayta Aloqa</th>
+                    <th className="th"></th>
                 </tr>
             </thead>
         </table>
@@ -33,13 +32,15 @@ const {id,title,number,name,quantity} = menuItem;
        <>
                 
         <tr className="tr" key={id} >
-        <td className="td-left">{id}</td>
-        <td>{title}</td>
-        <td>{number}</td>
-        <td>{name}</td>
-        <td>{quantity}</td>
-        <td className="td-right">
-        <Toggle key={id} />
+        <td className="td-left td-id">{id}</td>
+        <td className="td">12:13-12.05.21</td>
+        <td className="td">{number}</td>
+        <td className="td"><Toggle key={id} /></td>
+        
+        <td className="td td-right">
+        <button className="delete-btn">
+            <img src={Delete} alt="" />
+        </button>
         </td>
     </tr>
          </>
@@ -57,4 +58,4 @@ const {id,title,number,name,quantity} = menuItem;
 )
 }
 
-export default Table;
+export default CustomersTable;

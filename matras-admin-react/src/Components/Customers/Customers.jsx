@@ -11,7 +11,7 @@ import Table from "../Table/Table";
                 </div>
                 <div className="customers-right">
                     <Header />
-                    <Table />
+                    {/* <Table /> */}
                 </div>
             </div>
      )

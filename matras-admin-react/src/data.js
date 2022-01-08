@@ -46,6 +46,23 @@ const menu = [
       name:"Eko Matras",
       category: 'Manzil',
       quantity: 18,
-   img: './Assets/Images/Home.png', }
+   img: './Assets/Images/Home.png'},
+   {
+    id: 7,
+    title: 'diner double',
+    number:"+998931487733",
+    name:"Eko Matras",
+    category: 'Customers',
+    quantity: 13,
+  img: './Assets/Images/Home.png'},
+  {
+    id: 8,
+    title: 'neruble',
+    number:"+99893148783",
+    name:"Eko Matras",
+    category: 'Customers',
+    quantity: 13,
+  img: './Assets/Images/Home.png'},
+
   ];
   export default menu;

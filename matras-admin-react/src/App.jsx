@@ -8,6 +8,7 @@ import react, { useState } from 'react';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Header from './Components/Header/Header';
 import Table from './Components/Table/Table';
+import CustomersTable from './Components/CustomersTable/CustomersTable';
 
 
 const allCategories = [ ...new Set(items.map((item) => item.category))]
@@ -35,9 +36,10 @@ function App() {
           <div className="homepage-left">
           <Dashboard categories={categories} filterItems={filterItems} />
           </div>
-              <div className="homepage-right">
+              <div className="homepage-right" >
                   <Header />
-                  <Table  items={menuItems} />
+                  {/* <Table  items={menuItems} /> */}
+                  <CustomersTable  items={menuItems} />
               </div>
 
               
