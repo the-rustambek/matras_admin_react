@@ -11,6 +11,7 @@ import Modal from "react-modal";
 const ToifalarTable = ({items}) =>{
     // console.log(items,"aloooo")
 const [modalIsOpen,setModalIsOpen] = useState(false);
+const [modalDelete,setModalDelete] = useState(false);
 return (
     <div className="toifalar-table">
     <section className="tables">
@@ -45,9 +46,10 @@ const {id,title,number,name,quantity,toifalar} = menuItem;
         <button className="edit-btn">
                 <img src={Edit} alt="" />
             </button>
-        <button className="delete-btn">
+        <button  className="delete-btn" key={id} onClick={() => setModalDelete(true)} >
                 <img src={Delete} alt="" />
             </button>
+            
         </td>
         </div>
         
@@ -89,12 +91,28 @@ const {id,title,number,name,quantity,toifalar} = menuItem;
     <Toggle />
 </div>
 
-<button type="button" className="modal-btn">
+<button type="submit" className="modal-btn">
     Qo'shish
 </button>
     </form>
     </div>
 </Modal>
+
+
+<Modal className="delete-modal" isOpen={modalDelete} shouldCloseOnOverlayClick={false} onRequestClose={()=>setModalDelete(false)} >
+<div className="delete-box">
+    <h2 className="delete-title">Haqiqatdan ham o'chirmoqchimisiz ?
+    </h2>
+    <div className="delete-footer">
+        <button className="delete-no" onClick={() =>setModalDelete(false)}>
+            Yo'q
+        </button>
+        <button className="delete-yes" type="submit">
+            Ha
+        </button>
+    </div>
+</div>
+            </Modal>
 </div>
 
 )

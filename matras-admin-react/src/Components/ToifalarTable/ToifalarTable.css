@@ -167,12 +167,28 @@ border: 2px solid white;
     width: 270px;
     height: 300px;
     padding: 25px;
-    background-color: white;
+    background-color: #E5E5E5;
     color: black;
     border: 1px solid #01384D;
     
 }
 
+.delete-modal{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 380px;
+    height: 130px;
+    padding: 25px;
+    background-color: #E5E5E5;
+    color: black;
+    border: 1px solid #01384D;
+
+    display: flex;
+    justify-content: center;align-items: center;
+    
+}
 
 .modal-title{
     font-style: normal;
@@ -270,3 +286,47 @@ border: 2px solid #01384D;
 
 
 
+
+
+.delete-title{
+    font-style: normal;
+font-weight: 500;
+font-size: 15px;
+line-height: 20px;
+
+color: #000000;
+margin-bottom: 23px;
+}
+
+.delete-no{
+    font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+
+border: none;
+padding: 4px;
+color: #000000;
+}
+
+.delete-yes{
+    background: #f7e0e0;
+/* opacity: 0.1; */
+border-radius: 5px;
+font-style: normal;
+font-weight: bold;
+font-size: 14px;
+line-height: 17px;
+border: none;
+padding: 4px 6px;
+/* identical to box height */
+margin-left: 58px;
+
+color: #D61F1F;
+
+}
+
+.delete-footer{
+    margin-left: 100px;
+}
