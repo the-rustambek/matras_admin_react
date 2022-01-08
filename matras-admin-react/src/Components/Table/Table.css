@@ -39,7 +39,8 @@ table{
   }
   td{
     padding: 15px;
-    text-align: left;
+    text-align: center;
+
     vertical-align:middle;
     font-weight: 300;
     font-size: 12px;
@@ -47,7 +48,7 @@ table{
 /* opacity: 0.3; */
 /* 1 */
 
-border-bottom: 1px solid #01384D;
+/* border-bottom: 1px solid #01384D; */
     color: black;
     
     
@@ -90,5 +91,5 @@ box-sizing: border-box;
 }
 
 .td-right{
-  border-right: 1px solid #01384D;
+  /* border-right: 1px solid #01384D; */
 }

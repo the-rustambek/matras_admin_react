@@ -10,6 +10,7 @@ import Header from './Components/Header/Header';
 import Table from './Components/Table/Table';
 import CustomersTable from './Components/CustomersTable/CustomersTable';
 import ToifalarTable from './Components/ToifalarTable/ToifalarTable';
+import MahsulotlarTable from './Components/MahsulotlarTable/MahsulotlarTable';
 
 
 const allCategories = [ ...new Set(items.map((item) => item.category))]
@@ -39,10 +40,16 @@ function App() {
           </div>
               <div className="homepage-right" >
                   <Header />
-                  {/* <Table  items={menuItems} /> */}
+                  <Table  items={menuItems} />
                   {/* <CustomersTable  items={menuItems} /> */}
               
-              <ToifalarTable items={menuItems} />
+              {/* <ToifalarTable items={menuItems} /> */}
+
+
+
+              {/* <MahsulotlarTable items={menuItems} /> */}
+
+
               </div>
 
               

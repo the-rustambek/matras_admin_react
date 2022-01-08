@@ -11,7 +11,7 @@ import Home from "../../Assets/Images/home.png";
 
 
 const Dashboard = ({categories,filterItems}) =>{
-
+        
     return (
         <div className="dashboard">
 

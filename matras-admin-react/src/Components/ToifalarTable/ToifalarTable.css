@@ -47,7 +47,7 @@ table{
 /* opacity: 0.3; */
 /* 1 */
 
-border-bottom: 1px solid #01384D;
+/* border-bottom: 1px solid #01384D; */
     color: black;
     
     
@@ -90,7 +90,7 @@ box-sizing: border-box;
 }
 
 .td-right{
-  border-right: 1px solid #01384D;
+  /* border-right: 1px solid #01384D; */
 }
 
 .table .tr-toifalar{
@@ -105,7 +105,7 @@ box-sizing: border-box;
     display:flex;
     justify-content:flex-end;
     align-items: center;
-    /* margin-left: 20px; */
+    margin-left: 20px;
     /* width:0px; */
 }
 

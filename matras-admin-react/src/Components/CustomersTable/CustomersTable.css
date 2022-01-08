@@ -50,7 +50,7 @@ table{
 /* opacity: 0.3; */
 /* 1 */
 
-border-bottom: 1px solid #01384D;
+/* border-bottom: 1px solid #01384D; */
     color: black;
     
     
@@ -84,8 +84,8 @@ border-bottom: 1px solid #01384D;
 
   
   .tr{
-    border: 1px solid #01384D;
-box-sizing: border-box;
+    /* border: 1px solid #01384D; */
+/* box-sizing: border-box; */
 /* border-bottom: 1px solid #01384D;  */
 /* background-color: red; */
 
@@ -96,8 +96,8 @@ box-sizing: border-box;
 }
 
 .td-right,.delete-btn{
-  border-right: 2px solid #01384D;
-  /* float: right;/ */
+  /* border-right: 2px solid #01384D; */
+  
   /* margin-right: 20px; */
   margin-left: 100px;
   
@@ -119,4 +119,11 @@ border-radius: 5px;
 
 .td-id, .th-id{
     width: 80px;
+}
+
+
+.tr{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

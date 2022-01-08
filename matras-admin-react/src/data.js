@@ -7,7 +7,10 @@ const menu = [
       category: 'Buyurtmalar',
       quantity: 15,
     img: './Assets/Images/Home.png',
-    toifalar:"Model A"
+    toifalar:"Model A",
+    price: "1500000 so'm",
+    weight:"150kg",
+    size:"200 x 134 x 40"
   
   },
     {
@@ -18,7 +21,10 @@ const menu = [
       category: 'Customers',
       quantity: 13,
     img: './Assets/Images/Home.png',
-    toifalar:"Model A"
+    toifalar:"Model A",price: "2500000 so'm",
+    weight:"150kg",
+    size:"200 x 134 x 40"
+  
     },
     {
       id: 3,
@@ -28,7 +34,11 @@ const menu = [
       category: 'Toifalar',
       quantity: 6,
     img: './Assets/Images/Home.png',
-  toifalar:"Model C"},
+  toifalar:"Model C"
+  ,price: "1500000 so'm",
+  weight:"150kg",
+  size:"200 x 134 x 40"
+},
     {
       id: 4,
       title: 'country delight',
@@ -37,7 +47,10 @@ const menu = [
       category: 'Mahsulotlar',
       quantity: 20,
     img: './Assets/Images/Home.png',
-  toifalar:"Model B"},
+  toifalar:"Model B",price: "3500000 so'm",
+  weight:"150kg",
+  size:"200 x 134 x 40"
+},
     {
       id: 5,
       title: 'egg attack',
@@ -46,7 +59,10 @@ const menu = [
       category: 'Texnologiyalar',
       quantity: 22,
     img: './Assets/Images/Home.png',
-  toifalar:"Model D"},
+  toifalar:"Model D",price: "1500000 so'm",
+  weight:"150kg",
+  size:"200 x 134 x 40"
+},
     {
       id: 6,
       title: 'oreo dream',
@@ -55,7 +71,10 @@ const menu = [
       category: 'Manzil',
       quantity: 18,
    img: './Assets/Images/Home.png',
-   toifalar:"Model A"},
+   toifalar:"Model A",price: "100000 so'm",
+   weight:"150kg",
+   size:"200 x 134 x 40"
+ },
    {
     id: 7,
     title: 'diner double',
@@ -64,7 +83,10 @@ const menu = [
     category: 'Customers',
     quantity: 13,
   img: './Assets/Images/Home.png',
-  toifalar:"Model C"},
+  toifalar:"Model C",price: "1700000 so'm",
+  weight:"150kg",
+  size:"200 x 134 x 40"
+},
   {
     id: 8,
     title: 'neruble',
@@ -73,7 +95,10 @@ const menu = [
     category: 'Customers',
     quantity: 13,
   img: './Assets/Images/Home.png',
-  toifalar:"Model B"},
+  toifalar:"Model B",price: "500000 so'm",
+  weight:"150kg",
+  size:"200 x 134 x 40"
+},
 
   ];
   export default menu;

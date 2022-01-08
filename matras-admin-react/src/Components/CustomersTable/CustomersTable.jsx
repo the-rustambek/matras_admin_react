@@ -12,7 +12,7 @@ return (
         <table>
             <thead>
                 <tr>
-                    <th className="th-id">ID</th>
+                    <th className="th">ID</th>
                     <th className="th">Sana</th>
                     <th className="th">Telefon Raqami</th>
                     <th className="th">Qayta Aloqa</th>
@@ -32,7 +32,7 @@ const {id,title,number,name,quantity} = menuItem;
        <>
                 
         <tr className="tr" key={id} >
-        <td className="td-left td-id">{id}</td>
+        <td className="td">{id}</td>
         <td className="td">12:13-12.05.21</td>
         <td className="td">{number}</td>
         <td className="td"><Toggle key={id} /></td>
