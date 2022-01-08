@@ -9,6 +9,7 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import Header from './Components/Header/Header';
 import Table from './Components/Table/Table';
 import CustomersTable from './Components/CustomersTable/CustomersTable';
+import ToifalarTable from './Components/ToifalarTable/ToifalarTable';
 
 
 const allCategories = [ ...new Set(items.map((item) => item.category))]
@@ -39,7 +40,9 @@ function App() {
               <div className="homepage-right" >
                   <Header />
                   {/* <Table  items={menuItems} /> */}
-                  <CustomersTable  items={menuItems} />
+                  {/* <CustomersTable  items={menuItems} /> */}
+              
+              <ToifalarTable items={menuItems} />
               </div>
 
               

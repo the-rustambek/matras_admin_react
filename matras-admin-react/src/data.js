@@ -6,7 +6,10 @@ const menu = [
       name:"Eko Matras",
       category: 'Buyurtmalar',
       quantity: 15,
-    img: './Assets/Images/Home.png',},
+    img: './Assets/Images/Home.png',
+    toifalar:"Model A"
+  
+  },
     {
       id: 2,
       title: 'diner double',
@@ -14,7 +17,9 @@ const menu = [
       name:"Eko Matras",
       category: 'Customers',
       quantity: 13,
-    img: './Assets/Images/Home.png',},
+    img: './Assets/Images/Home.png',
+    toifalar:"Model A"
+    },
     {
       id: 3,
       title: 'godzilla milkshake',
@@ -22,7 +27,8 @@ const menu = [
       name:"Eko Matras",
       category: 'Toifalar',
       quantity: 6,
-    img: './Assets/Images/Home.png',},
+    img: './Assets/Images/Home.png',
+  toifalar:"Model C"},
     {
       id: 4,
       title: 'country delight',
@@ -30,7 +36,8 @@ const menu = [
       name:"Eko Matras",
       category: 'Mahsulotlar',
       quantity: 20,
-    img: './Assets/Images/Home.png',},
+    img: './Assets/Images/Home.png',
+  toifalar:"Model B"},
     {
       id: 5,
       title: 'egg attack',
@@ -38,7 +45,8 @@ const menu = [
       name:"Eko Matras",
       category: 'Texnologiyalar',
       quantity: 22,
-    img: './Assets/Images/Home.png',},
+    img: './Assets/Images/Home.png',
+  toifalar:"Model D"},
     {
       id: 6,
       title: 'oreo dream',
@@ -46,7 +54,8 @@ const menu = [
       name:"Eko Matras",
       category: 'Manzil',
       quantity: 18,
-   img: './Assets/Images/Home.png'},
+   img: './Assets/Images/Home.png',
+   toifalar:"Model A"},
    {
     id: 7,
     title: 'diner double',
@@ -54,7 +63,8 @@ const menu = [
     name:"Eko Matras",
     category: 'Customers',
     quantity: 13,
-  img: './Assets/Images/Home.png'},
+  img: './Assets/Images/Home.png',
+  toifalar:"Model C"},
   {
     id: 8,
     title: 'neruble',
@@ -62,7 +72,8 @@ const menu = [
     name:"Eko Matras",
     category: 'Customers',
     quantity: 13,
-  img: './Assets/Images/Home.png'},
+  img: './Assets/Images/Home.png',
+  toifalar:"Model B"},
 
   ];
   export default menu;
