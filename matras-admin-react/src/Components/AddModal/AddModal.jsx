@@ -3,7 +3,6 @@ import Delete from "../../Assets/Images/delete.png";
 import { useState } from "react";
 import Modal from "react-modal";
 import "../ToifalarTable/ToifalarTable.css"
-
 import Toggle from "../Toggle/Toggle";
 import Edit from "../../Assets/Images/edit.png";
 import Close from "../../Assets/Images/Close.png";
