@@ -7,6 +7,7 @@
 
 body{
   color: black;
+  /* background-color: yellow; */
   
 }
 
@@ -29,6 +30,10 @@ table{
     border-bottom: none;
     height: 59vh;
     overflow-y: scroll;
+    
+  }
+  .td{
+    text-align: left;
   }
   th{
     padding: 20px 15px;
@@ -39,25 +44,9 @@ table{
     text-transform: uppercase;
     /* width: 70px; */
   }
- .tbl-content .td-left{
-    /* width: 40px; */
-    padding: 15px;
-    /* text-align: left; */
-    vertical-align:middle;
-    font-weight: 300;
-    font-size: 12px;
-    
-/* opacity: 0.3; */
-/* 1 */
-
-/* border-bottom: 1px solid #01384D; */
-    color: black;
-    
-    
-  }
  
   .td-id{
-      padding-left: 15px;
+      /* padding-left: 15px; */
   }
   /* demo styles */
   
@@ -99,7 +88,7 @@ table{
   /* border-right: 2px solid #01384D; */
   
   /* margin-right: 20px; */
-  margin-left: 100px;
+  /* margin-left: 100px; */
   
 
 }
@@ -117,8 +106,22 @@ border-radius: 5px;
 
 
 
-.td-id, .th-id{
-    width: 80px;
+.tables thead  .th, .tables tbody .td{
+  width: 145px;
+  /* background-color: red; */
+  text-align: left
+  ;
+  
+}
+
+.tables tbody .td{
+  /* margin-right: 80px; */
+
+}
+.tables table thead tr .th-id, .tables table tbody tr  .td-id{
+    width: 40px;
+    /* background-color: red; */
+    text-align: left;
 }
 
 
@@ -126,4 +129,18 @@ border-radius: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.tables .tbl-header table thead tr  .th-left{
+  /* margin-left: 580px; */
+  /* color: blueviolet; */
+  padding-left: 130px;
+}
+
+
+.tables .tbl-content table tbody tr  .th-toggle{
+  /* margin-left: 580px; */
+  /* color: blueviolet; */
+  /* padding-left: 140px; */
+padding-right: 50px;
 }

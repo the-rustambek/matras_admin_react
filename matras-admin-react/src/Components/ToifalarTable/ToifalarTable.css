@@ -105,7 +105,7 @@ box-sizing: border-box;
     display:flex;
     justify-content:flex-end;
     align-items: center;
-    margin-left: 20px;
+    /* margin-left: 20px; */
     /* width:0px; */
 }
 
@@ -129,6 +129,7 @@ color: #000000;
 
 .delete-btn{
     margin-right: 25px;
+    margin-left: 30px;
 }
 
 
@@ -334,4 +335,11 @@ color: #D61F1F;
 
 .delete-footer{
     margin-left: 100px;
+}
+
+
+
+
+.td .edit-box{
+    /* padding-right: 50px; */
 }

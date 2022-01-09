@@ -47,7 +47,7 @@ const {id,title,number,name,quantity,toifalar} = menuItem;
         <div className="tr-toifalar">
         
         <td className="td">
-            <EditModal key={id} />
+            <EditModal key={id} className="edit-box" />
         {/* <button className="edit-btn">
                 <img src={Edit} alt="" />
             </button> */}

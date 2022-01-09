@@ -12,11 +12,11 @@ return (
         <table>
             <thead>
                 <tr>
-                    <th className="th">ID</th>
-                    <th className="th">Sana</th>
-                    <th className="th">Telefon Raqami</th>
-                    <th className="th">Qayta Aloqa</th>
-                    <th className="th"></th>
+                    <th className="th th-id">ID</th>
+                    <th className="th th-left">Sana</th>
+                    <th className="th  th-left">Telefon Raqami</th>
+                    <th className="th th-left ">Qayta Aloqa</th>
+                    <th className="th th-left"></th>
                 </tr>
             </thead>
         </table>
@@ -32,10 +32,10 @@ const {id,title,number,name,quantity} = menuItem;
        <>
                 
         <tr className="tr" key={id} >
-        <td className="td">{id}</td>
+        <td className="td td-id">{id}</td>
         <td className="td">12:13-12.05.21</td>
         <td className="td">{number}</td>
-        <td className="td"><Toggle key={id} /></td>
+        <td className="td th-toggle"><Toggle key={id} /></td>
         
         <td className="td td-right">
         <button className="delete-btn">

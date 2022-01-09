@@ -40,14 +40,14 @@ function App() {
           </div>
               <div className="homepage-right" >
                   <Header />
-                  <Table  items={menuItems} />
+                  {/* <Table  items={menuItems} /> */}
                   {/* <CustomersTable  items={menuItems} /> */}
               
               {/* <ToifalarTable items={menuItems} /> */}
 
 
 
-              {/* <MahsulotlarTable items={menuItems} /> */}
+              <MahsulotlarTable items={menuItems} />
 
 
               </div>
