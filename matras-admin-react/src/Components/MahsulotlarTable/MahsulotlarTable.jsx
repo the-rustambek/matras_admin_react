@@ -3,9 +3,11 @@ import "./MahsulotlarTable.css";
 import Toggle from "../Toggle/Toggle";
 import EditModal from "../EditModal/EditModal";
 import DeleteModal from "../DeleteModal/DeleteModal";
+import MahsulotAdd from "./MahsulotAdd";
 
-const MahsulotlarTable = ({items}) =>{
-    // console.log(items,"aloooo")
+const MahsulotlarTable = ({items,children}) =>{
+    console.log(children)
+
 
 return (
 <section className="tables">
@@ -58,7 +60,8 @@ const {id,title,number,name,quantity,toifalar,price,weight,size} = menuItem;
         </table>
 
     </div>
-
+    {children}
+<MahsulotAdd />
 
 </section>
 
