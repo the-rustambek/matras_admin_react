@@ -1,10 +1,19 @@
-import react from "react";
+import react, { useEffect } from "react";
 import Toggle from "../Toggle/Toggle";
+import items from "../../data";
 
 // import TrComponent from "../TrComponent/TrComponent";
 import "./Table.css";
+import { useState } from "react";
+
+
 const Table = ({items}) =>{
     // console.log(items,"aloooo")
+const [data,setData] = useState([]);
+
+    useEffect(() =>{
+        fetch("https://jsonplaceholder.typicode.com/users").then((res) =>res.json()).then((data) => setData(data));
+    },[])
 
 return (
 <section className="tables">
@@ -25,27 +34,21 @@ return (
     <div className="tbl-content">
         <table>
             <tbody>
-                {/* <TrComponent /> */}
+                {data.length > 0 && data.map((row,i) =>(
 
-                {items.map((menuItem) =>{
-const {id,title,number,name,quantity} = menuItem;
-       return(
-       <>
                 
-        <tr className="tr" key={id} >
-        <td className="td-left">{id}</td>
-        <td>{title}</td>
-        <td>{number}</td>
-        <td>{name}</td>
-        <td>{quantity}</td>
+        <tr className="tr" key={i} >
+        <td className="td-left">{row.id}</td>
+        <td>{row.name}</td>
+        <td>{row.phone}</td>
+        <td>{row.username}</td>
+        <td>{row.id+2}</td>
         <td className="td-right">
-        <Toggle key={id} />
+        <Toggle key={i} />
         </td>
     </tr>
-         </>
-         )
-        })}
-        
+         
+         ))}
             </tbody>
         </table>
 

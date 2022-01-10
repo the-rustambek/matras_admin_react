@@ -1,4 +1,4 @@
-import react from "react";
+import react, { useEffect } from "react";
 import Toggle from "../Toggle/Toggle";
 import Edit from "../../Assets/Images/edit.png";
 import Close from "../../Assets/Images/Close.png";
@@ -14,8 +14,12 @@ import EditModal from "../EditModal/EditModal";
 
 const ToifalarTable = ({items}) =>{
     // console.log(items,"aloooo")
+    const [data,setData] = useState([]);
 
-// const [modalDelete,setModalDelete] = useState(false);
+    useEffect(() =>{
+        fetch("https://jsonplaceholder.typicode.com/users").then((res) => res.json()).then((data) => setData(data))
+    },[])
+
 return (
     <div className="toifalar-table">
     <section className="tables">
@@ -35,33 +39,24 @@ return (
     <div className="tbl-content">
         <table>
             <tbody>
-                {/* <TrComponent /> */}
+           
+                {data.length > 0 && data.map((row,i) =>(
 
-                {items.map((menuItem) =>{
-const {id,title,number,name,quantity,toifalar} = menuItem;
-       return(
-       <>
-                
-        <tr className="tr" key={id} >
-        <td className="td-left">{toifalar}</td>
+            
+     
+        <tr className="tr" key={i} >
+        <td className="td-left">{row.username}</td>
         <div className="tr-toifalar">
         
         <td className="td">
-            <EditModal key={id} className="edit-box" />
-        {/* <button className="edit-btn">
-                <img src={Edit} alt="" />
-            </button> */}
-        {/* <button  className="delete-btn" key={id} onClick={() => setModalDelete(true)} >
-                <img src={Delete} alt="" />
-            </button> */}
-            <DeleteModal key={id} />
+            <EditModal key={row.id} className="edit-box" />
+      
+            <DeleteModal key={row.id} />
         </td>
         </div>
         
     </tr>
-         </>
-         )
-        })}
+                ))}
         
             </tbody>
         </table>

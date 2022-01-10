@@ -1,10 +1,18 @@
-import react from "react";
+import react, { useEffect, useState } from "react";
 import Toggle from "../Toggle/Toggle";
 import Delete from "../../Assets/Images/delete.png"
 // import TrComponent from "../TrComponent/TrComponent";
 import "./CustomersTable.css";
+import DeleteModal from "../DeleteModal/DeleteModal";
+
 const CustomersTable = ({items}) =>{
     // console.log(items,"aloooo")
+
+    const [data,setData] = useState([]);
+    
+    useEffect(() =>{
+        fetch("https://jsonplaceholder.typicode.com/todos").then((res) => res.json()).then((data) => setData(data))
+    },[])
 
 return (
 <section className="tables">
@@ -24,28 +32,24 @@ return (
     <div className="tbl-content">
         <table>
             <tbody>
-                {/* <TrComponent /> */}
-
-                {items.map((menuItem) =>{
-const {id,title,number,name,quantity} = menuItem;
-       return(
-       <>
                 
-        <tr className="tr" key={id} >
-        <td className="td td-id">{id}</td>
-        <td className="td">12:13-12.05.21</td>
-        <td className="td">{number}</td>
-        <td className="td th-toggle"><Toggle key={id} /></td>
+
+                {data.length > 0 && data.map((row,i) =>(
+
+
+                
+        <tr className="tr" key={i} >
+        <td className="td td-id">{row.id}</td>
+        <td className="td">{row.id}</td>
+        <td className="td">{row.id + `${31487733}`}</td>
+        <td className="td th-toggle"><Toggle key={row.id} /></td>
         
         <td className="td td-right">
-        <button className="delete-btn">
-            <img src={Delete} alt="" />
-        </button>
+        <DeleteModal key={i} />
         </td>
     </tr>
-         </>
-         )
-        })}
+                         ))}
+
         
             </tbody>
         </table>
