@@ -66,10 +66,10 @@ function App() {
   return(
     // <AuthProvider>
       <BrowserRouter>
-{/* <HomePage /> */}
+<HomePage />
 
 {/* <CustomersPage /> */}
-<ToifalarPage />
+{/* <ToifalarPage /> */}
       {/* <Route path="/" exact name="Buyurtmalar" component={HomePage} /> */}
       {/* <Route path="/customers" exact name="customers" component={Customers} />
       <Route path="/toifalar" exact name="toifalar" component={Toifalar} />
