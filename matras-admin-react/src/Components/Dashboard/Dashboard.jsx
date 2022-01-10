@@ -88,7 +88,7 @@ const Dashboard = () =>{
     
 }
 
-<Switch>
+{/* <Switch>
     <Public path="/" component={HomePage} exact />
     <Public path="/customers" component={CustomersPage} exact />
     <Public path="/toifalar" component={ToifalarPage} exact />
@@ -97,7 +97,7 @@ const Dashboard = () =>{
     {/* <Public path="/" component={HomePage} exact /> */}
 
     
-</Switch>
+// </Switch> */}
 
 
 export default Dashboard;
