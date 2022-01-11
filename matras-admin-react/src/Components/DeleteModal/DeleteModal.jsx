@@ -1,4 +1,5 @@
-import react from "react";
+
+
 import Delete from "../../Assets/Images/delete.png";
 import { useState } from "react";
 import Modal from "react-modal";

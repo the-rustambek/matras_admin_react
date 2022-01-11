@@ -1,4 +1,4 @@
-import react from "react";
+
 import "./Toggle.css"
 
 const Toggle = () =>{

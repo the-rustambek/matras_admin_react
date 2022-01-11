@@ -1,8 +1,8 @@
 
-import  react from "react";
+
 import Dashboard from "../../Components/Dashboard/Dashboard";
 import Header from "../../Components/Header/Header";
-import Table from "../../Components/Table/Table";
+
 // import "./HomePage.css"
 import "../../App.css"
 import ToifalarTable from "../../Components/ToifalarTable/ToifalarTable";

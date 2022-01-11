@@ -2,17 +2,13 @@ import React from "react";
 import "./Dashboard.css";
 import Logo from "../../Assets/Images/Logo.png";
 import Home from "../../Assets/Images/home.png";
-import { Link, Route, Router, Switch } from "react-router-dom";
+import { Link} from "react-router-dom";
 
 import Profile2 from "../../Assets/Images/Mask Group.png";
 import Toifalar from "../../Assets/Images/view_column.png";
 import ShopCart from "../../Assets/Images/shopping_cart.png";
 import Texnologiyalar from "../../Assets/Images/Texnologiyalar.png";
 import WhiteMap from "../../Assets/Images/White-map.png";
-import HomePage from "../../Pages/HomePage/HomePage";
-import CustomersPage from "../../Pages/CustomersPage/CustomersPage";
-import ToifalarPage from "../../Pages/ToifalarPage/ToifalarPage";
-import { BrowserRouter } from "react-router-dom";
 
 
 
@@ -79,17 +75,10 @@ const Dashboard = () =>{
                             </li>
                             
              
-{/*               
-<BrowserRouter>
-    <Route path="/" exact element={<HomePage />} />
-    <Route path="/customers" exact element={<CustomersPage />} />
-    <Route path="/toifalar" exact element={<ToifalarPage /> } />
-
-</BrowserRouter> */}
              
-
             </ul>
 
+              
 
         </div>
 
@@ -98,17 +87,6 @@ const Dashboard = () =>{
     
 }
 
-
-{/* <Switch>
-    <Public path="/" component={HomePage} exact />
-    <Public path="/customers" component={CustomersPage} exact />
-    <Public path="/toifalar" component={ToifalarPage} exact />
-    {/* <Public path="/mahsulotlar" component={MahsulotA} exact /> */}
-    {/* <Public path="/" component={HomePage} exact /> */}
-    {/* <Public path="/" component={HomePage} exact /> */}
-
-    
-// </Switch> */}
 
 
 export default Dashboard;

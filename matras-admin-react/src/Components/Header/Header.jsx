@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Header.css";
 import Search from "../../Assets/Images/Search.png";
 import Avatar from "../../Assets/Images/Profile2.png";

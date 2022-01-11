@@ -1,6 +1,6 @@
-import react, { useEffect } from "react";
+import  { useEffect } from "react";
 import Toggle from "../Toggle/Toggle";
-import items from "../../data";
+
 
 // import TrComponent from "../TrComponent/TrComponent";
 import "./Table.css";
