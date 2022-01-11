@@ -1,12 +1,12 @@
 .dashboard{
     background: #01384D;
     box-shadow: 0px 0px 0px 1px #022837;
-    height: 100vh;
+    height: 88vh;
     /* height: 120vh; */
 }
 
 
-.dashboard-header, .dashboard-link{
+.dashboard-link{
     display: flex;
 /* justify-content: center; */
 align-items: center;
@@ -18,14 +18,23 @@ background: #01384D;
 border: none;
 
 
+
 }
 
 .dashboard-header{
-    border-bottom: 1px solid black;
-    border-right:  1px solid black;
+    display: flex;
+padding-left: 20px;
+/* padding-right: 150px; */
+    /* justify-content: center; */
+    align-items: center;
+    /* border-bottom: 1px solid black; */
+    /* border-right:  1px solid black; */
     /* padding-bottom: 20px; */width: 100%;
-    padding: 25px 35px 30px 25px;
- }
+    /* padding: 25px 35px 30px 25px; */
+width: 220px; 
+/* border: 1px solid black; */
+
+}
 .dashboard-title{
     font-family: 'Sail', cursive;
     font-style: normal;

@@ -5,7 +5,7 @@ import Toggle from "../Toggle/Toggle";
 import "./CustomersTable.css";
 import DeleteModal from "../DeleteModal/DeleteModal";
 
-const CustomersTable = ({items}) =>{
+const CustomersTable = () =>{
     // console.log(items,"aloooo")
 
     const [data,setData] = useState([]);

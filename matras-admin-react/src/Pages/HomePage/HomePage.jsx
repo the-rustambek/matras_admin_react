@@ -7,14 +7,15 @@ import Table from "../../Components/Table/Table";
 import "../../App.css"
 
 const HomePage = () =>{
-  console.log(1);
       return (
         <div className="homepage">
+          <Header />
+          <div className="homepage-site">
         <div className="homepage-left">
         <Dashboard  />
         </div>
             <div className="homepage-right" >
-                {/* <Header /> */}
+                
                 <Table  />
                 {/* <CustomersTable  items={menuItems} /> */}
             
@@ -27,7 +28,7 @@ const HomePage = () =>{
 
             </div>
 
-            
+            </div>
         
     </div>
   )

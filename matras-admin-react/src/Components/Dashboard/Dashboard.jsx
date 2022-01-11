@@ -17,12 +17,7 @@ const Dashboard = () =>{
     return (
         <div className="dashboard">
 
-            <div className="dashboard-header">
-                <img src={Logo} alt="Logo" className="dashboard-logo" />
-                <h2 className="dashboard-title">
-                Matrassue
-                </h2>
-            </div>
+           
             <ul className="dashboard-list">
      
                     <li className="dashboard-item">

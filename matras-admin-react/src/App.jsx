@@ -13,12 +13,12 @@ function App() {
 
   return(
     <>
-    <div className="homepage">
+    {/* <div className="homepage">
         <div className="homepage-left">
         <Dashboard  />
         </div>
             <div className="homepage-right" >
-                <Header />
+                {/* <Header />  */}
                 {/* <Table  /> */}
                 {/* <CustomersTable  items={menuItems} /> */}
             
@@ -27,13 +27,8 @@ function App() {
 
 
             {/* <MahsulotlarTable items={menuItems} /> */}
-
-
-            </div>
-
-            
-        
-    </div>
+            {/* </div>
+ </div> */} 
   
       <Switch>
     <Route path="/" exact component={HomePage} />
@@ -52,4 +47,9 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
 
