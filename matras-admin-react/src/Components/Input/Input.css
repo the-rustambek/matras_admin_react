@@ -9,12 +9,23 @@
 
 .input{
     width: 220px;
-    height: 40px;
+    height: 36px;
     border: 1px solid rgba(0, 0, 0, 0.2);
 box-sizing: border-box;
 border-radius: 5px;
 padding:  8px;
 
 color: #A3A3A3;
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 15px;
+/* identical to box height */
+
+
+color: #000000;
+
+/* opacity: 0.4; */
+
 }
 

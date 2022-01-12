@@ -81,7 +81,7 @@ table{
 }
 
 .td-left{
-  border-left: 2px solid #01384D;
+  /* border-left: 2px solid #01384D; */
 }
 
 .td-right,.delete-btn{
