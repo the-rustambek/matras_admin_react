@@ -12,7 +12,7 @@ import DeleteModal from "../DeleteModal/DeleteModal";
 import AddModal from "../AddModal/AddModal";
 import EditModal from "../EditModal/EditModal";
 
-const ToifalarTable = ({items}) =>{
+const ToifalarTable = () =>{
     // console.log(items,"aloooo")
     const [data,setData] = useState([]);
 

@@ -6,7 +6,7 @@ const Toggle = () =>{
         <div className="toggle">
 
                 <input type="checkbox" id="switch" />
-                    <label for="switch">Toggle</label>
+                    <label className="toggle-label" for="switch">Toggle</label>
 
         </div>
     )

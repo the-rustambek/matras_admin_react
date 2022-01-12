@@ -1,11 +1,12 @@
 
-import Toggle from "../Toggle/Toggle";
+// import Toggle from "../Toggle/Toggle";
 import Edit from "../../Assets/Images/edit.png";
 import Close from "../../Assets/Images/Close.png";
 // import TrComponent from "../TrComponent/TrComponent";
 import "../ToifalarTable/ToifalarTable.css";
 import { useState } from "react";
 import Modal from "react-modal";
+import Toggle from "../Toggle/Toggle.css";
 
 const EditModal = () =>{
     const [edit,setEdit] = useState(false);
@@ -34,7 +35,12 @@ Toifa nomi
         <input type="text" className="modal-input" required placeholder="masalan: Model A" />
 <div className="modal-box">
     <p className="modal-subtext">Holat</p>
-    <Toggle />
+    <div className="toggle">
+
+<input type="checkbox"  id="holat" />
+    <label className="toggle-label" for="holat">Toggle</label>
+
+</div>
 </div>
 
 <button type="submit" className="modal-btn">

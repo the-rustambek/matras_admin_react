@@ -1,6 +1,6 @@
 import  { useEffect } from "react";
 import Toggle from "../Toggle/Toggle";
-
+import "../Toggle/Toggle.css"
 
 // import TrComponent from "../TrComponent/TrComponent";
 import "./Table.css";
@@ -36,6 +36,7 @@ return (
             <tbody>
                 {data.length > 0 && data.map((row,i) =>(
 
+
                 
         <tr className="tr" key={i} >
         <td className="td-left">{row.id}</td>
@@ -43,8 +44,13 @@ return (
         <td>{row.phone}</td>
         <td>{row.username}</td>
         <td>{row.id+2}</td>
-        <td className="td-right">
-        <Toggle key={i} />
+        <td className="td-right" >
+        <div className="toggle">
+
+<input type="checkbox"  id={row.id} />
+    <label className="toggle-label" for={row.id}>Toggle</label>
+
+</div>
         </td>
     </tr>
          

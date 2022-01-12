@@ -1,7 +1,7 @@
 import react from "react";
 import Toggle from "../Toggle/Toggle";
 import items from "../../data";
-
+import Toggle from "../Toggle/Toggle.css";
 const TrComponent = ({items}) =>{
     return  (<div>
         {items.map((menuItem) =>{
@@ -15,7 +15,12 @@ const {id,title,number,name,category,quantity,img} = menuItem;
         <td>{name}</td>
         <td>{quantity}</td>
         <td>
-        <Toggle key={id} />
+        <div className="toggle">
+
+<input type="checkbox"  id={row.id} />
+    <label className="toggle-label" for={row.id}>Toggle</label>
+
+</div>
         </td>
     </tr>
          </div>

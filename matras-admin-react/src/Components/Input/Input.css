@@ -1,0 +1,20 @@
+.input {
+	padding: 10px;
+	font-size: 16px;
+	outline: none;
+	width: 220px;
+	border: 1px solid #bfbbbb;
+	transition: all 0.3s ease-in-out;
+}
+
+.input{
+    width: 220px;
+    height: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+box-sizing: border-box;
+border-radius: 5px;
+padding:  8px;
+
+color: #A3A3A3;
+}
+

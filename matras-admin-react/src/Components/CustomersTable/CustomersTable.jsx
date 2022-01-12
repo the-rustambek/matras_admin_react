@@ -1,10 +1,10 @@
 import  { useEffect, useState } from "react";
-import Toggle from "../Toggle/Toggle";
+
 
 // import TrComponent from "../TrComponent/TrComponent";
 import "./CustomersTable.css";
 import DeleteModal from "../DeleteModal/DeleteModal";
-
+import  "../Toggle/Toggle.css";
 const CustomersTable = () =>{
     // console.log(items,"aloooo")
 
@@ -42,7 +42,13 @@ return (
         <td className="td td-id">{row.id}</td>
         <td className="td">{row.id}</td>
         <td className="td">{row.id + `${31487733}`}</td>
-        <td className="td th-toggle"><Toggle key={row.id} /></td>
+        <td className="td th-toggle">
+        <div className="toggle">
+
+<input type="checkbox"  id={row.id} />
+    <label className="toggle-label" for={row.id}>Toggle</label>
+
+</div></td>
         
         <td className="td td-right">
         <DeleteModal key={i} />

@@ -1,13 +1,19 @@
-import react from "react";
+import { useEffect } from "react";
 import "./MahsulotlarTable.css";
-import Toggle from "../Toggle/Toggle";
+
 import EditModal from "../EditModal/EditModal";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import MahsulotAdd from "./MahsulotAdd";
+import { useState } from "react";
+import "../Toggle/Toggle.css"
+const MahsulotlarTable = () =>{
+    // console.log(children)
 
-const MahsulotlarTable = ({items,children}) =>{
-    console.log(children)
+    const [data,setData] = useState([]);
 
+    useEffect(() =>{
+        fetch("https://jsonplaceholder.typicode.com/users").then((res) => res.json()).then((data) =>setData(data))
+    },[])
 
 return (
 <section className="tables">
@@ -31,36 +37,38 @@ return (
             <tbody>
                 {/* <TrComponent /> */}
 
-                {items.map((menuItem) =>{
-const {id,title,number,name,quantity,toifalar,price,weight,size} = menuItem;
-       return(
-       <>
-                
-        <tr className="tr" key={id} >
+                {data.length > 0 && data.map((row,i)=>(
+       
+        <tr className="tr" key={row.i} >
         
-        <td>{name}</td>
-        <td>{toifalar}</td>
-        <td>{price}</td>
-        <td>{weight}</td>
-        <td>{size}</td>
+        <td>{row.name}</td>
+        <td>{row.username}</td>
+        <td>{row.id*10000} so'm </td>
+        <td>{row.id *100} kg</td>
+        <td>{row.id*15}x{row.id*15}x{row.id*15}</td>
         <td className="td-right">
-        <Toggle key={id} />
+        <div className="toggle">
+
+<input type="checkbox"  id={row.id} />
+    <label className="toggle-label" for={row.id}>Toggle</label>
+
+</div>
         </td>
         <td className="td">
-            <EditModal key={id} />
+            <EditModal key={row.id} />
         
-            <DeleteModal key={id} />
+            <DeleteModal key={row.id } />
         </td>
     </tr>
-         </>
-         )
-        })}
+         
+         
+         ))}
         
             </tbody>
         </table>
 
     </div>
-    {children}
+    
 <MahsulotAdd />
 
 </section>

@@ -6,6 +6,7 @@ import Header from './Components/Header/Header';
 import Table from './Components/Table/Table';
 import CustomersPage from './Pages/CustomersPage/CustomersPage';
 import HomePage from './Pages/HomePage/HomePage';
+import MahsulotlarPage from './Pages/MahsulotlarPage/MahsulotlarPage';
 import ToifalarPage from './Pages/ToifalarPage/ToifalarPage';
 
 
@@ -34,6 +35,7 @@ function App() {
     <Route path="/" exact component={HomePage} />
     <Route path="/customers"  component={CustomersPage} />
     <Route path="/toifalar"  component={ToifalarPage} />
+    <Route path="/mahsulotlar"  component={MahsulotlarPage} />
 
     </Switch>
   

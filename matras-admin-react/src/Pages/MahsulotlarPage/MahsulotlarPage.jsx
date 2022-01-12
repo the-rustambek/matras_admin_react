@@ -2,28 +2,28 @@
 
 import Dashboard from "../../Components/Dashboard/Dashboard";
 import Header from "../../Components/Header/Header";
-import Table from "../../Components/Table/Table";
-import CustomersTable from "../../Components/CustomersTable/CustomersTable";
+import MahsulotlarTable from "../../Components/MahsulotlarTable/MahsulotlarTable";
+// import "./HomePage.css"
 import "../../App.css"
 
-const CustomersPage = () =>{
+const MahsulotlarPage = () =>{
       return (
         <div className="homepage">
           <Header />
           <div className="homepage-site">
         <div className="homepage-left">
-          <Dashboard />
+        <Dashboard  />
         </div>
             <div className="homepage-right" >
                 
                 {/* <Table  /> */}
-                <CustomersTable />
+                {/* <CustomersTable  items={menuItems} /> */}
             
             {/* <ToifalarTable items={menuItems} /> */}
 
 
 
-            {/* <MahsulotlarTable items={menuItems} /> */}
+            <MahsulotlarTable />
 
 
             </div>
@@ -36,4 +36,4 @@ const CustomersPage = () =>{
     
 }
 
-export default CustomersPage;
+export default MahsulotlarPage;

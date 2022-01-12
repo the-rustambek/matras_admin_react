@@ -6,8 +6,14 @@ import "./MahsulotlarTable.css";
 import Close from "../../Assets/Images/Close.png";
 
 import Image from "../../Assets/Images/Image.png";
+import Input from "../Input/Input";
+import Toggle from "../Toggle/Toggle.css";
+
 
 const MahsulotAdd = () =>{
+    const onChange = (e) =>{
+console.log(e.target.files);
+    }
 
     const [mahsulotAddModal,setMahsulotAddModal] = useState(false);
 return(
@@ -26,7 +32,7 @@ return(
 
     <div className="mahsulot-box">
         <div className="mahsulot-close">
-            <button onClick={() => setMahsulotAddModal(false)}>
+            <button className="mahsulot-close-btn" onClick={() => setMahsulotAddModal(false)}>
 
                 <img src={Close} className="close-icon" alt="" />
             </button>
@@ -35,7 +41,99 @@ return(
             Qo'shish
         </h2>
         <div className="modal-blok">
-            <img src={Image} alt="" />
+            <form className="modal-form" method="POST" encType="multipart/form-data" >
+                
+           <ul className="modal-list">
+               <li className="modal-item modal-img">
+               {/* <img src={Image} alt="" /> */}
+                        
+
+                        <input multiple type="file" onChange={onChange}/>
+                                       </li>
+                <li className="modal-item">
+                    <p>
+                        Toifalar
+                    </p>
+{/* <Input type="text" placeholder="Masalan: Model C" /> */}
+<select className="modal-select" >
+    <option value="Model C">Model C</option>
+    <option value="Model A">Model A</option>
+    <option value="Model B">Model B</option>
+    <option value="Model D">Model D</option>
+</select>
+<p>
+    Tovar nomi
+</p>
+<Input type="text" placeholder="Lux soft memory" />
+
+<p>
+    Narxi
+</p>
+<Input type="text" placeholder="Masalan: 20 000" />
+
+
+<p>
+    Yuklama
+</p>
+<Input type="text" placeholder="Masalan: 200 kg" />
+
+                </li>
+                <li className="modal-item">
+                    <p>
+                        Toifalar
+                    </p>
+{/* <Input type="text" placeholder="Masalan: Model C" /> */}
+<select className="modal-select" >
+    <option value="Model C">Model C</option>
+    <option value="Model A">Model A</option>
+    <option value="Model B">Model B</option>
+    <option value="Model D">Model D</option>
+</select>
+<p>
+    Tovar nomi
+</p>
+<Input type="text" placeholder="Lux soft memory" />
+
+<p>
+    Narxi
+</p>
+<Input type="text" placeholder="Masalan: 20 000" />
+
+
+<p>
+    Yuklama
+</p>
+<Input type="text" placeholder="Masalan: 200 kg" />
+
+                </li>
+                <li className="modal-item">
+                    <p>Ma'lumot</p>
+
+<Input placeholder="info..." className="info-input" />     
+<div className="modal-footer">
+    <p className="modal-subtext">New</p>
+    <div className="toggle">
+
+<input type="checkbox"  id="new" />
+    <label className="toggle-label" for="new">Toggle</label>
+
+</div>
+</div>
+<div className="modal-footer">
+    <p className="modal-subtext">Active</p>
+    <div className="toggle">
+
+<input type="checkbox"  id="active" />
+    <label className="toggle-label" for="active">Toggle</label>
+
+</div>
+</div>
+           <button  className="add-btns">Qo'shish</button>
+           </li>
+                
+            </ul>
+
+            </form>
         </div>
     </div>
 

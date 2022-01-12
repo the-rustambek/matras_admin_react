@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Modal from "react-modal";
 import "../ToifalarTable/ToifalarTable.css";
-import Toggle from "../Toggle/Toggle";
 import Close from "../../Assets/Images/Close.png";
 
 const AddModal = () =>{
@@ -29,7 +28,12 @@ const AddModal = () =>{
         <input type="text" className="modal-input" required placeholder="masalan: Model B" />
 <div className="modal-box">
     <p className="modal-subtext">Holat</p>
-    <Toggle />
+    <div className="toggle">
+
+<input type="checkbox"  id="holat" />
+    <label className="toggle-label" for="holat" >Toggle</label>
+
+</div>
 </div>
 
 <button type="submit" className="modal-btn">
