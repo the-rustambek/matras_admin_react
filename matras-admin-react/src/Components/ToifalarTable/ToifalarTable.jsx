@@ -77,7 +77,7 @@ return (
         </div>
         <button className="add-btns" onClick={() => openAddModal() }>Qo'shish</button>
 
-        <Modal show={deleteModal} w={300} h={500}>
+        <Modal show={deleteModal} w={330} mh={120}>
             <div className="delete-box">
                 <h2 className="delete-title">Haqiqatdan ham o'chirmoqchimisiz ?
                 </h2>
@@ -91,7 +91,7 @@ return (
                 </div>
             </div>
         </Modal>
-        <Modal show={editModal} w={300} h={500}>
+        <Modal show={editModal} w={300}>
             <div className="modal-blok">
                 {/* salom */}
                 {/* <div className="modal-closes"> */}
@@ -122,7 +122,7 @@ return (
             </div>
         </Modal>
 
-        <Modal show={addModal} w={300} h={500}>
+        <Modal show={addModal} w={300} >
             <div className="modal-blok">
                 
                 <button className="close-btn" onClick={()=>setAddModal()}>
