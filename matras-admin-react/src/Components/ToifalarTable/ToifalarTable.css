@@ -2,7 +2,7 @@
     padding:25px;
     padding-left: 30px;
     
-    
+    position: relative;
 }
 
 body{
@@ -91,6 +91,9 @@ box-sizing: border-box;
 
 .td-right{
   /* border-right: 1px solid #01384D; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .table .tr-toifalar{
@@ -133,10 +136,10 @@ color: #000000;
 }
 
 
-.add-btn{
+.add-btns{
     background: #01384D;
 border-radius: 8px;
-font-style: normal;
+font-style: normal; 
 font-weight: 600;
 font-size: 15px;
 line-height: 18px;
@@ -145,14 +148,20 @@ text-align: center;
 color: #FFFFFF;
 border: none;
 padding: 8px 25px;
-margin-left: 1020px;
-margin-top: 80px;
+margin-left: 840px;
+margin-top: 100px;
+
 transition: 0.3s;
 border: 2px solid white;
+
+position: absolute;
+top: 120%;
+left: 0%;
 }
 
 
-.add-btn:hover{
+
+.add-btns:hover{
     background-color: white;
     color: #01384D;
     border: 2px solid #01384D;
@@ -207,6 +216,7 @@ color: #000000;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
+    margin-right: 25px;
 }
 
 .modal-input{
@@ -256,15 +266,15 @@ border: 2px solid #01384D;
 .modal-blok{
     position: relative;
 }
-.modal-close{
+.modal-closes{
+    
+}
+
+.modal-blok .close-btn{
     position: absolute;
     top: 0%;
     left: 101%;
-    transform: translateY(-90%);
-}
-
-.modal-close button{
-    
+    transform: translateY(-92%);
     border: 1px solid #01384D;
 
     padding: 5px;

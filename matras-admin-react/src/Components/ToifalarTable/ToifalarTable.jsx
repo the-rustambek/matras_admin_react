@@ -1,73 +1,158 @@
-import  { useEffect } from "react";
+import { useEffect } from "react";
 // import Toggle from "../Toggle/Toggle";
-// import Edit from "../../Assets/Images/edit.png";
-// import Close from "../../Assets/Images/Close.png";
+import Edit from "../../Assets/Images/edit.png";
+import Close from "../../Assets/Images/Close.png";
 // // import TrComponent from "../TrComponent/TrComponent";
-// import "./ToifalarTable.css";
+import "./ToifalarTable.css"
 // import Delete from "../../Assets/Images/delete.png";
 import { useState } from "react";
 // import Modal from "react-modal";
 import DeleteModal from "../DeleteModal/DeleteModal";
+import Delete from "../../Assets/Images/delete.png";
 
-import AddModal from "../AddModal/AddModal";
+import Modal from "../Modal/Modal";
 import EditModal from "../EditModal/EditModal";
 
 const ToifalarTable = () =>{
-    // console.log(items,"aloooo")
-    const [data,setData] = useState([]);
+// console.log(items,"aloooo")
+const [data,setData] = useState([]);
+const [deleteModal,setDeleteModal] = useState(false);
+const [editModal,setEditModal] = useState(false);
+const [addModal,setAddModal] = useState(false);
 
-    useEffect(() =>{
-        fetch("https://jsonplaceholder.typicode.com/users").then((res) => res.json()).then((data) => setData(data))
-    },[])
+
+function openDeleteModal(){
+setDeleteModal(!deleteModal)
+}
+function openEditModal(){
+setEditModal(!editModal)
+}
+
+function openAddModal(){
+    setAddModal(!addModal)
+    }
+    
+useEffect(() =>{
+fetch("https://jsonplaceholder.typicode.com/users").then((res) => res.json()).then((data) => setData(data))
+},[])
 
 return (
-    <div className="toifalar-table">
+<div className="toifalar-table">
     <section className="tables">
-    <div className="tbl-header">
-        <table>
-            <thead>
-                <tr>
-                    <th>Toifalar</th>
-                    
-                    <th></th>
-                    <th></th>
-                    
-                </tr>
-            </thead>
-        </table>
-    </div>
-    <div className="tbl-content">
-        <table>
-            <tbody>
-           
-                {data.length > 0 && data.map((row,i) =>(
+        <div className="tbl-header">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Toifalar</th>
 
-            
-     
-        <tr className="tr" key={i} >
-        <td className="td-left">{row.username}</td>
-        <div className="tr-toifalar">
-        
-        <td className="td">
-            <EditModal key={row.id} className="edit-box" />
-      
-            <DeleteModal key={row.id} />
-        </td>
+                        <th></th>
+                        <th></th>
+
+                    </tr>
+                </thead>
+            </table>
         </div>
-        
-    </tr>
-                ))}
-        
-            </tbody>
-        </table>
+        <div className="tbl-content">
+            <table>
+                <tbody>
 
-    </div>
+                    {data.map((row,i) =>(
+                    <tr className="tr" key={i}>
+                        <td className="td-left">{row.username}</td>
+                        <td className="td-right">
+                            <button className="edit-btn" key={i} onClick={()=> openEditModal()} >
+                                <img src={Edit} alt="" />
+                            </button>
+                            <button className="delete-btn" key={i} onClick={()=> openDeleteModal()} >
+                                <img src={Delete} alt="" /></button>
+
+                        </td>
+                    </tr>
+                    ))}
+
+                </tbody>
+            </table>
 
 
+        </div>
+        <button className="add-btns" onClick={() => openAddModal() }>Qo'shish</button>
 
+        <Modal show={deleteModal} w={300} h={500}>
+            <div className="delete-box">
+                <h2 className="delete-title">Haqiqatdan ham o'chirmoqchimisiz ?
+                </h2>
+                <div className="delete-footer">
+                    <button className="delete-no" onClick={()=>openDeleteModal()}>
+                        Yo'q
+                    </button>
+                    <button className="delete-yes" type="submit">
+                        Ha
+                    </button>
+                </div>
+            </div>
+        </Modal>
+        <Modal show={editModal} w={300} h={500}>
+            <div className="modal-blok">
+                {/* salom */}
+                {/* <div className="modal-closes"> */}
+                    <button className="close-btn" onClick={()=>setEditModal()}>
+                        <img src={Close} className="close-icon" alt="" />
+                    </button>
+                    {/* </div> */}
+                <h2 className="modal-title">Toifani tahrirlash</h2>
+                <form className="modal-form">
+                    <p className="modal-text">
+                        Toifa nomi
+                    </p>
+                    <input type="text" className="modal-input" required placeholder="masalan: Model A" />
+                    <div className="modal-box">
+                        <p className="modal-subtext">Holat</p>
+                        <div className="toggle">
+
+                            <input type="checkbox" id="holat" />
+                            <label className="toggle-label" for="holat">Toggle</label>
+
+                        </div>
+                    </div>
+
+                    <button type="submit" className="modal-btn">
+                        Qo'shish
+                    </button>
+                </form>
+            </div>
+        </Modal>
+
+        <Modal show={addModal} w={300} h={500}>
+            <div className="modal-blok">
+                
+                <button className="close-btn" onClick={()=>setAddModal()}>
+                    <img src={Close} className="close-icon" alt="" />
+                </button>
+            
+            <h2 className="modal-title">Qo'shish</h2>
+            <form className="modal-form">
+                <p className="modal-text">
+                    Kategoriya nomi
+                </p>
+                <input type="text" className="modal-input" required placeholder="masalan: Model B" />
+                <div className="modal-box">
+                    <p className="modal-subtext">Holat</p>
+                    <div className="toggle">
+
+                        <input type="checkbox" id="holat" />
+                        <label className="toggle-label" for="holat">Toggle</label>
+
+                    </div>
+                </div>
+
+                <button type="submit" className="modal-btn">
+                    Qo'shish
+                </button>
+            </form>
+</div>
+</Modal>
 
 </section>
-<AddModal  />
 
 
 </div>
