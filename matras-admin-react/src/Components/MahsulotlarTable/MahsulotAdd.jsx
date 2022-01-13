@@ -49,7 +49,7 @@ return(
                             {/* <img src={Image} alt="" /> */}
 
 
-                            <input className="multiple-input" multiple type="file" onChange={onChange} />
+                            <input accept=".jpg,.png, .jpeg, .svg, .webp77  7" className="multiple-input" multiple type="file" onChange={onChange} />
                         </li>
                         <li className="modal-item modal-items">
                             <p>
