@@ -173,13 +173,13 @@ return (
                 </p>
                 <input type="text" className="modal-input" required placeholder="masalan: Menory desc" /></div>
                 <div className="modal-right">  <p className="modal-text">
-                    Nomi
+                    Rasm
                 </p>
-                <input type="text" className="modal-input" required placeholder="masalan: Menory foam" />
+                <input type="text" className="modal-input" required placeholder="Rasm url" />
                 <p className="modal-text">
-                    Description
+                    Video 
                 </p>
-                <input type="text" className="modal-input" required placeholder="masalan: Menory desc" /></div></div>
+                <input type="text" className="modal-input" required placeholder="Video url" /></div></div>
                 <div className="modal-boxes">
                     <div className="modal-toggles">
                     <div className="modal-subtext">Holat</div>
