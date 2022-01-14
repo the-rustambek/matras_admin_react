@@ -21,8 +21,8 @@ function App() {
     <Route path="/" exact component={HomePage} />
     <Route path="/customers"  component={CustomersPage} />
     <Route path="/toifalar"  component={ToifalarPage} />
-    {/* <Route path="/mahsulotlar"  component={MahsulotlarPage} />
-    <Route path="/texnologiyalar"  component={TexnologiyalarPage} /> */}
+    <Route path="/mahsulotlar"  component={MahsulotlarPage} />
+    <Route path="/texnologiyalar"  component={TexnologiyalarPage} />
 
     </Switch>
   

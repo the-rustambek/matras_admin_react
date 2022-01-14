@@ -60,10 +60,10 @@ return (
                     <tr className="tr" key={i}>
                         <td className="td-left">{row.username}</td>
                         <td className="td-right">
-                            <button className="edit-btn" key={i} onClick={()=> openEditModal()} >
+                            <button className="edit-btn" key={row.id} onClick={()=> openEditModal()} >
                                 <img src={Edit} alt="" />
                             </button>
-                            <button className="delete-btn" key={i} onClick={()=> openDeleteModal()} >
+                            <button className="delete-btn" key={row.id} onClick={()=> openDeleteModal()} >
                                 <img src={Delete} alt="" /></button>
 
                         </td>
@@ -77,7 +77,7 @@ return (
         </div>
         <button className="add-btns" onClick={() => openAddModal() }>Qo'shish</button>
 
-        <Modal show={deleteModal} w={330} mh={120}>
+        <Modal show={deleteModal} w={400} mh={120}>
             <div className="delete-box">
                 <h2 className="delete-title">Haqiqatdan ham o'chirmoqchimisiz ?
                 </h2>

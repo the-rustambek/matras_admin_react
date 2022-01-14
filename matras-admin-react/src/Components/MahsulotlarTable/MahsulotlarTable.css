@@ -1,6 +1,6 @@
 
 
-.add-btn{
+.add-btns{
     background: #01384D;
 border-radius: 8px;
 font-style: normal;
@@ -12,14 +12,15 @@ text-align: center;
 color: #FFFFFF;
 border: none;
 padding: 8px 25px;
-margin-left: 950px;
-margin-top: 110px;
+
+margin-left: 940px;
+margin-top: 50px;
 transition: 0.3s;
 border: 2px solid white;
 }
 
 
-.add-btn:hover{
+.add-btns:hover{
     background-color: white;
     color: #01384D;
     border: 2px solid #01384D;
@@ -29,22 +30,14 @@ border: 2px solid white;
 }
 
 .modal{
+    position: relative;
+}
+.mahsulot-box{
     position: absolute;
-    top: 50%;
+    top:50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 270px;
-    height: 300px;
-    padding: 25px;
-    background-color: white;
-    background-color: rgb(233, 224, 224);
-    color: black;
-    border: 1px solid #01384D;
-
-    
-    
 }
-
 
 .modal-title{
     font-style: normal;
@@ -283,7 +276,7 @@ textarea{
 }
 
 
-.add-btns{
+.add-button{
     background: #01384D;
     border-radius: 8px;
     font-style: normal;
@@ -302,7 +295,7 @@ textarea{
 }
 
 
-.add-btns:hover{
+.add-button:hover{
     background-color: white;
     color: #01384D;
     border: 2px solid #01384D;

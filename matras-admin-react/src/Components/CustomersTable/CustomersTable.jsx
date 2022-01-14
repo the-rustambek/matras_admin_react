@@ -5,11 +5,19 @@ import  { useEffect, useState } from "react";
 import "./CustomersTable.css";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import  "../Toggle/Toggle.css";
+import Delete from "../../Assets/Images/delete.png";
+
+import Modal from "../Modal/Modal";
 const CustomersTable = () =>{
     // console.log(items,"aloooo")
 
     const [data,setData] = useState([]);
+    const [deleteModal,setDeleteModal] = useState(false);
     
+    function openDeleteModal(){
+        setDeleteModal(!deleteModal);
+    }
+
     useEffect(() =>{
         fetch("https://jsonplaceholder.typicode.com/todos").then((res) => res.json()).then((data) => setData(data))
     },[])
@@ -51,7 +59,8 @@ return (
 </div></td>
         
         <td className="td td-right">
-        <DeleteModal key={i} />
+        <button className="delete-btn" key={i} onClick={() => openDeleteModal()}>
+            <img src={Delete} alt="" /> </button>
         </td>
     </tr>
                          ))}
@@ -61,6 +70,24 @@ return (
         </table>
 
     </div>
+
+
+                    <Modal show={deleteModal} w={400} mh={120}>
+                        <div className="delete-box">
+                            <h2 className="delete-title">
+                                Haqiqatdan ham o'chirmoqchimisiz ? 
+                            </h2>
+                            <div className="delete-footer">
+                    <button className="delete-no" onClick={()=>openDeleteModal()}>
+                        Yo'q
+                    </button>
+                    <button className="delete-yes" type="submit">
+                        Ha
+                    </button>
+                </div>
+
+                        </div>
+                    </Modal>
 
 
 </section>
