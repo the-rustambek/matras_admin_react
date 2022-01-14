@@ -150,6 +150,9 @@ margin-top: 80px;
 transition: 0.3s;
 border: 2px solid white;
 }
+.add-buttons{
+    margin-left: 1000px;
+}
 
 
 .add-btn:hover{
@@ -247,6 +250,7 @@ padding: 5px;
 border: 2px solid #01384D;
 color: #FFFFFF;
 transition: 0.3s;
+
 }
 .modal-btn:hover{
 color: #01384D;
@@ -350,3 +354,35 @@ color: #D61F1F;
 .tr td{
     width: 200px;
 }
+
+
+
+.form-text{
+    margin: 10px 0px;
+}
+
+
+
+
+
+.modal-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.modal-boxes, .modal-toggles{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-boxes{
+    margin-top: 25px;
+}
+.modal-subtext{
+    margin-right: 110px;
+}
+
+

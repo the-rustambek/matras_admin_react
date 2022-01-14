@@ -125,7 +125,7 @@ Qo'shish
                         <img src={Close} className="close-icon" alt="" />
                     </button>
                     {/* </div> */}
-                <h2 className="modal-title">Toifani tahrirlash</h2>
+                <h2 className="modal-title">Mahsulotlarni tahrirlash</h2>
                 <form className="modal-form" method="POST" encType="multipart/form-data">
 
 <ul className="modal-list">
