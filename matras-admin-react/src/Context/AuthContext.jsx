@@ -1,35 +1,24 @@
-import { createContext, useContext, useEffect } from "react";
+import { createContext, useEffect } from "react";
 import { useState } from "react";
 
-const AuhtContext = createContext();
+const Context = createContext();
 
-export default AuhtContext;
+function Provider({ children }) {
+  const [state, setState] = useState(
+    JSON.parse(window.localStorage.getItem("token")) || false
+  );
 
-export function AuthProvider({children}){
-    const [token,setToken] = useState(
-        window.localStorage.getItem("token")
-    );
-    
-        useEffect(() =>{
-            if(token){
-                window.localStorage.setItem("token",token);
-            }else{
-                window.localStorage.removeItem("token")
-            }
-        },[token]);
+  useEffect(() => {
+    if (state) {
+      window.localStorage.setItem("token", JSON.stringify(state));
+    } else {
+      window.localStorage.removeItem("token");
+    }
+  }, [state]);
 
-    return (
-        <AuhtContext.Provider value={{token,setToken}} >
-            <AuhtContext.Consumer>
-                {() => children}
-            </AuhtContext.Consumer>
-        </AuhtContext.Provider>
-    )
+  return (
+    <Context.Provider value={{ state, setState }}>{children}</Context.Provider>
+  );
 }
 
-
-export function useAuth(e){
-    const {token,setToken} = useContext(AuhtContext);
-
-    return [token,setToken];
-}
+export { Context, Provider };

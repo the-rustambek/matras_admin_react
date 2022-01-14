@@ -1,12 +1,16 @@
-import { Redirect, Route } from "react-router-dom";
-import { useAuth } from "../Context/AuthContext";
 
-export default function PublicRoute (props){
-    const [token] = useAuth();
+import { Route, Redirect, useLocation } from 'react-router-dom';
+import useToken from '../Hooks/useToken';
 
-    if(token){
-        return <Redirect to="/" />
-    }    
-    return <Route {...props} />
+function Public(props) {
+	const [token] = useToken();
 
+	const { pathname } = useLocation();
+
+	if (token && pathname === '/login') {
+		return <Redirect to='/' />;
+	}
+	return <Route {...props} />;
 }
+
+export default Public;

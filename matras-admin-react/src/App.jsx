@@ -12,7 +12,7 @@ import MahsulotlarPage from './Pages/MahsulotlarPage/MahsulotlarPage';
 import ManzilPage from './Pages/ManzilPage/ManzilPage';
 import TexnologiyalarPage from './Pages/TexnologiyalarPage/TexnologiyalarPage';
 import ToifalarPage from './Pages/ToifalarPage/ToifalarPage';
-import ProtectedRoute from './Routes/ProtectedRoute';
+import Private from './Routes/PrivateRoute';
 import PublicRoute from './Routes/PublicRoute';
 
 
@@ -25,13 +25,13 @@ function App() {
       <Switch>
     <PublicRoute path="/login"    component={Login} exact />
     {/* <Route path="/home" exact component={HomePage} /> */}
-    <ProtectedRoute path="/customers"  component={CustomersPage} />
-    <ProtectedRoute path="/toifalar"  component={ToifalarPage} />
-    <ProtectedRoute path="/mahsulotlar"  component={MahsulotlarPage} />
-    <ProtectedRoute path="/texnologiyalar"  component={TexnologiyalarPage} />
-    <ProtectedRoute path="/manzil"  component={ManzilPage} />
+    <Private path="/customers"  component={CustomersPage} />
+    <Private path="/toifalar"  component={ToifalarPage} />
+    <Private path="/mahsulotlar"  component={MahsulotlarPage} />
+    <Private path="/texnologiyalar"  component={TexnologiyalarPage} />
+    <Private path="/manzil"  component={ManzilPage} />
 
-<ProtectedRoute path="/" component={HomePage} />
+<Private path="/" component={HomePage} />
     </Switch>
   
 
