@@ -1,26 +1,32 @@
 
 
-.add-btns{
+.adds-buttons{
     background: #01384D;
-border-radius: 8px;
-font-style: normal;
-font-weight: 600;
-font-size: 15px;
-line-height: 18px;
-text-align: center;
-
-color: #FFFFFF;
-border: none;
-padding: 8px 25px;
-
-margin-left: 940px;
-margin-top: 50px;
-transition: 0.3s;
-border: 2px solid white;
+    border-radius: 8px;
+    font-style: normal; 
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: center;
+    
+    color: #FFFFFF;
+    border: none;
+    padding: 8px 25px;
+    
+    /* margin-top: 100px; */
+    
+    transition: 0.3s;
+    border: 2px solid white;
+    
+    position: absolute;
+    top: 130%;
+    left:85%;
+}
+.tables{
+    position: relative;
 }
 
-
-.add-btns:hover{
+.adds-buttons:hover{
     background-color: white;
     color: #01384D;
     border: 2px solid #01384D;

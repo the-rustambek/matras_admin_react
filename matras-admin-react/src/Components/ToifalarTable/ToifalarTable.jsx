@@ -75,7 +75,7 @@ return (
 
 
         </div>
-        <button className="add-btns" onClick={() => openAddModal() }>Qo'shish</button>
+        <button className="btns" onClick={() => openAddModal() }>Qo'shish</button>
 
         <Modal show={deleteModal} w={400} mh={120}>
             <div className="delete-box">

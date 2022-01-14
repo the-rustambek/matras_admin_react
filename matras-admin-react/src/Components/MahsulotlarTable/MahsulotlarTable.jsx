@@ -97,7 +97,7 @@ return (
 
     </div>
     
-    <button className="add-btns" onClick={()=> openAddModal() }>
+    <button className="adds-buttons" onClick={()=> openAddModal() }>
 
 Qo'shish
 

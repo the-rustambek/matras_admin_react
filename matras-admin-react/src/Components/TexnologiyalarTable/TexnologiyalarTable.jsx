@@ -92,7 +92,7 @@ return (
 
 
 </section>
-<button className="add-btns add-buttons" onClick={() => openAddModal() }>Qo'shish</button>
+<button className="add-buttons" onClick={() => openAddModal() }>Qo'shish</button>
 
 
 <Modal show={deleteModal} w={400} mh={120}>

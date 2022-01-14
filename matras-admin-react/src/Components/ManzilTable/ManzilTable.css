@@ -85,9 +85,7 @@ box-sizing: border-box;
 
 }
 
-.td-left{
-  /* border-left: 1px solid #01384D; */
-}
+
 
 .td-right{
   /* border-right: 1px solid #01384D; */
@@ -135,35 +133,33 @@ color: #000000;
     margin-left: 30px;
 }
 
-.toifalar-table{
-    position: relative;
-}
-.btns{
+
+.add-btns{
     background: #01384D;
-    border-radius: 8px;
-    font-style: normal; 
-    font-weight: 600;
-    font-size: 15px;
-    line-height: 18px;
-    text-align: center;
-    
-    color: #FFFFFF;
-    border: none;
-    padding: 8px 25px;
-    
-    /* margin-top: 100px; */
-    
-    transition: 0.3s;
-    border: 2px solid white;
-    
-    position: absolute;
-    top: 130%;
-    left:85%;
+border-radius: 8px;
+font-style: normal; 
+font-weight: 600;
+font-size: 15px;
+line-height: 18px;
+text-align: center;
+
+color: #FFFFFF;
+border: none;
+padding: 8px 25px;
+margin-left: 840px;
+margin-top: 100px;
+
+transition: 0.3s;
+border: 2px solid white;
+
+position: absolute;
+top: 120%;
+left: 0%;
 }
 
 
 
-.btns:hover{
+.add-btns:hover{
     background-color: white;
     color: #01384D;
     border: 2px solid #01384D;
@@ -351,3 +347,77 @@ color: #D61F1F;
 
 
 
+
+
+
+
+
+
+
+
+
+ table .td-lefts{
+    width: 200px;
+  /* border-left: 1px solid #01384D; */
+}
+
+.tr-span{
+    width: 800px;
+}
+
+.modal-item{
+margin-top: 25px;
+display: flex;
+justify-content:flex-start;
+align-items: flex-start;
+
+
+flex-direction: column;
+}
+.modal-list{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.modal-toggles{
+    margin-top: 25px;
+}
+
+.adds-btn{
+    margin-top: 25px;
+}
+
+.mahsulot-boxes{
+    position: relative;
+
+}
+.mahsulot-closes{
+    position: absolute;
+    top: -0.5%;
+    left: 100.3%;
+    transform: translateY(-100%);
+}
+.adds-btns{
+    background: #01384D;
+    border-radius: 8px;
+    font-style: normal; 
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: center;
+    
+    color: #FFFFFF;
+    border: none;
+    padding: 8px 25px;
+    
+    /* margin-top: 100px; */
+    
+    transition: 0.3s;
+    border: 2px solid white;
+    
+    position: absolute;
+    top: 130%;
+    left:87%;
+
+}
