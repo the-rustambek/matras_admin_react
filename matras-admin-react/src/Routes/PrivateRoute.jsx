@@ -1,14 +1,12 @@
 
 import { Route, Redirect } from 'react-router-dom';
-import useToken from '../Hooks/useToken';
+import { useAuth } from '../Context/AuthContext';
 
-function Private(props) {
-	const [token] = useToken();
-
-	if (token) {
-		return <Route {...props} />;
+export default function PrivateRoute(props){
+	const [token] = useAuth();
+	if (!token) {
+		return <Redirect to='/login' />;
 	}
-	return <Redirect to='/login' />;
+	return <Route {...props}  />;
 }
 
-export default Private;

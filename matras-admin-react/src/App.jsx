@@ -31,7 +31,7 @@ function App() {
     <Private path="/texnologiyalar"  component={TexnologiyalarPage} />
     <Private path="/manzil"  component={ManzilPage} />
 
-<Private path="/" component={HomePage} />
+<Private path="/homepage" component={HomePage} />
     </Switch>
   
 

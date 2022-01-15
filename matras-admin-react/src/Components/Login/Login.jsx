@@ -3,6 +3,7 @@ import Account from "../../Assets/Images/Profile (1).png";
 import Lock from "../../Assets/Images/Lock.png";
 import "./Login.css";
 import { useAuth } from "../../Context/AuthContext";
+import UserService from "../../services/userService";
 
 const Login = () =>{
 // const [btn,setBtn] = useState("button");
@@ -11,12 +12,18 @@ let classNames ="form-password";
 const [error, setError] = useState("");
 const [token,setToken] = useAuth();
 
-const submit = (event) =>{
+const submit = async (event) =>{
     event.preventDefault();
     const login = event?.target[0]?.value;
-    const parol =  event?.target[1]?.value;    
+    const password =  event?.target[1]?.value;    
 
-    if(window.localStorage.token) setToken(window.localStorage.token)
+    // console.log(login,password)
+   
+    if(!(login && password)) return;
+
+    let response = await UserService.LoginAccount(login,password);
+    
+    if(response?.data?.token) setToken(response?.data?.token);
 
     
 }
@@ -29,7 +36,7 @@ return (
 
                 Kirish
             </h2>
-            <form className="login-form" onSubmit={submit}>
+            <form className="login-form" onSubmit={submit} method="POST">
                 <label className="form-label">
                     <img className="form-account" src={Account} alt="Account" />
                     <input type="password" className={className}  placeholder="Login" name="login"/>
@@ -38,7 +45,7 @@ return (
 
                 <label className="form-label">
                     <img className="form-lock" src={Lock} alt="Lock" />
-                    <input type="password" className={classNames}  placeholder="Parol" name="parol"/>
+                    <input type="password" className={classNames}  placeholder="Parol" name="password"/>
 
                 </label> 
 
