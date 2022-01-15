@@ -35,4 +35,45 @@ export default class UserService {
 		response = await response.json();
 		return response;
 	}
+
+	static async MahsulotAdd(name,price,weight,size,guaranty,capasity,sale_price,description,isNew,status,id){
+		let response = await fetch(constants.API_URL+"/v1/users/",{
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				product_name: name,
+				product_price: price,
+				product_weight:weight,
+				product_size: size,
+				product_guaranty: guaranty,
+				product_capasity: capasity,
+				product_sale_price: sale_price,
+				product_description: description,
+				product_isNew: isNew,
+				product_status: status,
+			}),
+		})
+		let response = await fetch(constants.API_URL+"/v1/users/:product_id",{
+			method: "DELETE",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				product_name: name,
+				product_price: price,
+				product_weight:weight,
+				product_size: size,
+				product_guaranty: guaranty,
+				product_capasity: capasity,
+				product_sale_price: sale_price,
+				product_description: description,
+				product_isNew: isNew,
+				product_status: status,
+			}),
+		})
+		response = await response.json();
+		return response;
+	}
 }
