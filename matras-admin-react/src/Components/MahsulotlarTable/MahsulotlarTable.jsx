@@ -15,30 +15,101 @@ import Input from "../Input/Input";
 
 
 const MahsulotlarTable = () =>{
-    // console.log(children)
-    const onChange = (e) =>{
-        console.log(e.target.files);
+// console.log(children)
+const onChange = (e) =>{
+console.log(e.target.files);
+}
+
+const [users,setUsers] = useState([]);
+const [deleteModal,setDeleteModal] = useState(false);
+const [editModal,setEditModal] = useState(false);
+const [addModal,setAddModal] = useState(false);
+
+
+function openDeleteModal(){
+setDeleteModal(!deleteModal)
+}
+function openEditModal(){
+setEditModal(!editModal)
+}
+
+function openAddModal(){
+setAddModal(!addModal)
+}
+
+useEffect(() =>{
+    fetchData();
+},[])
+
+const fetchData = async () =>{
+    await fetch("https://jsonplaceholder.typicode.com/users").then((res) => res.json()).then((data) => setUsers(data))
+    .catch((err) =>{
+        console.log(err)
+    })
+}
+
+
+const onAdd = async (name, username) =>{ // shu yerga qolgan narsalarni ham kiritaman
+    await fetch('https://jsonplaceholder.typicode.com/users',{
+        method:"POST",
+        body: JSON.stringify({
+            name:name,
+            username:username,
+            
+
+        }),
+        headers:{
+            "Content-type": "application/json; charset=UTF-8",
         }
-        
-    const [data,setData] = useState([]);
-    const [deleteModal,setDeleteModal] = useState(false);
-    const [editModal,setEditModal] = useState(false);
-    const [addModal,setAddModal] = useState(false);
-    
-    
-    function openDeleteModal(){
-    setDeleteModal(!deleteModal)
-    }
-    function openEditModal(){
-    setEditModal(!editModal)
-    }
-    
-    function openAddModal(){
-        setAddModal(!addModal)
+    }).then((res) =>{
+        if(res.status !== 201){
+            return
+
+        }else{
+            return res.json();
         }
-    useEffect(() =>{
-        fetch("https://jsonplaceholder.typicode.com/users").then((res) => res.json()).then((data) =>setData(data))
-    },[])
+    })
+    .then((data) =>{
+        setUsers((users) => [...users,data]);
+    })
+    .catch((err) =>{
+        console.log(err);
+    })
+}
+
+const handleOnSubmit = (e) =>{
+    e.preventDefault();
+    onAdd(e.target.name.value,e.target.username.value);
+    
+    e.target.name.value = "";
+    e.target.username.value = "";
+    
+}
+
+
+const onDelete =  async (id) =>{
+    // console.log(id,"salomlar hammaga");
+
+    await fetch(`https://jsonplaceholder.typicode.com/users/${id}`,{
+        method: "DELETE"
+    })
+    .then((res) =>{
+        if(res.status !== 200){
+            return
+        }else{
+            setUsers(users.filter((user) =>{
+                return user.id !== id;
+            }))
+        }
+    })
+    .catch((err) =>{
+        console.log(err,"Delete dan error chiqdi");
+    })
+}
+
+const handleDelete = ({id}) =>{
+    onDelete(id);
+}
 
 return (
 <section className="tables">
@@ -60,135 +131,138 @@ return (
     <div className="tbl-content">
         <table>
             <tbody>
-                {/* <TrComponent /> */}
+                {/*
+                <TrComponent /> */}
 
-                {data.length > 0 && data.map((row,i)=>(
-       
-        <tr className="tr" key={row.i} >
-        
-        <td>{row.name}</td>
-        <td>{row.username}</td>
-        <td>{row.id*10000} so'm </td>
-        <td>{row.id *100} kg</td>
-        <td>{row.id*15}x{row.id*15}x{row.id*15}</td>
-        <td className="td-right">
-        <div className="toggle">
+                {users.length > 0 && users.map((row,i)=>(
 
-<input type="checkbox"  id={row.id} />
-    <label className="toggle-label" for={row.id}>Toggle</label>
+                <tr className="tr" key={row.id}>
 
-</div>
-        </td>
-        <td className="td">
-        <button className="edit-btn" key={row.id} onClick={()=> openEditModal()} >
-                                <img src={Edit} alt="" />
-                            </button>
-                            <button key={row.id} className="delete-btn" key={row.id} onClick={()=> openDeleteModal()} >
-                                <img src={Delete} alt="" /></button>
+                    <td>{row.name}</td>
+                    <td>{row.username}</td>
+                    <td>{row.id*10000} so'm </td>
+                    <td>{row.id *100} kg</td>
+                    <td>{row.id*15}x{row.id*15}x{row.id*15}</td>
+                    <td className="td-right">
+                        <div className="toggle">
 
-        </td>
-    </tr>
-         
-         
-         ))}
-        
+                            <input type="checkbox" id={row.id} />
+                            <label className="toggle-label" for={row.id}>Toggle</label>
+
+                        </div>
+                    </td>
+                    <td className="td">
+                        <button className="edit-btn" key={row.id} onClick={()=> openEditModal()} >
+                            <img src={Edit} alt="" />
+                        </button>
+                        <button key={row.id} className="delete-btn"  onClick={()=> openDeleteModal()}  onDelete={onDelete} >
+                            <img src={Delete} alt="" /></button>
+
+                    </td>
+                </tr>
+
+
+                ))}
+
             </tbody>
         </table>
 
     </div>
-    
-    <button className="adds-buttons" onClick={()=> openAddModal() }>
 
-Qo'shish
+    <button className="adds-buttons"  onClick={()=> openAddModal() }  onAdd={onAdd}  >
 
-</button>
+        Qo'shish
 
-<Modal show={deleteModal} w={400} mh={120}>
-            <div className="delete-box">
-                <h2 className="delete-title">Haqiqatdan ham o'chirmoqchimisiz ?
-                </h2>
-                <div className="delete-footer">
-                    <button className="delete-no" onClick={()=>openDeleteModal()}>
-                        Yo'q
-                    </button>
-                    <button className="delete-yes" type="submit">
-                        Ha
-                    </button>
-                </div>
+    </button>
+
+    <Modal show={deleteModal} w={400} mh={120} >
+        <div className="delete-box">
+            <h2 className="delete-title">Haqiqatdan ham o'chirmoqchimisiz ?
+            </h2>
+            <div className="delete-footer">
+                <button className="delete-no" onClick={()=>openDeleteModal()}>
+                    Yo'q
+                </button>
+                <button type="submit" className="delete-yes"  onClick={handleDelete} >
+                    Ha
+                </button>
             </div>
-        </Modal>
-        <Modal show={editModal} w={580} mh={380} >
-            <div className="modal-blok">
-                {/* salom */}
-                {/* <div className="modal-closes"> */}
-                    <button className="close-btn" onClick={()=>setEditModal()}>
-                        <img src={Close} className="close-icon" alt="" />
-                    </button>
-                    {/* </div> */}
-                <h2 className="modal-title">Mahsulotlarni tahrirlash</h2>
-                <form className="modal-form" method="POST" encType="multipart/form-data">
+        </div>
+    </Modal>
 
-<ul className="modal-list">
-    
-    <li className="modal-item modal-items">
-      
-    <p>
-            Mahsulot nomlari
-        </p>
-        <Input type="text" placeholder="Masalan: Kevin" />
-     
-        <p>
-            Toifalar
-        </p>
-        <Input type="text" placeholder="Masalan: Model C" />
-     
-    
-        <p>
-            Narxi
-        </p>
-        <Input type="text" placeholder="Masalan: 20 000" />
+    <Modal show={editModal} w={580} mh={380}>
+        <div className="modal-blok">
+            {/* salom */}
+            {/* <div className="modal-closes"> */}
+                <button className="close-btn" onClick={()=>setEditModal()}>
+                    <img src={Close} className="close-icon" alt="" />
+                </button>
+                {/* </div> */}
+            <h2 className="modal-title">Mahsulotlarni tahrirlash</h2>
+            <form className="modal-form" method="POST" encType="multipart/form-data">
+
+                <ul className="modal-list">
+
+                    <li className="modal-item modal-items">
+
+                        <p>
+                            Mahsulot nomlari
+                        </p>
+                        <Input type="text" placeholder="Masalan: Kevin" />
+
+                        <p>
+                            Toifalar
+                        </p>
+                        <Input type="text" placeholder="Masalan: Model C" />
 
 
-        
+                        <p>
+                            Narxi
+                        </p>
+                        <Input type="text" placeholder="Masalan: 20 000" />
 
-    </li>
-    <li className="modal-item modal-items">
-    <p>
-            Yuklama
-        </p>
-        <Input type="text" placeholder="Masalan: 200 kg" />
-        <p>
-            Razmeri
-        </p>
-        <Input type="text" placeholder="masalan: 200 x 140 x 40" />
 
-        <div className="modal-footer modal-footers">
-                                <p className="modal-subtext">Status</p>
-                                <div className="toggle">
 
-                                    <input type="checkbox" id="active" />
-                                    <label className="toggle-label" for="active">Toggle</label>
 
-                                </div>
+                    </li>
+                    <li className="modal-item modal-items">
+                        <p>
+                            Yuklama
+                        </p>
+                        <Input type="text" placeholder="Masalan: 200 kg" />
+                        <p>
+                            Razmeri
+                        </p>
+                        <Input type="text" placeholder="masalan: 200 x 140 x 40" />
+
+                        <div className="modal-footer modal-footers">
+                            <p className="modal-subtext">Status</p>
+                            <div className="toggle">
+
+                                <input type="checkbox" id="active" />
+                                <label className="toggle-label" for="active">Toggle</label>
+
                             </div>
-                            <button className="add-button">Qo'shish</button>
+                        </div>
+                        <button className="add-button">Qo'shish</button>
 
-      
 
-      
-    </li>
-    
 
-</ul>
 
-</form>
-            </div>
-        </Modal>
-        <Modal show={addModal} w={300} >
-       
+                    </li>
+
+
+                </ul>
+
+            </form>
+        </div>
+    </Modal>
+
+    <Modal  show={addModal} w={300}>
+
         <div className="mahsulot-box">
             <div className="mahsulot-close">
-                <button className="mahsulot-close-btn"  onClick={()=>setAddModal()}>
+                <button className="mahsulot-close-btn" onClick={()=>setAddModal()}>
 
                     <img src={Close} className="close-icon" alt="" />
                 </button>
@@ -197,35 +271,36 @@ Qo'shish
                 Qo'shish
             </h2>
             <div className="modal-blok">
-                <form className="modal-form" method="POST" encType="multipart/form-data">
+                <form onSubmit={handleOnSubmit} className="modal-form" method="POST" encType="multipart/form-data">
 
                     <ul className="modal-list">
                         <li className="modal-item modal-img">
                             {/* <img src={Image} alt="" /> */}
 
 
-                            <input accept=".jpg,.png, .jpeg, .svg, .webp77  7" className="multiple-input" multiple type="file" onChange={onChange} />
+                            <input accept=".jpg,.png, .jpeg, .svg, .webp77  7" className="multiple-input" multiple
+                                type="file" onChange={onChange} />
                         </li>
                         <li className="modal-item modal-items">
                             <p>
                                 Toifalar
                             </p>
-                            {/* <Input type="text" placeholder="Masalan: Model C" /> */}
-                            <select className="modal-select">
-                                <option value="Model C">Model C</option>
-                                <option value="Model A">Model A</option>
+                         
+                            <select className="modal-select" name="name">
+                                <option value="Model C" >Model C</option>
+                                <option value="Model A" >Model A</option>
                                 <option value="Model B">Model B</option>
                                 <option value="Model D">Model D</option>
                             </select>
                             <p>
                                 Tovar nomi
                             </p>
-                            <Input type="text" placeholder="Lux soft memory" />
+                            <Input type="text" placeholder="Lux soft memory" name="username" />
 
                             <p>
                                 Narxi
                             </p>
-                            <Input type="text" placeholder="Masalan: 20 000" />
+                            <Input type="text" placeholder="Masalan: 20 000"  />
 
 
                             <p>
@@ -280,7 +355,7 @@ Qo'shish
 
                                 </div>
                             </div>
-                            <button className="add-button">Qo'shish</button>
+                            <button className="add-button" onSubmit={handleOnSubmit}>Qo'shish</button>
                         </li>
 
                     </ul>
@@ -289,7 +364,7 @@ Qo'shish
             </div>
         </div>
 
-</Modal>
+    </Modal>
 
 </section>
 
