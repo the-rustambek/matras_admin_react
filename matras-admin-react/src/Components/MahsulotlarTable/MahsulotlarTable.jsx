@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import "./MahsulotlarTable.css";
 import { useState } from "react";
 import "../Toggle/Toggle.css";
@@ -7,14 +7,26 @@ import Close from "../../Assets/Images/Close.png";
 import Delete from "../../Assets/Images/delete.png";
 import Modal from "../Modal/Modal";
 import Input from "../Input/Input";
+import SelectService from "../../services/SelectService";
 ;
 
 
 const MahsulotlarTable = () =>{
+
+    const [toifalar, setToifalar] = useState([])
 // console.log(children)
-const onChange = (e) =>{
-console.log(e.target.files);
+const [toifaError,setToifaError] = useState(false);
+
+const getToifalar = async()=>{
+    let result = await SelectService.CategoryAdd();
+ 
+    setToifalar(result.data.categories)  
+     
 }
+
+const onChange = (e) =>{
+   console.log(e.target.files);
+} 
 
 const [users,setUsers] = useState([]);
 const [deleteModal,setDeleteModal] = useState(false);
@@ -34,15 +46,11 @@ setAddModal(!addModal)
 }
 
 useEffect(() =>{
-    fetchData();
+    // fetchData();
+    getToifalar()
+
 },[])
 
-const fetchData = async () =>{
-    await fetch("https://jsonplaceholder.typicode.com/users").then((res) => res.json()).then((data) => setUsers(data))
-    .catch((err) =>{
-        console.log(err)
-    })
-}
 
 
 
@@ -221,17 +229,41 @@ return (
                             <p>
                                 Toifalar
                             </p>
-                         
-                            <select className="modal-select" name="toifalar_nomi">
-                                <option value="Model C" >Model C</option>
-                                <option value="Model A" >Model A</option>
-                                <option value="Model B">Model B</option>
-                                <option value="Model D">Model D</option>
-                            </select>
+                            <Input
+                            error={toifaError ? "true" : ""}
+								type="text"
+								placeholder="toifa"
+								name="toifa"
+								required
+								list="data"
+                                onChange={(event) =>{
+                                    if(
+                                        !toifalar.find(
+                                            (e) => e == event.target.value
+                                        )
+                                    ){
+                                        setToifaError(true)
+                                    }
+                                        else{
+                                            setToifaError(false)
+                                        }
+                                    
+                                }}
+							/>
+	                <datalist id="data">
+                        {toifalar.length &&  toifalar.map((item,key) =>{
+                            return (
+
+                                <option key={key} value={item}>{item}</option>
+                                
+                            )
+                        })}
+
+						</datalist>
                             <p>
                                 Tovar nomi
                             </p>
-                            <Input type="text" placeholder="Lux soft memory" name="tovar_nomi" />
+                            <Input type="text" placeholder="Lux soft memory" name="mahsulot_nomi" />
 
                             <p>
                                 Narxi
@@ -250,34 +282,34 @@ return (
                             <p>
                                 Razmeri
                             </p>
-                            <Input name="mahsulot_razmeri" type="text" placeholder="masalan: 200 x 140 x 40" />
+                            <Input name="mahsulot_size" type="text" placeholder="masalan: 200 x 140 x 40" />
 
                             <p>
                                 Kafolat
                             </p>
-                            <Input name="mahsulot_kafolat" type="text" placeholder="Masalan:  1 yil" />
+                            <Input name="mahsulot_guaranty" type="text" placeholder="Masalan:  1 yil" />
 
 
                             <p>
                                 Sig'im
                             </p>
-                            <Input name="mahsulot_sigim" type="text" placeholder="Masalan: 2" />
+                            <Input name="mahsulot_capasity" type="text" placeholder="Masalan: 2" />
                             <p>
                                 Aksiya narxi
-                            </p><Input name="mahsulot_aksiya_price" type="text" placeholder="Masalan: 1 200 000 so'm" />
+                            </p><Input name="mahsulot_sale_price" type="text" placeholder="Masalan: 1 200 000 so'm" />
 
                         </li>
                         <li className="modal-item">
                             <p>Ma'lumot</p>
 
-                            <textarea placeholder="Info..." required>
+                            <textarea name="mahsulot_description" placeholder="Info..." required>
 
                             </textarea>
                             <div className="modal-footer">
                                 <p className="modal-subtext">New</p>
                                 <div className="toggle">
 
-                                    <input name="mahsulot_toggle" type="checkbox" id="new" />
+                                    <input name="mahsulot_isNew" type="checkbox" id="new" />
                                     <label className="toggle-label" for="new">Toggle</label>
 
                                 </div>
@@ -286,7 +318,7 @@ return (
                                 <p className="modal-subtext">Active</p>
                                 <div className="toggle">
 
-                                    <input  name="toggle" type="checkbox" id="active" />
+                                    <input  name="mahsulot_status" type="checkbox" id="active" />
                                     <label className="toggle-label" for="active">Toggle</label>
 
                                 </div>
