@@ -32,23 +32,25 @@ const MahsulotlarTable = () =>{
         e.preventDefault();
         try {
             const response = await constants.post("/",{
-                mahsulotNomi,			
-                mahsulotPrice,
+                mahsulotNomi,
+				mahsulotPrice,
 				mahsulotWeight,
-				mahsulotSize,			
-                mahsulotGuaranty,
+				mahsulotSize,
+				mahsulotGuaranty,
 				mahsulotCapasity,
 				mahsulotSalePrice,
 				mahsulotDescription,
 				mahsulotIsNew,
 				mahsulotStatus,
-				// category_id: id
-            });
-            addMatrass(response.data);
+				
+            })
+            addMatrass(response.data)
+
         } catch (error) {
-            console.log(error);
+            console.log(error)
+            
         }
-    };
+    }
 
     const [toifalar, setToifalar] = useState([])
 // console.log(children)
@@ -249,7 +251,7 @@ return (
                 </button>
             </div>
             <h2 className="mahsulot-title">
-                Qo'shish
+            Qo'shish
             </h2>
             <div className="modal-blok">
                 <form onSubmit={handleSubmit} className="modal-form" method="POST" encType="multipart/form-data">
@@ -267,10 +269,11 @@ return (
                                 Toifalar
                             </p>
                             <Input
-                            
+
                             error={toifaError ? "true" : ""}
 								type="text"
 								placeholder="toifa"
+	
 								name="toifa"
 								required
 								list="data"
@@ -298,7 +301,7 @@ return (
                         })}
 
 						</datalist>
-                            <p>
+                        <p>
                                 Tovar nomi
                             </p>
                             <Input value={mahsulotNomi} onChange={(e) => setMahsulotNomi(e.target.value)} type="text" placeholder="Lux soft memory" name="mahsulot_nomi" />
@@ -344,6 +347,7 @@ return (
 
                             </textarea>
                             <div className="modal-footer">
+	
                                 <p className="modal-subtext">New</p>
                                 <div className="toggle">
 
