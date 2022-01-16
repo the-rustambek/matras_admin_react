@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import "./MahsulotlarTable.css";
 import { useState } from "react";
 import "../Toggle/Toggle.css";
@@ -8,10 +8,45 @@ import Delete from "../../Assets/Images/delete.png";
 import Modal from "../Modal/Modal";
 import Input from "../Input/Input";
 import SelectService from "../../services/SelectService";
-;
+import { MatrasContext } from "../../Context/MatrasContext";
+
 
 
 const MahsulotlarTable = () =>{
+
+    const {addMatrass} = useContext(MatrasContext);
+
+    const [mahsulotNomi,setMahsulotNomi] = useState("");
+    const [mahsulotPrice,setMahsulotPrice] = useState("");
+    const [mahsulotWeight,setMahsulotWeight] = useState("");
+    const [mahsulotSize,setMahsulotSize] = useState("");
+    const [mahsulotGuaranty,setMahsulotGuaranty] = useState("");
+    const [mahsulotCapasity,setMahsulotCapasity] = useState("");
+    const [mahsulotSalePrice,setMahsulotSalePrice] = useState("");
+    const [mahsulotDescription,setMahsulotDescription] = useState("");
+    const [mahsulotIsNew,setMahsulotIsNew] = useState("");
+    const [mahsulotStatus,setMahsulotStatus] = useState("");
+    
+    const handleSubmit = async (e) =>{
+        e.preventDefault();
+        try {
+            const response = await MahsulotFinder.post("/",{
+                mahsulotNomi: mahsulot_nomi,
+				mahsulotPrice: mahsulot_price,
+				mahsulotWeight:mahsulot_weight,
+				mahsulotSize: mahsulot_size,
+				mahsulotGuaranty:mahsulot_guaranty,
+				mahsulotCapasity: mahsulot_capasity,
+				mahsulotSalePrice: mahsulot_sale_price,
+				mahsulotDescription: mahsulot_description,
+				mahsulotIsNew: mahsulot_isNew,
+				mahsulotStatus: mahsulot_status,
+				// category_id: id
+            })
+        } catch (error) {
+            
+        }
+    }
 
     const [toifalar, setToifalar] = useState([])
 // console.log(children)
