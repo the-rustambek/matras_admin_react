@@ -45,67 +45,7 @@ const fetchData = async () =>{
 }
 
 
-const onAdd = async (name, username) =>{ // shu yerga qolgan narsalarni ham kiritaman
-    await fetch('https://jsonplaceholder.typicode.com/users',{
-        method:"POST",
-        body: JSON.stringify({
-            name:name,
-            username:username,
-            
 
-        }),
-        headers:{
-            "Content-type": "application/json; charset=UTF-8",
-        }
-    }).then((res) =>{
-        if(res.status !== 201){
-            return
-
-        }else{
-            return res.json();
-        }
-    })
-    .then((data) =>{
-        setUsers((users) => [...users,data]);
-    })
-    .catch((err) =>{
-        console.log(err);
-    })
-}
-
-const handleOnSubmit = (e) =>{
-    e.preventDefault();
-    onAdd(e.target.name.value,e.target.username.value);
-    
-    e.target.name.value = "";
-    e.target.username.value = "";
-    
-}
-
-
-const onDelete =  async (id) =>{
-    // console.log(id,"salomlar hammaga");
-
-    await fetch(`https://jsonplaceholder.typicode.com/users/${id}`,{
-        method: "DELETE"
-    })
-    .then((res) =>{
-        if(res.status !== 200){
-            return
-        }else{
-            setUsers(users.filter((user) =>{
-                return user.id !== id;
-            }))
-        }
-    })
-    .catch((err) =>{
-        console.log(err,"Delete dan error chiqdi");
-    })
-}
-
-const handleDelete = ({id}) =>{
-    onDelete(id);
-}
 
 return (
 <section className="tables">
@@ -142,7 +82,7 @@ return (
                     <td className="td-right">
                         <div className="toggle">
 
-                            <input type="checkbox" id={row.id} />
+                            <input name="mahsulot_nomi" name="toggle" type="checkbox" id={row.id} />
                             <label className="toggle-label" for={row.id}>Toggle</label>
 
                         </div>
@@ -151,7 +91,7 @@ return (
                         <button className="edit-btn" key={row.id} onClick={()=> openEditModal()} >
                             <img src={Edit} alt="" />
                         </button>
-                        <button key={row.id} className="delete-btn"  onClick={()=> openDeleteModal()}  onDelete={onDelete} >
+                        <button key={row.id} className="delete-btn"  onClick={()=> openDeleteModal()}  >
                             <img src={Delete} alt="" /></button>
 
                     </td>
@@ -165,7 +105,7 @@ return (
 
     </div>
 
-    <button className="adds-buttons"  onClick={()=> openAddModal() }  onAdd={onAdd}  >
+    <button className="adds-buttons"  onClick={()=> openAddModal() }   >
 
         Qo'shish
 
@@ -179,7 +119,7 @@ return (
                 <button className="delete-no" onClick={()=>openDeleteModal()}>
                     Yo'q
                 </button>
-                <button type="submit" className="delete-yes"  onClick={handleDelete} >
+                <button type="submit" className="delete-yes"   >
                     Ha
                 </button>
             </div>
@@ -204,18 +144,18 @@ return (
                         <p>
                             Mahsulot nomlari
                         </p>
-                        <Input type="text" placeholder="Masalan: Kevin" />
+                        <Input name="mahsulot_nomi" type="text" placeholder="Masalan: Kevin" />
 
                         <p>
                             Toifalar
                         </p>
-                        <Input type="text" placeholder="Masalan: Model C" />
+                        <Input name="toifalar_nomi" type="text" placeholder="Masalan: Model C" />
 
 
                         <p>
                             Narxi
                         </p>
-                        <Input type="text" placeholder="Masalan: 20 000" />
+                        <Input name="mahsulot_price" type="text" placeholder="Masalan: 20 000" />
 
 
 
@@ -225,17 +165,17 @@ return (
                         <p>
                             Yuklama
                         </p>
-                        <Input type="text" placeholder="Masalan: 200 kg" />
+                        <Input name="mahsulot_size" type="text" placeholder="Masalan: 200 kg" />
                         <p>
                             Razmeri
                         </p>
-                        <Input type="text" placeholder="masalan: 200 x 140 x 40" />
+                        <Input name="mahsulot_razmeri" type="text" placeholder="masalan: 200 x 140 x 40" />
 
                         <div className="modal-footer modal-footers">
                             <p className="modal-subtext">Status</p>
                             <div className="toggle">
 
-                                <input type="checkbox" id="active" />
+                                <input name="toggle" type="checkbox" id="active" />
                                 <label className="toggle-label" for="active">Toggle</label>
 
                             </div>
@@ -267,14 +207,14 @@ return (
                 Qo'shish
             </h2>
             <div className="modal-blok">
-                <form onSubmit={handleOnSubmit} className="modal-form" method="POST" encType="multipart/form-data">
+                <form className="modal-form" method="POST" encType="multipart/form-data">
 
                     <ul className="modal-list">
                         <li className="modal-item modal-img">
                             {/* <img src={Image} alt="" /> */}
 
 
-                            <input accept=".jpg,.png, .jpeg, .svg, .webp77  7" className="multiple-input" multiple
+                            <input name="file" accept=".jpg,.png, .jpeg, .svg, .webp77  7" className="multiple-input" multiple
                                 type="file" onChange={onChange} />
                         </li>
                         <li className="modal-item modal-items">
@@ -282,7 +222,7 @@ return (
                                 Toifalar
                             </p>
                          
-                            <select className="modal-select" name="name">
+                            <select className="modal-select" name="toifalar_nomi">
                                 <option value="Model C" >Model C</option>
                                 <option value="Model A" >Model A</option>
                                 <option value="Model B">Model B</option>
@@ -291,18 +231,18 @@ return (
                             <p>
                                 Tovar nomi
                             </p>
-                            <Input type="text" placeholder="Lux soft memory" name="username" />
+                            <Input type="text" placeholder="Lux soft memory" name="tovar_nomi" />
 
                             <p>
                                 Narxi
                             </p>
-                            <Input type="text" placeholder="Masalan: 20 000"  />
+                            <Input name="mahsulot_price" type="text" placeholder="Masalan: 20 000"  />
 
 
                             <p>
                                 Yuklama
                             </p>
-                            <Input type="text" placeholder="Masalan: 200 kg" />
+                            <Input name="mahsulot_weight" type="text" placeholder="Masalan: 200 kg" />
 
                         </li>
                         <li className="modal-item modal-items">
@@ -310,21 +250,21 @@ return (
                             <p>
                                 Razmeri
                             </p>
-                            <Input type="text" placeholder="masalan: 200 x 140 x 40" />
+                            <Input name="mahsulot_razmeri" type="text" placeholder="masalan: 200 x 140 x 40" />
 
                             <p>
                                 Kafolat
                             </p>
-                            <Input type="text" placeholder="Masalan:  1 yil" />
+                            <Input name="mahsulot_kafolat" type="text" placeholder="Masalan:  1 yil" />
 
 
                             <p>
                                 Sig'im
                             </p>
-                            <Input type="text" placeholder="Masalan: 2" />
+                            <Input name="mahsulot_sigim" type="text" placeholder="Masalan: 2" />
                             <p>
                                 Aksiya narxi
-                            </p><Input type="text" placeholder="Masalan: 1 200 000 so'm" />
+                            </p><Input name="mahsulot_aksiya_price" type="text" placeholder="Masalan: 1 200 000 so'm" />
 
                         </li>
                         <li className="modal-item">
@@ -337,7 +277,7 @@ return (
                                 <p className="modal-subtext">New</p>
                                 <div className="toggle">
 
-                                    <input type="checkbox" id="new" />
+                                    <input name="mahsulot_toggle" type="checkbox" id="new" />
                                     <label className="toggle-label" for="new">Toggle</label>
 
                                 </div>
@@ -346,12 +286,12 @@ return (
                                 <p className="modal-subtext">Active</p>
                                 <div className="toggle">
 
-                                    <input type="checkbox" id="active" />
+                                    <input  name="toggle" type="checkbox" id="active" />
                                     <label className="toggle-label" for="active">Toggle</label>
 
                                 </div>
                             </div>
-                            <button className="add-button" onSubmit={handleOnSubmit}>Qo'shish</button>
+                            <button className="add-button" >Qo'shish</button>
                         </li>
 
                     </ul>
