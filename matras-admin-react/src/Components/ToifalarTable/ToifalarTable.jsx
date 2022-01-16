@@ -1,17 +1,11 @@
 import { useEffect } from "react";
-// import Toggle from "../Toggle/Toggle";
 import Edit from "../../Assets/Images/edit.png";
 import Close from "../../Assets/Images/Close.png";
-// // import TrComponent from "../TrComponent/TrComponent";
 import "./ToifalarTable.css"
-// import Delete from "../../Assets/Images/delete.png";
 import { useState } from "react";
-// import Modal from "react-modal";
-import DeleteModal from "../DeleteModal/DeleteModal";
 import Delete from "../../Assets/Images/delete.png";
 
 import Modal from "../Modal/Modal";
-import EditModal from "../EditModal/EditModal";
 
 const ToifalarTable = () =>{
 // console.log(items,"aloooo")

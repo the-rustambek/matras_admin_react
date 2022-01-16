@@ -1,9 +1,5 @@
 import { useEffect } from "react";
 import "./MahsulotlarTable.css";
-
-import EditModal from "../EditModal/EditModal";
-import DeleteModal from "../DeleteModal/DeleteModal";
-import MahsulotAdd from "./MahsulotAdd";
 import { useState } from "react";
 import "../Toggle/Toggle.css";
 import Edit from "../../Assets/Images/edit.png";

@@ -1,8 +1,5 @@
 import  { useEffect } from "react";
 import { useState } from "react";
-import DeleteModal from "../DeleteModal/DeleteModal";
-import AddModal from "../AddModal/AddModal";
-import EditModal from "../EditModal/EditModal";
 import "../TexnologiyalarTable/TexnologiyalarTable.css";
 import Edit from "../../Assets/Images/edit.png";
 import Close from "../../Assets/Images/Close.png";

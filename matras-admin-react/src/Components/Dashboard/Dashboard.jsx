@@ -1,6 +1,5 @@
 import React from "react";
 import "./Dashboard.css";
-import Logo from "../../Assets/Images/Logo.png";
 import Home from "../../Assets/Images/home.png";
 import { Link} from "react-router-dom";
 

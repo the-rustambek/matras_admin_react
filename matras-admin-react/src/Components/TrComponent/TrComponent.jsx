@@ -1,6 +1,3 @@
-import react from "react";
-import Toggle from "../Toggle/Toggle";
-import items from "../../data";
 import Toggle from "../Toggle/Toggle.css";
 const TrComponent = ({items}) =>{
     return  (<div>

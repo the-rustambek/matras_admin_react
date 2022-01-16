@@ -1,9 +1,5 @@
 import  { useEffect, useState } from "react";
-
-
-// import TrComponent from "../TrComponent/TrComponent";
 import "./CustomersTable.css";
-import DeleteModal from "../DeleteModal/DeleteModal";
 import  "../Toggle/Toggle.css";
 import Delete from "../../Assets/Images/delete.png";
 

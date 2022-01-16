@@ -1,17 +1,13 @@
 import { useEffect } from "react";
-// import Toggle from "../Toggle/Toggle";
 import Edit from "../../Assets/Images/edit.png";
 import Close from "../../Assets/Images/Close.png";
-// // import TrComponent from "../TrComponent/TrComponent";
 import "./ManzilTable.css"
-// import Delete from "../../Assets/Images/delete.png";
 import { useState } from "react";
 
 import Delete from "../../Assets/Images/delete.png";
 import Map from "../../Assets/Images/Map.png";
 
 import Modal from "../Modal/Modal";
-import EditModal from "../EditModal/EditModal";
 import Input from "../Input/Input";
 
 const ManzilTable = () =>{
