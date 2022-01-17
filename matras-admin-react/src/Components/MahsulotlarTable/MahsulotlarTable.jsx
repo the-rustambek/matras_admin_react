@@ -89,55 +89,52 @@ useEffect(() =>{
     getToifalar()
 
 },[])
-// const [users, setUsers] = useState([]);
-useEffect(() => {
-  fetchData();
-}, []);
-
-const fetchData = async () => {
-    await fetch("https://jsonplaceholder.typicode.com/users")
-      .then((res) => res.json())
-      .then((data) => setUsers(data))
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-const onAdd = async (name, username) =>{ // shu yerga qolgan narsalarni ham kiritaman
-    await fetch('https://jsonplaceholder.typicode.com/users',{
-        method:"POST",
-        body: JSON.stringify({
-            name:name,
-            username:username,
 
 
-        }),
-        headers:{
-            "Content-type": "application/json; charset=UTF-8",
-        }
-    }).then((res) =>{
-        if(res.status !== 201){
-            return
-
-        }else{
-            return res.json();
-        }
-    })
-    .then((data) =>{
-        setUsers((users) => [...users,data]);
-    })
+const fetchData = async () =>{
+    await fetch("https://jsonplaceholder.typicode.com/users").then((res) => res.json()).then((data) => setUsers(data))
     .catch((err) =>{
-        console.log(err);
+        console.log(err)
     })
 }
 
-const handleOnSubmit = (e) =>{
-    e.preventDefault();
-    onAdd(e.target.name.value,e.target.username.value);
 
-    e.target.name.value = "";
-    e.target.username.value = "";
+// const onAdd = async (name, username) =>{ // shu yerga qolgan narsalarni ham kiritaman
+//     await fetch('https://jsonplaceholder.typicode.com/users',{
+//         method:"POST",
+//         body: JSON.stringify({
+//             name:name,
+//             username:username,
 
-}
+
+//         }),
+//         headers:{
+//             "Content-type": "application/json; charset=UTF-8",
+//         }
+//     }).then((res) =>{
+//         if(res.status !== 201){
+//             return
+
+//         }else{
+//             return res.json();
+//         }
+//     })
+//     .then((data) =>{
+//         setUsers((users) => [...users,data]);
+//     })
+//     .catch((err) =>{
+//         console.log(err);
+//     })
+// }
+
+// const handleOnSubmit = (e) =>{
+//     e.preventDefault();
+//     onAdd(e.target.name.value,e.target.username.value);
+
+//     e.target.name.value = "";
+//     e.target.username.value = "";
+
+// }
 
 
 
@@ -199,7 +196,7 @@ return (
 
     </div>
 
-    <button className="adds-buttons"  onClick={()=> openAddModal() } onAdd={onAdd}  >
+    <button className="adds-buttons"  onClick={()=> openAddModal() }   >
 
         Qo'shish
 
@@ -301,7 +298,7 @@ return (
             Qo'shish
             </h2>
             <div className="modal-blok">
-                <form onSubmit={handleOnSubmit}  className="modal-form" method="POST" encType="multipart/form-data">
+                <form  className="modal-form" method="POST" encType="multipart/form-data">
 
                     <ul className="modal-list">
                         <li className="modal-item modal-img">
@@ -412,7 +409,7 @@ return (
 
                                 </div>
                             </div>
-                            <button className="add-button" onSubmit={handleOnSubmit} >Qo'shish</button>
+                            <button className="add-button">Qo'shish</button>
                         </li>
 
                     </ul>

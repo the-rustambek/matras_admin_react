@@ -6,7 +6,7 @@ import Header from './Components/Header/Header';
 import Login from './Components/Login/Login';
 import Table from './Components/Table/Table';
 import { AuthProvider } from './Context/AuthContext';
-import { MatrasContextProvider } from './Context/MatrasContext';
+// import { MatrasContextProvider } from './Context/MatrasContext';
 import CustomersPage from './Pages/CustomersPage/CustomersPage';
 import HomePage from './Pages/HomePage/HomePage';
 import MahsulotlarPage from './Pages/MahsulotlarPage/MahsulotlarPage';
@@ -21,6 +21,8 @@ function App() {
 
   return(
     <AuthProvider>
+
+      
       {/* <MatrasContextProvider> */}
   {/* <Login /> */}
    
