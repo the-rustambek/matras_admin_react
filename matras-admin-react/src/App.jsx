@@ -21,7 +21,7 @@ function App() {
 
   return(
     <AuthProvider>
-      <MatrasContextProvider>
+      {/* <MatrasContextProvider> */}
   {/* <Login /> */}
    
       <Switch>
@@ -35,7 +35,7 @@ function App() {
 
 <Private path="/" component={HomePage} />
     </Switch>
-    </MatrasContextProvider>
+    {/* </MatrasContextProvider> */}
 
     </AuthProvider>
 
