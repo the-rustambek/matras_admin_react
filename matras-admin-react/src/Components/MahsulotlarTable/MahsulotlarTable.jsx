@@ -14,7 +14,7 @@ import constants from "../../configs/constants";
 
 
 const MahsulotlarTable = () =>{
-
+    
     // const {addMatrass} = useContext(MatrasContext);
 
     // const [mahsulotNomi,setMahsulotNomi] = useState("");
@@ -26,6 +26,8 @@ const MahsulotlarTable = () =>{
     // const [mahsulotSalePrice,setMahsulotSalePrice] = useState("");
     // const [mahsulotDescription,setMahsulotDescription] = useState("");
     // const [mahsulotIsNew,setMahsulotIsNew] = useState("");
+
+  
     const [mahsulotStatus,setMahsulotStatus] = useState("");
     
     // const handleSubmit = async (e) =>{
@@ -298,7 +300,7 @@ return (
             Qo'shish
             </h2>
             <div className="modal-blok">
-                <form  className="modal-form" method="POST" encType="multipart/form-data">
+                <form  className="modal-form" method="POST"  encType="multipart/form-data">
 
                     <ul className="modal-list">
                         <li className="modal-item modal-img">
@@ -367,7 +369,7 @@ return (
                             <p>
                                 Razmeri
                             </p>
-                            <Input name="mahsulot_size" type="text" placeholder="masalan: 200 x 140 x 40" />
+                            <Input   name="mahsulot_size" type="text" placeholder="masalan: 200 x 140 x 40" />
 
                             <p>
                                 Kafolat
@@ -409,7 +411,7 @@ return (
 
                                 </div>
                             </div>
-                            <button className="add-button">Qo'shish</button>
+                            <button className="add-button" >Qo'shish</button>
                         </li>
 
                     </ul>
