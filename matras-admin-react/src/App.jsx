@@ -1,11 +1,10 @@
 
-import { Route, Switch } from 'react-router-dom';
+import {  Switch } from 'react-router-dom';
 import './App.css';
-import Dashboard from './Components/Dashboard/Dashboard';
-import Header from './Components/Header/Header';
 import Login from './Components/Login/Login';
-import Table from './Components/Table/Table';
+
 import { AuthProvider } from './Context/AuthContext';
+import { MatrasContextProvider } from './Context/MatrasContext';
 // import { MatrasContextProvider } from './Context/MatrasContext';
 import CustomersPage from './Pages/CustomersPage/CustomersPage';
 import HomePage from './Pages/HomePage/HomePage';
@@ -23,7 +22,7 @@ function App() {
     <AuthProvider>
 
       
-      {/* <MatrasContextProvider> */}
+      <MatrasContextProvider>
   {/* <Login /> */}
    
       <Switch>
@@ -37,7 +36,7 @@ function App() {
 
 <Private path="/" component={HomePage} />
     </Switch>
-    {/* </MatrasContextProvider> */}
+    </MatrasContextProvider>
 
     </AuthProvider>
 

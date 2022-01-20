@@ -8,51 +8,51 @@ import Delete from "../../Assets/Images/delete.png";
 import Modal from "../Modal/Modal";
 import Input from "../Input/Input";
 import SelectService from "../../services/SelectService";
-// import { MatrasContext } from "../../Context/MatrasContext";
+import { MatrasContext } from "../../Context/MatrasContext";
 import constants from "../../configs/constants";
 
 
 
 const MahsulotlarTable = () =>{
     
-    // const {addMatrass} = useContext(MatrasContext);
+    const {addMatrass} = useContext(MatrasContext);
 
-    // const [mahsulotNomi,setMahsulotNomi] = useState("");
-    // const [mahsulotPrice,setMahsulotPrice] = useState("");
-    // const [mahsulotWeight,setMahsulotWeight] = useState("");
-    // const [mahsulotSize,setMahsulotSize] = useState("");
-    // const [mahsulotGuaranty,setMahsulotGuaranty] = useState("");
-    // const [mahsulotCapasity,setMahsulotCapasity] = useState("");
-    // const [mahsulotSalePrice,setMahsulotSalePrice] = useState("");
-    // const [mahsulotDescription,setMahsulotDescription] = useState("");
-    // const [mahsulotIsNew,setMahsulotIsNew] = useState("");
+    const [mahsulotNomi,setMahsulotNomi] = useState("");
+    const [mahsulotPrice,setMahsulotPrice] = useState("");
+    const [mahsulotWeight,setMahsulotWeight] = useState("");
+    const [mahsulotSize,setMahsulotSize] = useState("");
+    const [mahsulotGuaranty,setMahsulotGuaranty] = useState("");
+    const [mahsulotCapasity,setMahsulotCapasity] = useState("");
+    const [mahsulotSalePrice,setMahsulotSalePrice] = useState("");
+    const [mahsulotDescription,setMahsulotDescription] = useState("");
+    const [mahsulotIsNew,setMahsulotIsNew] = useState("");
 
   
     const [mahsulotStatus,setMahsulotStatus] = useState("");
     
-    // const handleSubmit = async (e) =>{
-    //     e.preventDefault();
-    //     try {
-    //         const response = await constants.post("/",{
-    //             mahsulotNomi,
-	// 			mahsulotPrice,
-	// 			mahsulotWeight,
-	// 			mahsulotSize,
-	// 			mahsulotGuaranty,
-	// 			mahsulotCapasity,
-	// 			mahsulotSalePrice,
-	// 			mahsulotDescription,
-	// 			mahsulotIsNew,
-	// 			mahsulotStatus,
+    const handleSubmit = async (e) =>{
+        e.preventDefault();
+        try {
+            const response = await constants.post("/",{
+                mahsulotNomi,
+				mahsulotPrice,
+				mahsulotWeight,
+				mahsulotSize,
+				mahsulotGuaranty,
+				mahsulotCapasity,
+				mahsulotSalePrice,
+				mahsulotDescription,
+				mahsulotIsNew,
+				mahsulotStatus,
 				
-    //         })
-    //         addMatrass(response.data)
+            })
+            addMatrass(response.data)
 
-    //     } catch (error) {
-    //         console.log(error)
+        } catch (error) {
+            console.log(error)
             
-    //     }
-    // }
+        }
+    }
 
     const [toifalar, setToifalar] = useState([])
 // console.log(children)
@@ -86,19 +86,19 @@ function openAddModal(){
 setAddModal(!addModal)
 }
 
-useEffect(() =>{
-    fetchData();
-    getToifalar()
+// useEffect(() =>{
+//     fetchData();
+//     getToifalar()
 
-},[])
+// },[])
 
 
-const fetchData = async () =>{
-    await fetch("https://jsonplaceholder.typicode.com/users").then((res) => res.json()).then((data) => setUsers(data))
-    .catch((err) =>{
-        console.log(err)
-    })
-}
+// const fetchData = async () =>{
+//     await fetch("https://jsonplaceholder.typicode.com/users").then((res) => res.json()).then((data) => setUsers(data))
+//     .catch((err) =>{
+//         console.log(err)
+//     })
+// }
 
 
 // const onAdd = async (name, username) =>{ // shu yerga qolgan narsalarni ham kiritaman
@@ -300,7 +300,7 @@ return (
             Qo'shish
             </h2>
             <div className="modal-blok">
-                <form  className="modal-form" method="POST"  encType="multipart/form-data">
+                <form onSubmit={handleSubmit}  className="modal-form" method="POST"  encType="multipart/form-data">
 
                     <ul className="modal-list">
                         <li className="modal-item modal-img">
@@ -350,18 +350,18 @@ return (
                         <p>
                                 Tovar nomi
                             </p>
-                            <Input  type="text" placeholder="Lux soft memory" name="mahsulot_nomi" />
+                            <Input value={mahsulotNomi} onChange={(e) => setMahsulotNomi(e.target.value)} type="text" placeholder="Lux soft memory" name="mahsulot_nomi" />
 
                             <p>
                                 Narxi
                             </p>
-                            <Input name="mahsulot_price" type="text" placeholder="Masalan: 20 000"  />
+                            <Input value={mahsulotPrice} onChange={(e) => setMahsulotPrice(e.target.value)} name="mahsulot_price" type="text" placeholder="Masalan: 20 000"  />
 
 
                             <p>
                                 Yuklama
                             </p>
-                            <Input  name="mahsulot_weight" type="text" placeholder="Masalan: 200 kg" />
+                            <Input  value={mahsulotWeight} onChange={(e) => setMahsulotWeight(e.target.value)} name="mahsulot_weight" type="text" placeholder="Masalan: 200 kg" />
 
                         </li>
                         <li className="modal-item modal-items">
@@ -369,27 +369,27 @@ return (
                             <p>
                                 Razmeri
                             </p>
-                            <Input   name="mahsulot_size" type="text" placeholder="masalan: 200 x 140 x 40" />
+                            <Input value={mahsulotSize} onChange={(e) => setMahsulotSize(e.target.value)}  name="mahsulot_size" type="text" placeholder="masalan: 200 x 140 x 40" />
 
                             <p>
                                 Kafolat
                             </p>
-                            <Input  name="mahsulot_guaranty" type="text" placeholder="Masalan:  1 yil" />
+                            <Input value={mahsulotGuaranty} onChange={(e) => setMahsulotGuaranty(e.target.value)} name="mahsulot_guaranty" type="text" placeholder="Masalan:  1 yil" />
 
 
                             <p>
                                 Sig'im
                             </p>
-                            <Input  name="mahsulot_capasity" type="text" placeholder="Masalan: 2" />
+                            <Input value={mahsulotCapasity} onChange={(e) => setMahsulotCapasity(e.target.value)} name="mahsulot_capasity" type="text" placeholder="Masalan: 2" />
                             <p>
                                 Aksiya narxi
-                            </p><Input name="mahsulot_sale_price" type="text" placeholder="Masalan: 1 200 000 so'm" />
+                            </p><Input value={mahsulotIsNew} onChange={(e) => setMahsulotIsNew(e.target.value)} name="mahsulot_sale_price" type="text" placeholder="Masalan: 1 200 000 so'm" />
 
                         </li>
                         <li className="modal-item">
                             <p>Ma'lumot</p>
 
-                            <textarea  name="mahsulot_description" placeholder="Info..." required>
+                            <textarea value={mahsulotDescription} onChange={(e) => setMahsulotDescription(e.target.value)}  name="mahsulot_description" placeholder="Info..." required>
 
                             </textarea>
                             <div className="modal-footer">
