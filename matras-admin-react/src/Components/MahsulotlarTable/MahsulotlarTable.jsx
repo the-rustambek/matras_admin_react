@@ -14,6 +14,20 @@ import constants from "../../configs/constants";
 
 
 const MahsulotlarTable = () =>{
+
+    let token = window.localStorage.getItem("token");
+    const handleData = (e) => {
+        fetch('http://localhost:8080/', {
+            method:"POST",
+            headers:{
+                'Content-Type': 'application/json',
+                'Authorization': token
+            
+            },
+            
+
+        })
+    }
     
     const {addMatrass} = useContext(MatrasContext);
 
@@ -86,19 +100,19 @@ function openAddModal(){
 setAddModal(!addModal)
 }
 
-// useEffect(() =>{
-//     fetchData();
-//     getToifalar()
+useEffect(() =>{
+    fetchData();
+    getToifalar()
 
-// },[])
+},[])
 
 
-// const fetchData = async () =>{
-//     await fetch("https://jsonplaceholder.typicode.com/users").then((res) => res.json()).then((data) => setUsers(data))
-//     .catch((err) =>{
-//         console.log(err)
-//     })
-// }
+const fetchData = async () =>{
+    await fetch("https://jsonplaceholder.typicode.com/users").then((res) => res.json()).then((data) => setUsers(data))
+    .catch((err) =>{
+        console.log(err)
+    })
+}
 
 
 // const onAdd = async (name, username) =>{ // shu yerga qolgan narsalarni ham kiritaman
@@ -300,7 +314,7 @@ return (
             Qo'shish
             </h2>
             <div className="modal-blok">
-                <form onSubmit={handleSubmit}  className="modal-form" method="POST"  encType="multipart/form-data">
+                <form onSubmit={handleSubmit}   className="modal-form" method="POST"  encType="multipart/form-data">
 
                     <ul className="modal-list">
                         <li className="modal-item modal-img">
@@ -411,7 +425,7 @@ return (
 
                                 </div>
                             </div>
-                            <button className="add-button" >Qo'shish</button>
+                            <button onClick={handleData} className="add-button" >Qo'shish</button>
                         </li>
 
                     </ul>
