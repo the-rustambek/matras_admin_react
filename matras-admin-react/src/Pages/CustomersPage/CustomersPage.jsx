@@ -6,7 +6,8 @@ import Table from "../../Components/Table/Table";
 import CustomersTable from "../../Components/CustomersTable/CustomersTable";
 import "../../App.css"
 
-const CustomersPage = () =>{
+
+const CustomersPage = () =>{ 
       return (
         <div className="homepage">
           <Header />

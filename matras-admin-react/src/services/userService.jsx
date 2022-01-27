@@ -36,93 +36,93 @@ export default class UserService {
 		return response;
 	}
 
-	static async MahsulotAdd(mahsulot_nomi,mahsulot_price,mahsulot_weight,mahsulot_size,mahsulot_guaranty,mahsulot_capasity,mahsulot_sale_price,mahsulot_description,mahsulot_isNew,mahsulot_status,id){
+	// static async MahsulotAdd(mahsulot_nomi,mahsulot_price,mahsulot_weight,mahsulot_size,mahsulot_guaranty,mahsulot_capasity,mahsulot_sale_price,mahsulot_description,mahsulot_isNew,mahsulot_status,id){
 
-		let token = window.localStorage.getItem("token");
+	// 	let token = window.localStorage.getItem("token");
 
-		let response = await fetch(constants.API_URL+"/v1/products/",{
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-				"Authorization": token
-			},
-			body: JSON.stringify({
+	// 	let response = await fetch(constants.API_URL+"/v1/products/",{
+	// 		method: "POST",
+	// 		headers: {
+	// 			"Content-Type": "application/json",
+	// 			"Authorization": token
+	// 		},
+	// 		body: JSON.stringify({
 
-				product_name: mahsulot_nomi,
-				product_price: mahsulot_price,
-				product_weight:mahsulot_weight,
-				product_size: mahsulot_size,
-				product_guaranty:mahsulot_guaranty,
-				product_capasity: mahsulot_capasity,
-				product_sale_price: mahsulot_sale_price,
-				product_description: mahsulot_description,
-				product_isNew: mahsulot_isNew,
-				product_status: mahsulot_status,
-				category_id: id
-			}),
-		})
-		response = await response.json();
-		return response;
+	// 			product_name: mahsulot_nomi,
+	// 			product_price: mahsulot_price,
+	// 			product_weight:mahsulot_weight,
+	// 			product_size: mahsulot_size,
+	// 			product_guaranty:mahsulot_guaranty,
+	// 			product_capasity: mahsulot_capasity,
+	// 			product_sale_price: mahsulot_sale_price,
+	// 			product_description: mahsulot_description,
+	// 			product_isNew: mahsulot_isNew,
+	// 			product_status: mahsulot_status,
+	// 			category_id: id
+	// 		}),
+	// 	})
+	// 	response = await response.json();
+	// 	return response;
 	
 		
-	}
-	static async MahsulotDelete(mahsulot_nomi,mahsulot_price,mahsulot_weight,mahsulot_size,mahsulot_guaranty,mahsulot_capasity,mahsulot_sale_price,mahsulot_description,mahsulot_isNew,mahsulot_status,id){
+	// }
+	// static async MahsulotDelete(mahsulot_nomi,mahsulot_price,mahsulot_weight,mahsulot_size,mahsulot_guaranty,mahsulot_capasity,mahsulot_sale_price,mahsulot_description,mahsulot_isNew,mahsulot_status,id){
 
-		let token = window.localStorage.getItem("token");
+	// 	let token = window.localStorage.getItem("token");
 
-		let response = await fetch(constants.API_URL+"/v1/products/:product_id",{
-			method: "DELETE",
-			headers: {
-				"Content-Type": "application/json",
-				"Authorization": token
-			},
-			body: JSON.stringify({
+	// 	let response = await fetch(constants.API_URL+"/v1/products/:product_id",{
+	// 		method: "DELETE",
+	// 		headers: {
+	// 			"Content-Type": "application/json",
+	// 			"Authorization": token
+	// 		},
+	// 		body: JSON.stringify({
 
-				product_name: mahsulot_nomi,
-				product_price: mahsulot_price,
-				product_weight:mahsulot_weight,
-				product_size: mahsulot_size,
-				product_guaranty:mahsulot_guaranty,
-				product_capasity: mahsulot_capasity,
-				product_sale_price: mahsulot_sale_price,
-				product_description: mahsulot_description,
-				product_isNew: mahsulot_isNew,
-				product_status: mahsulot_status,
-				category_id: id
-			}),
-		})
-		response = await response.json();
-		return response;
-	}
-	static async MahsulotUpdate(mahsulot_nomi,mahsulot_price,mahsulot_weight,mahsulot_size,mahsulot_guaranty,mahsulot_capasity,mahsulot_sale_price,mahsulot_description,mahsulot_isNew,mahsulot_status,id){
+	// 			product_name: mahsulot_nomi,
+	// 			product_price: mahsulot_price,
+	// 			product_weight:mahsulot_weight,
+	// 			product_size: mahsulot_size,
+	// 			product_guaranty:mahsulot_guaranty,
+	// 			product_capasity: mahsulot_capasity,
+	// 			product_sale_price: mahsulot_sale_price,
+	// 			product_description: mahsulot_description,
+	// 			product_isNew: mahsulot_isNew,
+	// 			product_status: mahsulot_status,
+	// 			category_id: id
+	// 		}),
+	// 	})
+	// 	response = await response.json();
+	// 	return response;
+	// }
+	// static async MahsulotUpdate(mahsulot_nomi,mahsulot_price,mahsulot_weight,mahsulot_size,mahsulot_guaranty,mahsulot_capasity,mahsulot_sale_price,mahsulot_description,mahsulot_isNew,mahsulot_status,id){
 
 
-		let token = window.localStorage.getItem("token");
+	// 	let token = window.localStorage.getItem("token");
 
-		let response = await fetch(constants.API_URL+"/v1/products/:product_id",{
-			method: "PUT",
-			headers: {
-				"Content-Type": "application/json",
-				"Authorization": token
-			},
-			body: JSON.stringify({
+	// 	let response = await fetch(constants.API_URL+"/v1/products/:product_id",{
+	// 		method: "PUT",
+	// 		headers: {
+	// 			"Content-Type": "application/json",
+	// 			"Authorization": token
+	// 		},
+	// 		body: JSON.stringify({
 
-				product_name: mahsulot_nomi,
-				product_price: mahsulot_price,
-				product_weight:mahsulot_weight,
-				product_size: mahsulot_size,
-				product_guaranty:mahsulot_guaranty,
-				product_capasity: mahsulot_capasity,
-				product_sale_price: mahsulot_sale_price,
-				product_description: mahsulot_description,
-				product_isNew: mahsulot_isNew,
-				product_status: mahsulot_status,
-				category_id: id
-			}),
-		})
-		response = await response.json();
-		return response;
-	}
+	// 			product_name: mahsulot_nomi,
+	// 			product_price: mahsulot_price,
+	// 			product_weight:mahsulot_weight,
+	// 			product_size: mahsulot_size,
+	// 			product_guaranty:mahsulot_guaranty,
+	// 			product_capasity: mahsulot_capasity,
+	// 			product_sale_price: mahsulot_sale_price,
+	// 			product_description: mahsulot_description,
+	// 			product_isNew: mahsulot_isNew,
+	// 			product_status: mahsulot_status,
+	// 			category_id: id
+	// 		}),
+	// 	})
+	// 	response = await response.json();
+	// 	return response;
+	// }
 
 
 }
