@@ -79,17 +79,15 @@ const createCategory = async(name,status) => {
     })
     
     response = await response.json();
-        if(response?.data){ 
+        if(response?.ok == true){ 
         getCategories()
     }
 }
 
 
-//-----------------------------------------------------------------DELETE---------------------------------------------------------------------
-
 const delete_category = async(id) => {
 
-    console.log(id);
+    // console.log(id);
     let token = window.localStorage.getItem("token")
    
     let response = await fetch(constants.API_URL+`/v1/categories/${id}`,{
@@ -123,7 +121,7 @@ const update_category = async(id, name) => {
 })
 
     response = await response.json();
-        console.log(response);
+        // console.log(response);
         if(response.ok == true) {
         openEditModal()
         getCategories()
