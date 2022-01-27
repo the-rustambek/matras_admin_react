@@ -8,29 +8,13 @@ import Delete from "../../Assets/Images/delete.png";
 import Modal from "../Modal/Modal";
 import Input from "../Input/Input";
 import SelectService from "../../services/SelectService";
-import { MatrasContext } from "../../Context/MatrasContext";
+// import { MatrasContext } from "../../Context/MatrasContext";
 import constants from "../../configs/constants";
 
 
 
 const MahsulotlarTable = () =>{
-
-    let token = window.localStorage.getItem("token");
-    const handleData = (e) => {
-        fetch('http://localhost:8080/', {
-            method:"POST",
-            headers:{
-                'Content-Type': 'application/json',
-                'Authorization': token
-            
-            },
-            
-
-        })
-    }
-    
-    const {addMatrass} = useContext(MatrasContext);
-
+    const [data, setData] = useState([]);
     const [mahsulotNomi,setMahsulotNomi] = useState("");
     const [mahsulotPrice,setMahsulotPrice] = useState("");
     const [mahsulotWeight,setMahsulotWeight] = useState("");
@@ -44,30 +28,48 @@ const MahsulotlarTable = () =>{
   
     const [mahsulotStatus,setMahsulotStatus] = useState("");
     
-    const handleSubmit = async (e) =>{
-        e.preventDefault();
-        try {
-            const response = await constants.post("/",{
-                mahsulotNomi,
-				mahsulotPrice,
-				mahsulotWeight,
-				mahsulotSize,
-				mahsulotGuaranty,
-				mahsulotCapasity,
-				mahsulotSalePrice,
-				mahsulotDescription,
-				mahsulotIsNew,
-				mahsulotStatus,
-				
-            })
-            addMatrass(response.data)
 
-        } catch (error) {
-            console.log(error)
-            
+    const getProducts = async(id) => {
+        let token = window.localStorage.getItem("token")
+        
+        let response = await fetch(constants.API_URL+"/v1/products",{
+            method: "GET",
+            headers: {
+            "Content-Type": "application/json",
+            "Authorization": token
         }
+        })
+        response = await response.json();
+        console.log(response)
+    if(response?.data.products){ 
+    setData(response?.data.products)
     }
+}
+    
 
+const createProducts = async(name) => {
+    let token = window.localStorage.getItem("token")
+    
+    let response = await fetch(constants.API_URL+"/v1/products",{
+        method: "POST",
+        headers: {
+        "Content-Type": "application/json",
+        "Authorization": token
+        },
+        body: JSON.stringify({
+            product_name: mahsulotNomi
+        })
+    })
+    
+    response = await response.json();
+        if(response?.data.products){ 
+        getProducts()
+    }
+}
+useEffect(async () => {
+    await getProducts()
+    }, [])
+    
     const [toifalar, setToifalar] = useState([])
 // console.log(children)
 const [toifaError,setToifaError] = useState(false);
@@ -79,9 +81,9 @@ const getToifalar = async()=>{
      
 }
 
-const onChange = (e) =>{
-   console.log(e.target.files);
-} 
+// const onChange = (e) =>{
+//    console.log(e.target.files);
+// } 
 
 const [users,setUsers] = useState([]);
 const [deleteModal,setDeleteModal] = useState(false);
@@ -101,56 +103,14 @@ setAddModal(!addModal)
 }
 
 useEffect(() =>{
-    fetchData();
+    
     getToifalar()
 
 },[])
 
 
-const fetchData = async () =>{
-    await fetch("https://jsonplaceholder.typicode.com/users").then((res) => res.json()).then((data) => setUsers(data))
-    .catch((err) =>{
-        console.log(err)
-    })
-}
 
 
-// const onAdd = async (name, username) =>{ // shu yerga qolgan narsalarni ham kiritaman
-//     await fetch('https://jsonplaceholder.typicode.com/users',{
-//         method:"POST",
-//         body: JSON.stringify({
-//             name:name,
-//             username:username,
-
-
-//         }),
-//         headers:{
-//             "Content-type": "application/json; charset=UTF-8",
-//         }
-//     }).then((res) =>{
-//         if(res.status !== 201){
-//             return
-
-//         }else{
-//             return res.json();
-//         }
-//     })
-//     .then((data) =>{
-//         setUsers((users) => [...users,data]);
-//     })
-//     .catch((err) =>{
-//         console.log(err);
-//     })
-// }
-
-// const handleOnSubmit = (e) =>{
-//     e.preventDefault();
-//     onAdd(e.target.name.value,e.target.username.value);
-
-//     e.target.name.value = "";
-//     e.target.username.value = "";
-
-// }
 
 
 
@@ -177,28 +137,28 @@ return (
                 {/*
                 <TrComponent /> */}
 
-                {users.length > 0 && users.map((row,i)=>(
+                {data.length > 0 && data.map((products,i)=>(
 
-                <tr className="tr" key={row.id}>
+                <tr className="tr" key={i}>
 
-                    <td>{row.name}</td>
-                    <td>{row.username}</td>
-                    <td>{row.id*10000} so'm </td>
-                    <td>{row.id *100} kg</td>
-                    <td>{row.id*15}x{row.id*15}x{row.id*15}</td>
+                    <td>{products.product_name}</td>
+                    <td>{products.product_id}</td>
+                    <td>{products.product_price} so'm </td>
+                    <td>{products.product_weight} kg</td>
+                    <td>{products.product_size}</td>
                     <td className="td-right">
                         <div className="toggle">
 
-                            <input name="mahsulot_nomi" name="toggle" type="checkbox" id={row.id} />
-                            <label className="toggle-label" for={row.id}>Toggle</label>
+                            <input name="toggle" type="checkbox" id={products.product_id} />
+                            <label className="toggle-label" for={products.product_id}>Toggle</label>
 
                         </div>
                     </td>
                     <td className="td">
-                        <button className="edit-btn" key={row.id} onClick={()=> openEditModal()} >
+                        <button className="edit-btn" key={products.product_id} onClick={()=> openEditModal()} >
                             <img src={Edit} alt="" />
                         </button>
-                        <button key={row.id} className="delete-btn"  onClick={()=> openDeleteModal()}  >
+                        <button key={products.product_id} className="delete-btn"  onClick={()=> openDeleteModal()}  >
                             <img src={Delete} alt="" /></button>
 
                     </td>
@@ -251,7 +211,7 @@ return (
                         <p>
                             Mahsulot nomlari
                         </p>
-                        <Input name="mahsulot_nomi" type="text" placeholder="Masalan: Kevin" />
+                        <Input name="name" type="text" placeholder="Masalan: Kevin" />
 
                         <p>
                             Toifalar
@@ -314,7 +274,7 @@ return (
             Qo'shish
             </h2>
             <div className="modal-blok">
-                <form onSubmit={handleSubmit}   className="modal-form" method="POST"  encType="multipart/form-data">
+                <form   className="modal-form" method="POST"  encType="multipart/form-data">
 
                     <ul className="modal-list">
                         <li className="modal-item modal-img">
@@ -322,14 +282,13 @@ return (
 
 
                             <input  name="photos" accept=".jpg,.png, .jpeg, .svg, .webp77  7" className="multiple-input" multiple
-                                type="file" onChange={onChange} />
+                                type="file" />
                         </li>
                         <li className="modal-item modal-items">
                             <p>
                                 Toifalar
                             </p>
-                            <Input
-
+                            <Input 
                             error={toifaError ? "true" : ""}
 								type="text"
 								placeholder="toifa"
@@ -349,8 +308,7 @@ return (
                                             setToifaError(false)
                                         }
                                     
-                                }}
-							/>
+                                }}	/>
 	                <datalist id="data">
                         {toifalar.length &&  toifalar.map((item,key) =>{
                             return (
@@ -364,18 +322,18 @@ return (
                         <p>
                                 Tovar nomi
                             </p>
-                            <Input value={mahsulotNomi} onChange={(e) => setMahsulotNomi(e.target.value)} type="text" placeholder="Lux soft memory" name="mahsulot_nomi" />
+                            <Input  onChange={(e) => setMahsulotNomi(e.target.value)} type="text" placeholder="Lux soft memory" name="mahsulot_nomi" />
 
                             <p>
                                 Narxi
                             </p>
-                            <Input value={mahsulotPrice} onChange={(e) => setMahsulotPrice(e.target.value)} name="mahsulot_price" type="text" placeholder="Masalan: 20 000"  />
+                            <Input onChange={(e) => setMahsulotPrice(e.target.value)} name="mahsulot_price" type="text" placeholder="Masalan: 20 000"  />
 
 
                             <p>
                                 Yuklama
                             </p>
-                            <Input  value={mahsulotWeight} onChange={(e) => setMahsulotWeight(e.target.value)} name="mahsulot_weight" type="text" placeholder="Masalan: 200 kg" />
+                            <Input   onChange={(e) => setMahsulotWeight(e.target.value)} name="mahsulot_weight" type="text" placeholder="Masalan: 200 kg" />
 
                         </li>
                         <li className="modal-item modal-items">
@@ -383,27 +341,27 @@ return (
                             <p>
                                 Razmeri
                             </p>
-                            <Input value={mahsulotSize} onChange={(e) => setMahsulotSize(e.target.value)}  name="mahsulot_size" type="text" placeholder="masalan: 200 x 140 x 40" />
+                            <Input  onChange={(e) => setMahsulotSize(e.target.value)}  name="mahsulot_size" type="text" placeholder="masalan: 200 x 140 x 40" />
 
                             <p>
                                 Kafolat
                             </p>
-                            <Input value={mahsulotGuaranty} onChange={(e) => setMahsulotGuaranty(e.target.value)} name="mahsulot_guaranty" type="text" placeholder="Masalan:  1 yil" />
+                            <Input  onChange={(e) => setMahsulotGuaranty(e.target.value)} name="mahsulot_guaranty" type="text" placeholder="Masalan:  1 yil" />
 
 
                             <p>
                                 Sig'im
                             </p>
-                            <Input value={mahsulotCapasity} onChange={(e) => setMahsulotCapasity(e.target.value)} name="mahsulot_capasity" type="text" placeholder="Masalan: 2" />
+                            <Input  onChange={(e) => setMahsulotCapasity(e.target.value)} name="mahsulot_capasity" type="text" placeholder="Masalan: 2" />
                             <p>
                                 Aksiya narxi
-                            </p><Input value={mahsulotIsNew} onChange={(e) => setMahsulotIsNew(e.target.value)} name="mahsulot_sale_price" type="text" placeholder="Masalan: 1 200 000 so'm" />
+                            </p><Input  onChange={(e) => setMahsulotIsNew(e.target.value)} name="mahsulot_sale_price" type="text" placeholder="Masalan: 1 200 000 so'm" />
 
                         </li>
                         <li className="modal-item">
                             <p>Ma'lumot</p>
 
-                            <textarea value={mahsulotDescription} onChange={(e) => setMahsulotDescription(e.target.value)}  name="mahsulot_description" placeholder="Info..." required>
+                            <textarea  onChange={(e) => setMahsulotDescription(e.target.value)}  name="mahsulot_description" placeholder="Info..." required>
 
                             </textarea>
                             <div className="modal-footer">
@@ -425,7 +383,7 @@ return (
 
                                 </div>
                             </div>
-                            <button onClick={handleData} className="add-button" >Qo'shish</button>
+                            <button onClick={() =>{createProducts(mahsulotNomi,mahsulotPrice,mahsulotSize,mahsulotWeight,mahsulotGuaranty,mahsulotCapasity,mahsulotIsNew,mahsulotDescription)}} className="add-button" >Qo'shish</button>
                         </li>
 
                     </ul>
