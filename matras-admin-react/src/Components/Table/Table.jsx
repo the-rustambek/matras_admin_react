@@ -24,7 +24,7 @@ const Table = ({items}) =>{
  
 		response = await response.json(); 
 		if(response?.data.order){
-            console.log(response?.data.order);
+            // console.log(response?.data.order);
             setData(response?.data.order)
         }
     } 
@@ -40,7 +40,7 @@ const Table = ({items}) =>{
 		})  
 
         response = await response.json();
-        console.log(response);
+        // console.log(response);
         if(response.ok == true) {
             
             getOrders()

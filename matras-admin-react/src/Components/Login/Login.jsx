@@ -39,7 +39,7 @@ return (
             <form className="login-form" onSubmit={submit} method="POST">
                 <label className="form-label">
                     <img className="form-account" src={Account} alt="Account" />
-                    <input type="password" className={className}  placeholder="Login" name="login"/>
+                    <input type="text" className={className}  placeholder="Login" name="login"/>
 
                 </label>
 

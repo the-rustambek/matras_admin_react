@@ -14,7 +14,6 @@ export function AuthProvider({children}){
   useEffect(()=>{
     if(token){
       window.localStorage.setItem("token",token);
-
     }
     else{
       window.localStorage.removeItem("token")

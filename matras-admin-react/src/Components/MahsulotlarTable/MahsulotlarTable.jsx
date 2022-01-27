@@ -40,14 +40,14 @@ const MahsulotlarTable = () =>{
         }
         })
         response = await response.json();
-        console.log(response)
+        // console.log(response)
     if(response?.data.products){ 
     setData(response?.data.products)
     }
 }
     
 
-const createProducts = async(name) => {
+const createProducts = async(mahsulot_nomi) => {
     let token = window.localStorage.getItem("token")
     
     let response = await fetch(constants.API_URL+"/v1/products",{
@@ -57,7 +57,16 @@ const createProducts = async(name) => {
         "Authorization": token
         },
         body: JSON.stringify({
-            product_name: mahsulotNomi
+            product_name:mahsulot_nomi,
+            // product_price,
+            // product_weight,
+            // product_size,
+            // product_guaranty,
+            // product_capasity,
+            // product_sale_price,
+            // product_description,
+            // product_isNew,
+            // product_status
         })
     })
     
@@ -162,23 +171,7 @@ return (
                             <img src={Delete} alt="" /></button>
 
                     </td>
-                </tr>
-
-
-                ))}
-
-            </tbody>
-        </table>
-
-    </div>
-
-    <button className="adds-buttons"  onClick={()=> openAddModal() }   >
-
-        Qo'shish
-
-    </button>
-
-    <Modal show={deleteModal} w={400} mh={120} >
+                    <Modal show={deleteModal} w={400} mh={120} >
         <div className="delete-box">
             <h2 className="delete-title">Haqiqatdan ham o'chirmoqchimisiz ?
             </h2>
@@ -260,7 +253,21 @@ return (
             </form>
         </div>
     </Modal>
+                </tr>
 
+
+                ))}
+
+            </tbody>
+        </table>
+
+    </div>
+
+    <button className="adds-buttons"  onClick={()=> openAddModal() }   >
+
+        Qo'shish
+
+    </button>
     <Modal  show={addModal} w={300}>
 
         <div className="mahsulot-box">
@@ -393,6 +400,10 @@ return (
         </div>
 
     </Modal>
+
+  
+
+    
 
 </section>
 

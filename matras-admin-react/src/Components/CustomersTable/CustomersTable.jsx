@@ -28,7 +28,7 @@ const CustomersTable = (props) =>{
 
 
         response = await response.json();
-        console.log(response);
+        // console.log(response);
         if(response.ok == true) {
             openDeleteModal()
             getCustomers()

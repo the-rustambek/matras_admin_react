@@ -1,3 +1,4 @@
+ 
 import Edit from "../../Assets/Images/edit.png";
 import Close from "../../Assets/Images/Close.png";
 import "./ToifalarTable.css"
@@ -12,9 +13,25 @@ const  ToifalarTable = () =>{
 const [deleteModal,setDeleteModal] = useState(false);
 const [editModal,setEditModal] = useState(false);
 const [addModal,setAddModal] = useState(false);
-const [cName, setCName] = useState("")
+const [id, setId] = useState("")
 
 
+const [info,setInfo]= useState({name:"", status: true});
+
+
+
+const setdata = (e) => {
+    console.log(e.target.value);
+    const { name, value } = e.target;
+    setInfo((preval) => {
+        return {
+            ...preval,
+            [name]: value
+        }
+    })
+}
+
+ 
 function openDeleteModal(){
 setDeleteModal(!deleteModal)
 }
@@ -26,12 +43,13 @@ function openAddModal(){
 setAddModal(!addModal)
 }
 
-const [data, setData] = useState([]);
+ 
+  const [data, setData] = useState([]);
 
-const getCategories = async(id) => {
-let token = window.localStorage.getItem("token")
+ const getCategories = async(id) => {
+    let token = window.localStorage.getItem("token")
 
-let response = await fetch(constants.API_URL+"/v1/categories",{
+    let response = await fetch(constants.API_URL+"/v1/categories",{
     method: "GET",
     headers: {
     "Content-Type": "application/json",
@@ -39,34 +57,41 @@ let response = await fetch(constants.API_URL+"/v1/categories",{
 }
 })
 
-response = await response.json();
+    response = await response.json();
     if(response?.data.categories){ 
     setData(response?.data.categories)
     }
 }
 
-const createCategory = async(name) => {
-    let token = window.localStorage.getItem("token")
+// 
+const createCategory = async(name,status) => {
+        let token = window.localStorage.getItem("token")
     
-    let response = await fetch(constants.API_URL+"/v1/categories",{
+        let response = await fetch(constants.API_URL+"/v1/categories",{
         method: "POST",
         headers: {
         "Content-Type": "application/json",
         "Authorization": token
         },
         body: JSON.stringify({
-            category_name: name
+           category_name: name
         })
     })
     
     response = await response.json();
-        if(response?.data.categories){ 
+        if(response?.data){ 
         getCategories()
     }
 }
 
+
+//-----------------------------------------------------------------DELETE---------------------------------------------------------------------
+
 const delete_category = async(id) => {
+
+    console.log(id);
     let token = window.localStorage.getItem("token")
+   
     let response = await fetch(constants.API_URL+`/v1/categories/${id}`,{
     method: "DELETE",
     headers: {
@@ -83,11 +108,34 @@ const delete_category = async(id) => {
     }
 }
 
-useEffect(async () => {
-await getCategories()
-}, [])
+const update_category = async(id, name) => { 
+    let token = window.localStorage.getItem("token")
+   
+    let response = await fetch(constants.API_URL+`/v1/categories/${id}`,{
+    method: "PUT",
+    headers: {
+    "Content-Type": "application/json",
+    "Authorization": token
+    },
+    body: JSON.stringify({
+        category_name: name
+    })
+})
+
+    response = await response.json();
+        console.log(response);
+        if(response.ok == true) {
+        openEditModal()
+        getCategories()
+    }
+}
 
 
+    useEffect(async () => {
+    await getCategories()
+    }, [])
+
+//--------------------------------------------------------------------------------------------------------------------------------------------
 
 return (
 <div className="toifalar-table">
@@ -108,33 +156,59 @@ return (
         <div className="tbl-content">
             <table>
                 <tbody>
-
-                    {data.length > 0 &&  data.map((category, i) =>(
+ 
+{data.length > 0 &&  data.map((category, i) =>(
                     <tr className="tr" key={i}>
                         <td className="td-left">{category.category_name}</td>
                         <td className="td-right">
-                            <button className="edit-btn"  onClick={()=> openEditModal()} >
+                            <button className="edit-btn" data-id={category.category_id}  onClick={()=>{ 
+                                openEditModal()
+                                setId(category.category_id)
+                                }} >
                                 <img src={Edit} alt="" />
                             </button>
-                            <button key={i} className="delete-btn"  onClick={()=> openDeleteModal()} >
+                            <button key={i} data-id={category.category_id} className="delete-btn"  onClick={(e)=> 
+                               {
+                                openDeleteModal()
+                                setId(category.category_id)
+                               }
+                                } >
                                 <img src={Delete} alt="" /></button>
                         </td>
 
-                        <Modal show={deleteModal} w={400} mh={120}>
+
+                       
+                    </tr>
+         ))}
+
+                </tbody>
+            </table>
+
+
+        </div>
+        <button className="btns" onClick={()=> openAddModal() }>Qo'shish</button>
+
+
+        <Modal show={deleteModal} w={400} mh={120}>
                             <div className="delete-box">
                                 <h2 className="delete-title">Haqiqatdan ham o'chirmoqchimisiz ?
                                 </h2>
                                 <div className="delete-footer">
-                                    <button className="delete-no" onClick={()=>openDeleteModal()}>
+                                    <button className="delete-no" data-id={id} onClick={()=>{
+                                        openDeleteModal()
+
+                                    }}>
                                         Yo'q
                                     </button>
-                                    <button className="delete-yes" onClick={() => delete_category(category.category_id)} type="submit">
+                                    <button className="delete-yes" data-id={id} onClick={(e) => delete_category(e.target.dataset.id)} type="submit">
                                         Ha
                                     </button>
                                 </div>
                             </div>
-                        </Modal>
-                        <Modal show={editModal} w={300}>
+      </Modal>
+
+
+      <Modal show={editModal} w={300}>
                             <div className="modal-blok">
                                 {/* salom */}
                                 {/* <div className="modal-closes"> */}
@@ -144,36 +218,28 @@ return (
                                     {/* </div> */}
                                 <h2 className="modal-title">Toifani tahrirlash</h2>
                                 <form className="modal-form">
-                                    <p className="modal-text">
-                                        Toifa nomi
+                                <p className="modal-text">
+                                        Kategoriya nomi
                                     </p>
-                                    <input type="text" className="modal-input" required
-                                        placeholder="masalan: Model A" />
+                                    <input type="text" className="modal-input" value={info.name} name="name"  onChange={setdata } required placeholder="masalan: Model B" />
                                     <div className="modal-box">
                                         <p className="modal-subtext">Holat</p>
                                         <div className="toggle">
 
-                                            <input type="checkbox" id="holat" />
+                                            <input type="checkbox" id="holat" value={info.status} name="status"  onChange={setdata }  />
                                             <label className="toggle-label" for="holat">Toggle</label>
 
                                         </div>
-                                    </div>
+                                 </div>
 
-                                    <button type="submit" className="modal-btn">
-                                        Qo'shish
+                                    <button  data-id={id} type="button" onClick={(e) => {
+                                                  e.preventDefault()
+                                                  update_category(e.target.dataset.id ,info.name) }} className="modal-btn">
+                                        Tahrirlash
                                     </button>
                                 </form>
                             </div>
                         </Modal>
-                    </tr>
-                    ))}
-
-                </tbody>
-            </table>
-
-
-        </div>
-        <button className="btns" onClick={()=> openAddModal() }>Qo'shish</button>
 
 
 
@@ -184,25 +250,26 @@ return (
                     <img src={Close} className="close-icon" alt="" />
                 </button>
 
-                <h2 className="modal-title">Qo'shish</h2>
+ 
+<h2 className="modal-title">Qo'shish</h2>
                 <form className="modal-form">
                     <p className="modal-text">
                         Kategoriya nomi
                     </p>
-                    <input type="text" className="modal-input"   onChange={(e) => {
-                        setCName(e.target.value)
-                    }} required placeholder="masalan: Model B" />
+                    <input type="text" className="modal-input" value={info.name} name="name"  onChange={setdata } required placeholder="masalan: Model B" />
                     <div className="modal-box">
                         <p className="modal-subtext">Holat</p>
                         <div className="toggle">
 
-                            <input type="checkbox" id="holat"  />
+                            <input type="checkbox" id="holat" value={info.status} name="status"  onChange={setdata }  />
                             <label className="toggle-label" for="holat">Toggle</label>
 
                         </div>
                     </div>
 
-                    <button type="submit" onClick={() => { createCategory(cName) }}  className="modal-btn">
+                    <button type="button" onClick={(e) => {
+                         e.preventDefault()
+                         createCategory(info.name, info.status) }}  className="modal-btn">
                         Qo'shish
                     </button>
                 </form>
