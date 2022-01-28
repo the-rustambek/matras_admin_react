@@ -15,21 +15,9 @@ import constants from "../../configs/constants";
 
 const MahsulotlarTable = () =>{
 
-    let token = window.localStorage.getItem("token");
-    const handleData = (e) => {
-        fetch('http://localhost:8080/', {
-            method:"POST",
-            headers:{
-                'Content-Type': 'application/json',
-                'Authorization': token
-            
-            },
-            
-
-        })
-    }
     
-    const {addMatrass} = useContext(MatrasContext);
+    
+    // const {addMatrass} = useContext(MatrasContext);
 
     const [mahsulotNomi,setMahsulotNomi] = useState("");
     const [mahsulotPrice,setMahsulotPrice] = useState("");
@@ -44,30 +32,7 @@ const MahsulotlarTable = () =>{
   
     const [mahsulotStatus,setMahsulotStatus] = useState("");
     
-    const handleSubmit = async (e) =>{
-        e.preventDefault();
-        try {
-            const response = await constants.post("/",{
-                mahsulotNomi,
-				mahsulotPrice,
-				mahsulotWeight,
-				mahsulotSize,
-				mahsulotGuaranty,
-				mahsulotCapasity,
-				mahsulotSalePrice,
-				mahsulotDescription,
-				mahsulotIsNew,
-				mahsulotStatus,
-				
-            })
-            addMatrass(response.data)
-
-        } catch (error) {
-            console.log(error)
-            
-        }
-    }
-
+  
     const [toifalar, setToifalar] = useState([])
 // console.log(children)
 const [toifaError,setToifaError] = useState(false);
@@ -80,9 +45,7 @@ const getToifalar = async()=>{
      
 }
 
-const onChange = (e) =>{
-   console.log(e.target.files);
-} 
+
 
 const [users,setUsers] = useState([]);
 const [deleteModal,setDeleteModal] = useState(false);
@@ -114,45 +77,6 @@ const fetchData = async () =>{
         console.log(err)
     })
 }
-
-
-// const onAdd = async (name, username) =>{ // shu yerga qolgan narsalarni ham kiritaman
-//     await fetch('https://jsonplaceholder.typicode.com/users',{
-//         method:"POST",
-//         body: JSON.stringify({
-//             name:name,
-//             username:username,
-
-
-//         }),
-//         headers:{
-//             "Content-type": "application/json; charset=UTF-8",
-//         }
-//     }).then((res) =>{
-//         if(res.status !== 201){
-//             return
-
-//         }else{
-//             return res.json();
-//         }
-//     })
-//     .then((data) =>{
-//         setUsers((users) => [...users,data]);
-//     })
-//     .catch((err) =>{
-//         console.log(err);
-//     })
-// }
-
-// const handleOnSubmit = (e) =>{
-//     e.preventDefault();
-//     onAdd(e.target.name.value,e.target.username.value);
-
-//     e.target.name.value = "";
-//     e.target.username.value = "";
-
-// }
-
 
 
 return (
@@ -306,7 +230,7 @@ return (
 
         <div className="mahsulot-box">
             <div className="mahsulot-close">
-                <button className="mahsulot-close-btn" onClick={()=>setAddModal()}>
+                <button className="mahsulot-close-btn" onClick={()=>openAddModal()}>
 
                     <img src={Close} className="close-icon" alt="" />
                 </button>
@@ -315,15 +239,15 @@ return (
             Qo'shish
             </h2>
             <div className="modal-blok">
-                <form onSubmit={handleSubmit}   className="modal-form" method="POST"  encType="multipart/form-data">
+                <form    className="modal-form" method="POST"  encType="multipart/form-data">
 
                     <ul className="modal-list">
                         <li className="modal-item modal-img">
                             {/* <img src={Image} alt="" /> */}
 
 
-                            <input  name="photos" accept=".jpg,.png, .jpeg, .svg, .webp77  7" className="multiple-input" multiple
-                                type="file" onChange={onChange} />
+                            <input  name="photos" accept=".jpg,.png, .jpeg, .svg, .webp" className="multiple-input" multiple
+                                type="file" />
                         </li>
                         <li className="modal-item modal-items">
                             <p>
@@ -365,18 +289,18 @@ return (
                         <p>
                                 Tovar nomi
                             </p>
-                            <Input value={mahsulotNomi} onChange={(e) => setMahsulotNomi(e.target.value)} type="text" placeholder="Lux soft memory" name="mahsulot_nomi" />
+                            <Input  type="text" placeholder="Lux soft memory" name="mahsulot_nomi" />
 
                             <p>
                                 Narxi
                             </p>
-                            <Input value={mahsulotPrice} onChange={(e) => setMahsulotPrice(e.target.value)} name="mahsulot_price" type="text" placeholder="Masalan: 20 000"  />
+                            <Input  name="mahsulot_price" type="text" placeholder="Masalan: 20 000"  />
 
 
                             <p>
                                 Yuklama
                             </p>
-                            <Input  value={mahsulotWeight} onChange={(e) => setMahsulotWeight(e.target.value)} name="mahsulot_weight" type="text" placeholder="Masalan: 200 kg" />
+                            <Input   name="mahsulot_weight" type="text" placeholder="Masalan: 200 kg" />
 
                         </li>
                         <li className="modal-item modal-items">
@@ -384,27 +308,27 @@ return (
                             <p>
                                 Razmeri
                             </p>
-                            <Input value={mahsulotSize} onChange={(e) => setMahsulotSize(e.target.value)}  name="mahsulot_size" type="text" placeholder="masalan: 200 x 140 x 40" />
+                            <Input  name="mahsulot_size" type="text" placeholder="masalan: 200 x 140 x 40" />
 
                             <p>
                                 Kafolat
                             </p>
-                            <Input value={mahsulotGuaranty} onChange={(e) => setMahsulotGuaranty(e.target.value)} name="mahsulot_guaranty" type="text" placeholder="Masalan:  1 yil" />
+                            <Input  name="mahsulot_guaranty" type="text" placeholder="Masalan:  1 yil" />
 
 
                             <p>
                                 Sig'im
                             </p>
-                            <Input value={mahsulotCapasity} onChange={(e) => setMahsulotCapasity(e.target.value)} name="mahsulot_capasity" type="text" placeholder="Masalan: 2" />
+                            <Input name="mahsulot_capasity" type="text" placeholder="Masalan: 2" />
                             <p>
                                 Aksiya narxi
-                            </p><Input value={mahsulotIsNew} onChange={(e) => setMahsulotIsNew(e.target.value)} name="mahsulot_sale_price" type="text" placeholder="Masalan: 1 200 000 so'm" />
+                            </p><Input  name="mahsulot_sale_price" type="text" placeholder="Masalan: 1 200 000 so'm" />
 
                         </li>
                         <li className="modal-item">
                             <p>Ma'lumot</p>
 
-                            <textarea value={mahsulotDescription} onChange={(e) => setMahsulotDescription(e.target.value)}  name="mahsulot_description" placeholder="Info..." required>
+                            <textarea   name="mahsulot_description" placeholder="Info..." required>
 
                             </textarea>
                             <div className="modal-footer">
@@ -426,7 +350,7 @@ return (
 
                                 </div>
                             </div>
-                            <button onClick={handleData} className="add-button" >Qo'shish</button>
+                            <button  className="add-button" >Qo'shish</button>
                         </li>
 
                     </ul>

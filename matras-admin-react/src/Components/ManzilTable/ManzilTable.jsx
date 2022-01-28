@@ -113,8 +113,50 @@ if(response?.ok === true){
 
 }
 
-// const onSelectFile = async(photos) => createLocation(photos.files[0]);
+const delete_location = async(id) =>{
+    let token = window.localStorage.getItem("token");
+    
+    let response = await fetch(constants.API_URL+`/v1/locations/${id}`,{
+        method: "DELETE",
+        headers:{
+            "Content-Type": "application/json",
+            "Authorization": token
+        }
+    })
 
+    response = await response.json();
+    console.log(response);
+    if(response.ok == true){
+        openDeleteModal();
+        getLocations()
+    }
+}
+
+
+const update_locations = async(id,name,location,description) =>{
+    let token =  window.localStorage.getItem("token");
+
+    let response = await fetch(constants.API_URL+`/v1/locations/${id}`,{
+        method: "PUT",
+        headers:{
+            "Content-Type": "application/json",
+            "Authorization": token
+        },
+        body: JSON.stringify({
+            location_name: name,
+            location_link:location,
+            location_description:description,
+            location_status: "active"
+
+        })
+    })
+    response = await response.json();
+    console.log(response);
+    if(response.ok == true) {
+    openEditModal()
+    getLocations()
+}
+}
 
 useEffect(async () => {
     await getLocations()
@@ -159,16 +201,18 @@ useEffect(async () => {
                                         </td>
                                     </span>
                                     <td className='td-right'>
-                                        <button
+                                        <button 
                                             className='edit-btn'
-                                            key={id}
-                                            onClick={() => openEditModal()}>
+                                            key={i} data-id={locations.location_id}  onClick={()=>{ 
+                                                openEditModal()
+                                                setId(locations.location_id)
+                                                }}>
                                             <img src={Edit} alt='' />
                                         </button>
                                         <button
                                             className='delete-btn'
-                                            key={id}
-                                            onClick={() => openDeleteModal()}>
+                                            key={locations.id} onClick={(e)=>{ openDeleteModal()                     
+                                                setId(locations.location_id)}}>
                                             <img src={Delete} alt='' />
                                         </button>
                                     </td>
@@ -192,7 +236,8 @@ useEffect(async () => {
                                 onClick={() => openDeleteModal()}>
                                 Yo'q
                             </button>
-                            <button className='delete-yes' type='submit'>
+                            <button className='delete-yes' type='submit'data-id={id}
+                             type="submit" onClick={(e) => delete_location(e.target.dataset.id)}>
                                 Ha
                             </button>
                         </div>
@@ -221,23 +266,23 @@ useEffect(async () => {
                                     <li className='modal-item modal-img'>
                                         {/* <img src={Image} alt="" /> */}
 
-                                        <input
+                                        {/* <input
                                             accept='.jpg,.png, .jpeg, .svg, .webp77  7'
                                             className='multiple-input'
                                             multiple
                                             type='file'
-                                        />
+                                        /> */}
                                     </li>
 
                                     <li className='modal-item modal-items'>
                                         <p>Manzil</p>
-                                        <Input
+                                        <Input type="text" name="name" value={info.name} onChange={setdata}
                                             type='text'
                                             placeholder='masalan: Toshkent'
                                         />
 
                                         <p>location</p>
-                                        <Input
+                                        <Input name="location" value={info.location} onChange={setdata}
                                             type='text'
                                             placeholder="Mo'ljal:  Sergeli-9"
                                         />
@@ -247,7 +292,7 @@ useEffect(async () => {
                                                 Holat
                                             </div>
                                             <div className='toggle'>
-                                                <input
+                                                <input name="status" value={info.status} onChange={setdata}
                                                     type='checkbox'
                                                     id='holat'
                                                 />
@@ -262,12 +307,15 @@ useEffect(async () => {
                                     <li className='modal-item'>
                                         <p>Matn</p>
 
-                                        <textarea
+                                        <textarea name='description' value={info.description} onChange={setdata}
                                             placeholder='Info...'
                                             required></textarea>
 
-                                        <button className='add-button adds-btn'>
-                                            Qo'shish
+                                        <button className='add-button adds-btn'data-id={id} type="button" 
+                                            onClick={(e) => {
+                                            e.preventDefault()
+                                                update_locations(e.target.dataset.id ,info.name,info.location,info.description,info.status) }}>
+                                            Tahrirlash
                                         </button>
                                     </li>
                                 </ul>
