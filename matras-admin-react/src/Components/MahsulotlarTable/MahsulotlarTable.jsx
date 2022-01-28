@@ -8,7 +8,6 @@ import Delete from "../../Assets/Images/delete.png";
 import Modal from "../Modal/Modal";
 import Input from "../Input/Input";
 import SelectService from "../../services/SelectService";
-import { MatrasContext } from "../../Context/MatrasContext";
 import constants from "../../configs/constants";
 
 
@@ -17,66 +16,134 @@ const MahsulotlarTable = () =>{
 
     
     
-    // const {addMatrass} = useContext(MatrasContext);
-
-    const [mahsulotNomi,setMahsulotNomi] = useState("");
-    const [mahsulotPrice,setMahsulotPrice] = useState("");
-    const [mahsulotWeight,setMahsulotWeight] = useState("");
-    const [mahsulotSize,setMahsulotSize] = useState("");
-    const [mahsulotGuaranty,setMahsulotGuaranty] = useState("");
-    const [mahsulotCapasity,setMahsulotCapasity] = useState("");
-    const [mahsulotSalePrice,setMahsulotSalePrice] = useState("");
-    const [mahsulotDescription,setMahsulotDescription] = useState("");
-    const [mahsulotIsNew,setMahsulotIsNew] = useState("");
-
-  
+   
     const [mahsulotStatus,setMahsulotStatus] = useState("");
     
   
-    const [toifalar, setToifalar] = useState([])
-// console.log(children)
-const [toifaError,setToifaError] = useState(false);
 
-const getToifalar = async()=>{
-    let result = await SelectService.CategoryAdd();
-    console.log(result.data.categories);
- 
-    setToifalar(result.data.categories)  
-     
-}
+    const [id, setId] = useState('');
+
+    const [info, setInfo] = useState({
+        // photos: [],
+         id,
+         name:"",
+         narxi:"",
+         yuklama:"",
+         razmeri:"",
+         kafolat:"",
+         sigim:"",
+         sale_price:"",
+         aksiya:"",
+         desc:"",
+         status: true,
+    });
+
+    const setdata = (e) => {
+        // console.log(e.target.value);
+        const { name, value } = e.target;
+        setInfo((preval) => {
+            return {
+                ...preval,
+                [name]: value
+            }
+        })
+    }
+        // const [toifalar, setToifalar] = useState([])
+        // const [toifaError,setToifaError] = useState(false);
+
+//         const getToifalar = async()=>{
+//         let result = await SelectService.CategoryAdd();
+//         // console.log(result.data.categories);
+    
+//         setToifalar(result.data.categories)  
+        
+// }
 
 
 
-const [users,setUsers] = useState([]);
-const [deleteModal,setDeleteModal] = useState(false);
-const [editModal,setEditModal] = useState(false);
-const [addModal,setAddModal] = useState(false);
+        const [users,setUsers] = useState([]);
+        const [deleteModal,setDeleteModal] = useState(false);
+        const [editModal,setEditModal] = useState(false);
+        const [addModal,setAddModal] = useState(false);
+        const [data, setData] = useState([]);
+
+        function openDeleteModal(){
+        setDeleteModal(!deleteModal)
+        }
+        function openEditModal(){
+        setEditModal(!editModal)
+        }
+
+        function openAddModal(){
+        setAddModal(!addModal)
+        }
 
 
-function openDeleteModal(){
-setDeleteModal(!deleteModal)
-}
-function openEditModal(){
-setEditModal(!editModal)
-}
 
-function openAddModal(){
-setAddModal(!addModal)
-}
+    const getProducts =  async()=>{
+        let  token = window.localStorage.getItem("token");
 
-useEffect(() =>{
-    fetchData();
-    getToifalar()
+        let response =  await fetch(constants.API_URL+"/v1/products",{
+            method: "GET",
+            headers:{
+                "Content-Type": "application/json",
+                "Authorization":token
+            }
+        })
 
-},[])
+            response = await response.json();
+            console.log(response);
+
+            if(response?.data.products){
+                setData(response?.data.products)
+            }
+    }
+
+    const createProducts = async(id,name,narxi,yuklama,razmeri,kafolat,sigim,sale_price,aksiya,desc) =>{
+        let token  =  window.localStorage.getItem("token");
+
+        let response =  await fetch(constants.API_URL + "/v1/products",{
+            method: "POST",
+            headers:{
+                "Content-Type":"application/json",
+                "Authorization": token
+            },
+            body: JSON.stringify({
+                // photos,
+                // category_id:id,
+                product_name:name,
+                product_price: narxi,
+                product_weight: yuklama,
+                product_size: razmeri,
+                product_guaranty: kafolat,
+                product_capasity: sigim,
+                product_sale_price: sale_price,
+                product_isNew: aksiya,
+                product_description: desc,
+                product_status:"active"
+            })
+        })
 
 
-const fetchData = async () =>{
-    await fetch("https://jsonplaceholder.typicode.com/users").then((res) => res.json()).then((data) => setUsers(data))
-    .catch((err) =>{
-        console.log(err)
-    })
-}
+        response = await response.json(); 
+
+        if(response?.ok === true){
+            getProducts()
+            openAddModal()
+        }
+
+
+    }
+
+
+
+
+
+        useEffect(async () => {
+            await getProducts()
+            }, [])
+        
+
 
 
 return (
@@ -102,28 +169,28 @@ return (
                 {/*
                 <TrComponent /> */}
 
-                {users.length > 0 && users.map((row,i)=>(
+                {data.length > 0 && data.map((products,i)=>(
 
-                <tr className="tr" key={row.id}>
+                <tr className="tr" key={products.id}>
 
-                    <td>{row.name}</td>
-                    <td>{row.username}</td>
-                    <td>{row.id*10000} so'm </td>
-                    <td>{row.id *100} kg</td>
-                    <td>{row.id*15}x{row.id*15}x{row.id*15}</td>
+                    <td>{products.product_name}</td>
+                    <td>{products.category_id}</td>
+                    <td>{products.product_price} so'm </td>
+                    <td>{products.product_weight} kg</td>
+                    <td>{products.product_size}x{products.product_size}x{products.product_size}</td>
                     <td className="td-right">
                         <div className="toggle">
 
-                            <input name="mahsulot_nomi" name="toggle" type="checkbox" id={row.id} />
-                            <label className="toggle-label" for={row.id}>Toggle</label>
+                            <input name="mahsulot_nomi" name="toggle" type="checkbox" id={products.id} />
+                            <label className="toggle-label" for={products.id}>Toggle</label>
 
                         </div>
                     </td>
                     <td className="td">
-                        <button className="edit-btn" key={row.id} onClick={()=> openEditModal()} >
+                        <button className="edit-btn" key={i} onClick={()=> openEditModal()} >
                             <img src={Edit} alt="" />
                         </button>
-                        <button key={row.id} className="delete-btn"  onClick={()=> openDeleteModal()}  >
+                        <button key={i} className="delete-btn"  onClick={()=> openDeleteModal()}  >
                             <img src={Delete} alt="" /></button>
 
                     </td>
@@ -230,7 +297,7 @@ return (
 
         <div className="mahsulot-box">
             <div className="mahsulot-close">
-                <button className="mahsulot-close-btn" onClick={()=>openAddModal()}>
+                <button className="mahsulot-close-btn" onClick={()=>setAddModal()}>
 
                     <img src={Close} className="close-icon" alt="" />
                 </button>
@@ -245,21 +312,22 @@ return (
                         <li className="modal-item modal-img">
                             {/* <img src={Image} alt="" /> */}
 
-
+{/* 
                             <input  name="photos" accept=".jpg,.png, .jpeg, .svg, .webp" className="multiple-input" multiple
-                                type="file" />
+                                type="file" /> */}
                         </li>
                         <li className="modal-item modal-items">
                             <p>
                                 Toifalar
                             </p>
-                            <Input
+                            {/* <Input
+                            
 
                             error={toifaError ? "true" : ""}
 								type="text"
 								placeholder="toifa"
 	
-								name="toifa"
+								name="id" onChange={id}
 								required
 								list="data"
                                 onChange={(event) =>{
@@ -275,8 +343,8 @@ return (
                                         }
                                     
                                 }}
-							/>
-	                <datalist id="data">
+							/> */}
+	                {/* <datalist id="data">
                         {toifalar.length &&  toifalar.map((item,key) =>{
                             return (
 
@@ -285,22 +353,22 @@ return (
                             )
                         })}
 
-						</datalist>
+						</datalist> */}
                         <p>
                                 Tovar nomi
                             </p>
-                            <Input  type="text" placeholder="Lux soft memory" name="mahsulot_nomi" />
+                            <Input name="name" value={info.name} onChange={setdata} type="text" placeholder="Lux soft memory"  />
 
                             <p>
                                 Narxi
                             </p>
-                            <Input  name="mahsulot_price" type="text" placeholder="Masalan: 20 000"  />
+                            <Input name="narxi" value={info.narxi} onChange={setdata} type="text" placeholder="Masalan: 20 000"  />
 
 
                             <p>
                                 Yuklama
                             </p>
-                            <Input   name="mahsulot_weight" type="text" placeholder="Masalan: 200 kg" />
+                            <Input   name="yuklama" value={info.yuklama} onChange={setdata} type="text" placeholder="Masalan: 200 kg" />
 
                         </li>
                         <li className="modal-item modal-items">
@@ -308,27 +376,27 @@ return (
                             <p>
                                 Razmeri
                             </p>
-                            <Input  name="mahsulot_size" type="text" placeholder="masalan: 200 x 140 x 40" />
+                            <Input  name="razmeri" value={info.razmeri} onChange={setdata} type="text" placeholder="masalan: 200 x 140 x 40" />
 
                             <p>
                                 Kafolat
                             </p>
-                            <Input  name="mahsulot_guaranty" type="text" placeholder="Masalan:  1 yil" />
+                            <Input  name="kafolat" value={info.kafolat} onChange={setdata} type="text" placeholder="Masalan:  1 yil" />
 
 
                             <p>
                                 Sig'im
                             </p>
-                            <Input name="mahsulot_capasity" type="text" placeholder="Masalan: 2" />
+                            <Input name="sigim" value={info.sigim} onChange={setdata} type="text" placeholder="Masalan: 2" />
                             <p>
                                 Aksiya narxi
-                            </p><Input  name="mahsulot_sale_price" type="text" placeholder="Masalan: 1 200 000 so'm" />
+                            </p><Input  name="sale_price" value={info.sale_price} onChange={setdata} type="text" placeholder="Masalan: 1 200 000 so'm" />
 
                         </li>
                         <li className="modal-item">
                             <p>Ma'lumot</p>
 
-                            <textarea   name="mahsulot_description" placeholder="Info..." required>
+                            <textarea  name="desc" value={info.desc} onChange={setdata}  placeholder="Info..." required>
 
                             </textarea>
                             <div className="modal-footer">
@@ -336,7 +404,7 @@ return (
                                 <p className="modal-subtext">New</p>
                                 <div className="toggle">
 
-                                    <input name="mahsulot_isNew" type="checkbox" id="new" />
+                                    <input name="aksiya" value={info.aksiya} onChange={setdata} type="checkbox" id="new" />
                                     <label className="toggle-label" for="new">Toggle</label>
 
                                 </div>
@@ -345,12 +413,25 @@ return (
                                 <p className="modal-subtext">Active</p>
                                 <div className="toggle">
 
-                                    <input  name="mahsulot_status" type="checkbox" id="active" />
+                                    <input  name="status" value={info.status} onChange={setdata} type="checkbox" id="active" />
                                     <label className="toggle-label" for="active">Toggle</label>
 
                                 </div>
                             </div>
-                            <button  className="add-button" >Qo'shish</button>
+                            <button  className="add-button"onClick={(e) =>{
+                                            e.preventDefault()
+                                            createProducts(info.name,
+                                                info.narxi,
+                                                info.yuklama,
+                                                info.razmeri,
+                                                info.kafolat, 
+                                                info.sigim,
+                                                info.sale_price,
+                                                info.desc,
+                                                info.isNew,
+                                                info.status)
+                                        
+                                        }} >Qo'shish</button>
                         </li>
 
                     </ul>

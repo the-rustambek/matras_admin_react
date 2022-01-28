@@ -70,7 +70,7 @@ const getLocations = async() => {
     }
     })
     response = await response.json();
-    console.log(response);
+    // console.log(response);
     if(response?.data.locations){
     setData(response?.data.locations)
 }
@@ -81,7 +81,7 @@ const createLocation = async(name,location,description) => {
     let token = window.localStorage.getItem("token")
     // const formData = new FormData();
     // formData.append('photos', selectedFile);
-    console.log(name)
+    // console.log(name)
     let response = await fetch(constants.API_URL+"/v1/locations",{
     method: "POST",
     headers: {
@@ -211,7 +211,7 @@ useEffect(async () => {
                                         </button>
                                         <button
                                             className='delete-btn'
-                                            key={locations.id} onClick={(e)=>{ openDeleteModal()                     
+                                            key={i} onClick={(e)=>{ openDeleteModal()                     
                                                 setId(locations.location_id)}}>
                                             <img src={Delete} alt='' />
                                         </button>
